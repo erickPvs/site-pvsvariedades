@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
 <title>PVS Variedades</title>
@@ -10,6 +9,7 @@
 body{
 margin:0;
 font-family:Arial;
+overflow:hidden;
 }
 
 .container{
@@ -17,25 +17,44 @@ display:flex;
 height:100vh;
 }
 
-.card{
+.panel{
 flex:1;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
 color:white;
-font-size:28px;
+font-size:32px;
 font-weight:bold;
 cursor:pointer;
-transition:all 0.3s ease;
 background-size:cover;
 background-position:center;
+transition:all 0.5s ease;
 filter:grayscale(100%);
 }
 
-.card:hover{
-flex:1.2;
+.panel:hover{
+flex:1.8;
 filter:grayscale(0%);
+}
+
+.overlay{
+background:rgba(0,0,0,0.45);
+width:100%;
+height:100%;
+display:flex;
+align-items:center;
+justify-content:center;
+transition:background 0.4s;
+}
+
+.panel:hover .overlay{
+background:rgba(0,0,0,0.25);
+}
+
+a{
+flex:1;
+text-decoration:none;
 }
 
 .guia{
@@ -50,22 +69,6 @@ background-image:url("images/loja.jpg");
 background-image:url("images/minime.jpg");
 }
 
-.overlay{
-background:rgba(0,0,0,0.4);
-width:100%;
-height:100%;
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-a{
-text-decoration:none;
-color:white;
-width:100%;
-height:100%;
-}
-
 </style>
 </head>
 
@@ -74,31 +77,24 @@ height:100%;
 <div class="container">
 
 <a href="/guias/guia-acf.html">
-<div class="card guia">
-<div class="overlay">
-GUIAS
-</div>
+<div class="panel guia">
+<div class="overlay">GUIAS</div>
 </div>
 </a>
 
 <a href="/produtos">
-<div class="card loja">
-<div class="overlay">
-LOJA
-</div>
+<div class="panel loja">
+<div class="overlay">LOJA</div>
 </div>
 </a>
 
 <a href="/mini-me">
-<div class="card minime">
-<div class="overlay">
-MINI-ME
-</div>
+<div class="panel minime">
+<div class="overlay">MINI-ME</div>
 </div>
 </a>
 
 </div>
 
 </body>
-
 </html>
