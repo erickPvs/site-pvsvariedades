@@ -10,7 +10,7 @@
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
-background:#f3f3f3;
+background:#f2f2f2;
 overflow:hidden;
 }
 
@@ -22,34 +22,30 @@ height:100vh;
 width:100vw;
 }
 
-/* PAINÉIS */
+/* PAINEL */
 
 .panel{
+
+flex:1;
+
+position:relative;
 
 display:flex;
 align-items:center;
 justify-content:center;
 
-position:relative;
-
-cursor:pointer;
 overflow:hidden;
 
-transition:all .45s ease;
+cursor:pointer;
 
-animation:entrada 1s ease forwards;
-opacity:0;
+transition:.45s;
 }
 
-/* proporção dos painéis */
+/* LOJA MAIOR */
 
-.guia{flex:1;}
-.loja{flex:1.35;}
-.minime{flex:1;}
-
-.panel:nth-child(1){animation-delay:.2s;}
-.panel:nth-child(2){animation-delay:.4s;}
-.panel:nth-child(3){animation-delay:.6s;}
+.loja{
+flex:1.35;
+}
 
 /* IMAGEM */
 
@@ -63,12 +59,13 @@ width:100%;
 height:100%;
 
 background-size:cover;
-background-repeat:no-repeat;
 background-position:center;
+background-repeat:no-repeat;
 
-filter:grayscale(100%) brightness(1.25) opacity(.38);
+filter:grayscale(100%) brightness(1.25) opacity(.45);
 
-transition:all .45s ease;
+transition:.45s;
+
 }
 
 /* HOVER */
@@ -80,13 +77,13 @@ filter:grayscale(0%) brightness(1) opacity(1);
 transform:scale(1.07);
 }
 
-/* EXPANSÃO LEVE */
+/* EXPANSÃO SUAVE */
 
 .panel:hover{
 flex:1.45;
 }
 
-/* EFEITO DE LUZ */
+/* LUZ PREMIUM */
 
 .panel::after{
 
@@ -137,12 +134,16 @@ background-position:center;
 
 position:relative;
 
+z-index:2;
+
 text-align:center;
 
-z-index:2;
+color:white;
+
+padding:20px;
 }
 
-/* TEXTO */
+/* TÍTULO */
 
 .title{
 
@@ -151,12 +152,10 @@ font-weight:bold;
 
 letter-spacing:2px;
 
-color:white;
-
 text-shadow:0 6px 25px rgba(0,0,0,.65);
 }
 
-/* SUBTÍTULO */
+/* SUB */
 
 .subtitle{
 
@@ -194,28 +193,26 @@ color:black;
 transform:scale(1.08);
 }
 
-/* LINKS */
+/* LINK OCULTO */
 
-a{
-display:flex;
-text-decoration:none;
-color:inherit;
+.panel a{
+
+position:absolute;
+
+width:100%;
+height:100%;
+
+top:0;
+left:0;
+
+z-index:3;
 }
 
-/* ANIMAÇÃO */
+/* SOMBRA PREMIUM */
 
-@keyframes entrada{
+.panel:hover{
 
-from{
-transform:translateY(50px);
-opacity:0;
-}
-
-to{
-transform:translateY(0);
-opacity:1;
-}
-
+box-shadow:0 20px 60px rgba(0,0,0,.25);
 }
 
 </style>
@@ -228,9 +225,9 @@ opacity:1;
 <div class="container">
 
 
-<a href="/guias/guia-acf.html">
-
 <div class="panel guia">
+
+<a href="/guias/guia-acf.html"></a>
 
 <div class="overlay">
 
@@ -241,32 +238,26 @@ opacity:1;
 
 </div>
 
-</a>
-
-
-<a href="/produtos">
 
 <div class="panel loja">
+
+<a href="/produtos"></a>
 
 <div class="overlay">
 
 <div class="title">LOJA</div>
 <div class="subtitle">Consumíveis e acessórios</div>
 
-<div class="btn">
-ACESSAR
-</div>
+<div class="btn">ACESSAR</div>
 
 </div>
 
 </div>
 
-</a>
-
-
-<a href="/mini-me">
 
 <div class="panel minime">
+
+<a href="/mini-me"></a>
 
 <div class="overlay">
 
@@ -276,8 +267,6 @@ ACESSAR
 </div>
 
 </div>
-
-</a>
 
 
 </div>
