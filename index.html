@@ -1,35 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 <meta charset="UTF-8">
 <title>PVS Variedades</title>
 
 <style>
 
-*{box-sizing:border-box}
-
 body{
 margin:0;
 font-family:Arial, Helvetica, sans-serif;
-
-/* fundo técnico leve */
-background:
-linear-gradient(#f4f4f4,#eaeaea),
-repeating-linear-gradient(
-0deg,
-rgba(0,0,0,0.03) 0px,
-rgba(0,0,0,0.03) 1px,
-transparent 1px,
-transparent 40px
-),
-repeating-linear-gradient(
-90deg,
-rgba(0,0,0,0.03) 0px,
-rgba(0,0,0,0.03) 1px,
-transparent 1px,
-transparent 40px
-);
-
+background:#f0f0f0;
 overflow:hidden;
 }
 
@@ -58,16 +39,16 @@ overflow:hidden;
 
 transition:all .45s ease;
 
-animation:entrada 0.9s ease forwards;
+animation:entrada 1s ease forwards;
 opacity:0;
 }
 
-.panel:nth-child(1){animation-delay:.15s}
-.panel:nth-child(2){animation-delay:.3s}
-.panel:nth-child(3){animation-delay:.45s}
+.panel:nth-child(1){animation-delay:.2s;}
+.panel:nth-child(2){animation-delay:.4s;}
+.panel:nth-child(3){animation-delay:.6s;}
 
 
-/* watermark imagem */
+/* imagem watermark */
 
 .panel::before{
 
@@ -80,29 +61,28 @@ height:100%;
 
 background-position:center;
 background-repeat:no-repeat;
-background-size:58%;
+background-size:cover;
 
-filter:grayscale(100%) brightness(.85) opacity(.35);
+filter:grayscale(100%) brightness(1.2) opacity(.35);
 
 transition:all .45s ease;
 }
 
-
 /* hover */
 
 .panel:hover{
-flex:1.12;
+flex:1.15;
 }
 
 .panel:hover::before{
 
-filter:grayscale(0%) brightness(1) opacity(.95);
+filter:grayscale(0%) brightness(1) opacity(1);
 
 transform:scale(1.08);
 }
 
 
-/* luz */
+/* efeito de luz */
 
 .panel::after{
 
@@ -135,20 +115,21 @@ left:120%;
 
 .guia::before{
 background-image:url("images/guia.webp");
+background-position:center 45%;
 }
 
 .loja::before{
 background-image:url("images/loja.webp");
-background-size:55%;
+background-position:center 50%;
 }
 
 .minime::before{
 background-image:url("images/minime.webp");
-background-size:50%;
+background-position:center;
 }
 
 
-/* overlay */
+/* texto */
 
 .overlay{
 
@@ -159,8 +140,6 @@ text-align:center;
 z-index:2;
 }
 
-/* texto */
-
 .title{
 
 font-size:42px;
@@ -168,34 +147,33 @@ font-weight:bold;
 
 letter-spacing:2px;
 
-color:#222;
+color:white;
 
-text-shadow:0 4px 18px rgba(0,0,0,.2);
+text-shadow:0 5px 25px rgba(0,0,0,.7);
 }
+
 
 /* botão */
 
 .btn{
 
-margin-top:18px;
+margin-top:16px;
 
-padding:11px 26px;
+padding:10px 26px;
 
-border:2px solid #222;
+border:2px solid white;
 
 display:inline-block;
 
 font-size:14px;
 
-letter-spacing:1px;
-
-transition:.25s;
+transition:.3s;
 }
 
 .panel:hover .btn{
 
-background:#222;
-color:white;
+background:white;
+color:black;
 
 transform:scale(1.08);
 }
@@ -216,7 +194,7 @@ color:inherit;
 @keyframes entrada{
 
 from{
-transform:translateY(40px);
+transform:translateY(50px);
 opacity:0;
 }
 
@@ -230,6 +208,7 @@ opacity:1;
 </style>
 </head>
 
+
 <body>
 
 <div class="container">
@@ -242,6 +221,7 @@ opacity:1;
 </div>
 </a>
 
+
 <a href="/produtos">
 <div class="panel loja">
 <div class="overlay">
@@ -250,6 +230,7 @@ opacity:1;
 </div>
 </div>
 </a>
+
 
 <a href="/mini-me">
 <div class="panel minime">
