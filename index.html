@@ -1,3 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>PVS Variedades</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+overflow:hidden;
+}
+
+.container{
+display:flex;
+height:100vh;
+}
+
 .panel{
 flex:1;
 display:flex;
@@ -13,11 +33,12 @@ background-size:cover;
 background-position:center;
 background-repeat:no-repeat;
 
-height:100vh;
-
 transition:all 0.5s ease;
 filter:grayscale(100%);
-}flex:1.8;
+}
+
+.panel:hover{
+flex:1.8;
 filter:grayscale(0%);
 }
 
@@ -41,18 +62,19 @@ text-decoration:none;
 }
 
 .guia{
-background-image:url("images/guia.jpg");
+background-image:url("images/guia.webp");
 }
 
 .loja{
-background-image:url("images/loja.jpg");
+background-image:url("images/loja.webp");
 }
 
 .minime{
-background-image:url("images/minime.jpg");
+background-image:url("images/minime.webp");
 }
 
 </style>
+
 </head>
 
 <body>
@@ -61,19 +83,25 @@ background-image:url("images/minime.jpg");
 
 <a href="/guias/guia-acf.html">
 <div class="panel guia">
-<div class="overlay">GUIAS</div>
+<div class="overlay">
+GUIAS
+</div>
 </div>
 </a>
 
 <a href="/produtos">
 <div class="panel loja">
-<div class="overlay">LOJA</div>
+<div class="overlay">
+LOJA
+</div>
 </div>
 </a>
 
 <a href="/mini-me">
 <div class="panel minime">
-<div class="overlay">MINI-ME</div>
+<div class="overlay">
+MINI-ME
+</div>
 </div>
 </a>
 
