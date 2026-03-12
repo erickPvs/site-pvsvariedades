@@ -22,7 +22,7 @@ height:100vh;
 width:100vw;
 }
 
-/* PAINEL */
+/* PAINÉIS */
 
 .panel{
 
@@ -79,13 +79,13 @@ filter:grayscale(0%) brightness(1) opacity(1);
 transform:scale(1.07);
 }
 
-/* EXPANSÃO SUAVE */
+/* EXPANSÃO */
 
 .panel:hover{
 flex:1.45;
 }
 
-/* LUZ PREMIUM */
+/* EFEITO DE LUZ */
 
 .panel::after{
 
@@ -143,7 +143,7 @@ text-align:center;
 color:white;
 }
 
-/* TITULO */
+/* TITULOS */
 
 .title{
 
@@ -151,11 +151,39 @@ font-size:42px;
 font-weight:bold;
 
 letter-spacing:2px;
-
-text-shadow:0 4px 18px rgba(0,0,0,.9);
 }
 
-/* SUBTITULO */
+/* GUIAS sombra esquerda */
+
+.guia .title{
+
+text-shadow:
+-6px 6px 12px rgba(0,0,0,.75),
+-12px 18px 40px rgba(0,0,0,.65);
+
+}
+
+/* LOJA sombra central */
+
+.loja .title{
+
+text-shadow:
+0 8px 16px rgba(0,0,0,.75),
+0 20px 45px rgba(0,0,0,.7);
+
+}
+
+/* MINI-ME sombra direita */
+
+.minime .title{
+
+text-shadow:
+6px 6px 12px rgba(0,0,0,.75),
+12px 18px 40px rgba(0,0,0,.65);
+
+}
+
+/* SUBTÍTULO */
 
 .subtitle{
 
