@@ -113,6 +113,22 @@ transition:.8s;
 left:120%;
 }
 
+/* ACTIVE FOCUS UI */
+
+.container:hover .panel{
+
+filter:blur(2px) brightness(.85) saturate(.8);
+transform:scale(.98);
+
+}
+
+.container:hover .panel:hover{
+
+filter:none;
+transform:scale(1.02);
+
+}
+
 /* IMAGENS */
 
 .guia::before{
@@ -186,17 +202,21 @@ text-shadow:
 
 }
 
-/* SUBTÍTULO */
+/* SUBTÍTULO COM MAIS CONTRASTE */
 
 .subtitle{
 
-font-size:15px;
+font-size:16px;
 
 margin-top:8px;
 
-opacity:.95;
+color:white;
 
-text-shadow:0 3px 10px rgba(0,0,0,.95);
+text-shadow:
+0 2px 0 rgba(0,0,0,1),
+0 6px 12px rgba(0,0,0,.9),
+0 18px 35px rgba(0,0,0,.8);
+
 }
 
 /* BOTÃO */
