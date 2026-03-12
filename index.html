@@ -8,8 +8,10 @@
 
 <style>
 
-body{
+html,body{
 margin:0;
+padding:0;
+height:100%;
 font-family:Arial, Helvetica, sans-serif;
 background:#f2f2f2;
 overflow:hidden;
@@ -18,9 +20,14 @@ overflow:hidden;
 /* CONTAINER */
 
 .container{
+
 display:flex;
-height:100vh;
+
+height:100dvh;
 width:100vw;
+
+overflow:hidden;
+
 }
 
 /* PAINEL */
@@ -70,7 +77,7 @@ transition:.45s;
 
 }
 
-/* CAMADA PROFUNDIDADE */
+/* GRADIENTE */
 
 .panel::after{
 
@@ -93,6 +100,34 @@ transition:.45s;
 
 }
 
+/* CURSOR LIGHT */
+
+.light{
+
+position:absolute;
+width:100%;
+height:100%;
+
+pointer-events:none;
+
+background:radial-gradient(
+circle 350px at var(--x) var(--y),
+rgba(255,255,255,.25),
+transparent 60%
+);
+
+mix-blend-mode:soft-light;
+
+opacity:0;
+
+transition:opacity .2s;
+
+}
+
+.panel:hover .light{
+opacity:1;
+}
+
 /* HOVER */
 
 .panel:hover::before{
@@ -100,12 +135,11 @@ transition:.45s;
 filter:grayscale(0%) brightness(1) opacity(1);
 
 transform:scale(1.05);
+
 }
 
 .panel:hover::after{
-
 opacity:.4;
-
 }
 
 .panel:hover{
@@ -144,7 +178,7 @@ background-image:url("images/minime.webp");
 background-position:center;
 }
 
-/* OVERLAY */
+/* TEXTO */
 
 .overlay{
 
@@ -159,14 +193,25 @@ z-index:3;
 
 }
 
-/* TITULO */
-
 .title{
 
 font-size:42px;
 font-weight:bold;
 
 letter-spacing:2px;
+
+}
+
+.subtitle{
+
+font-size:16px;
+
+margin-top:8px;
+
+text-shadow:
+0 -1px 0 rgba(0,0,0,1),
+0 6px 12px rgba(0,0,0,.9),
+0 18px 35px rgba(0,0,0,.8);
 
 }
 
@@ -199,21 +244,6 @@ text-shadow:
 
 }
 
-/* SUBTÍTULO */
-
-.subtitle{
-
-font-size:16px;
-
-margin-top:8px;
-
-text-shadow:
-0 -1px 0 rgba(0,0,0,1),
-0 6px 12px rgba(0,0,0,.9),
-0 18px 35px rgba(0,0,0,.8);
-
-}
-
 /* BOTÃO */
 
 .btn{
@@ -240,9 +270,10 @@ background:white;
 color:black;
 
 transform:scale(1.08);
+
 }
 
-/* LINK INVISIVEL */
+/* LINK */
 
 .panel a{
 
@@ -272,7 +303,7 @@ height:33vh;
 }
 
 .overlay{
-bottom:50px;
+bottom:60px;
 }
 
 .title{
@@ -281,6 +312,10 @@ font-size:32px;
 
 .container:hover .panel{
 filter:none;
+}
+
+.light{
+display:none;
 }
 
 }
@@ -295,14 +330,14 @@ filter:none;
 
 <div class="panel guia">
 
+<div class="light"></div>
+
 <a href="/guias/guia-acf.html"></a>
 
 <div class="overlay">
-
 <div class="title">GUIAS</div>
 <div class="subtitle">Tutoriais e manutenção</div>
 <div class="btn">ACESSAR</div>
-
 </div>
 
 </div>
@@ -310,14 +345,14 @@ filter:none;
 
 <div class="panel loja">
 
+<div class="light"></div>
+
 <a href="/produtos"></a>
 
 <div class="overlay">
-
 <div class="title">LOJA</div>
 <div class="subtitle">Consumíveis e acessórios</div>
 <div class="btn">ACESSAR</div>
-
 </div>
 
 </div>
@@ -325,19 +360,39 @@ filter:none;
 
 <div class="panel minime">
 
+<div class="light"></div>
+
 <a href="/mini-me"></a>
 
 <div class="overlay">
-
 <div class="title">MINI-ME</div>
 <div class="subtitle">Seu boneco caricato</div>
 <div class="btn">ACESSAR</div>
-
 </div>
 
 </div>
 
 </div>
+
+<script>
+
+document.querySelectorAll(".panel").forEach(panel => {
+
+panel.addEventListener("mousemove", e => {
+
+const rect = panel.getBoundingClientRect()
+
+const x = e.clientX - rect.left
+const y = e.clientY - rect.top
+
+panel.style.setProperty("--x", x + "px")
+panel.style.setProperty("--y", y + "px")
+
+})
+
+})
+
+</script>
 
 </body>
 </html>
