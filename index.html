@@ -39,8 +39,47 @@ cursor:pointer;
 transition:.45s;
 }
 
+/* ANIMAÇÃO DE ENTRADA */
+
+.panel{
+opacity:0;
+animation:panelEntry 1s ease forwards;
+}
+
+.guia{animation-delay:.1s;}
+.loja{animation-delay:.35s;}
+.minime{animation-delay:.6s;}
+
+@keyframes panelEntry{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
 .loja{
 flex:1.35;
+}
+
+/* CONVERSION BREATHING */
+
+.loja::after{
+animation:breathing 4s ease-in-out infinite;
+}
+
+@keyframes breathing{
+
+0%{transform:scale(1);}
+50%{transform:scale(1.02);}
+100%{transform:scale(1);}
+
 }
 
 /* IMAGEM */
