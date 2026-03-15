@@ -39,46 +39,29 @@ cursor:pointer;
 transition:.45s;
 }
 
-/* ANIMAÇÃO DE ENTRADA */
-
-.panel{
-opacity:0;
-animation:panelEntry 1s ease forwards;
-}
-
-.guia{animation-delay:.1s;}
-.loja{animation-delay:.35s;}
-.minime{animation-delay:.6s;}
-
-@keyframes panelEntry{
-
-from{
-opacity:0;
-transform:translateY(40px);
-}
-
-to{
-opacity:1;
-transform:translateY(0);
-}
-
-}
-
 .loja{
 flex:1.35;
+
+/* BREATHING */
+
+animation:breathing 6s ease-in-out infinite;
 }
 
-/* CONVERSION BREATHING */
+/* PARAR BREATHING QUANDO USUÁRIO INTERAGE */
 
-.loja::after{
-animation:breathing 4s ease-in-out infinite;
+.container:hover .loja{
+animation:none;
 }
+
+/* ANIMAÇÃO BREATHING */
 
 @keyframes breathing{
 
-0%{transform:scale(1);}
-50%{transform:scale(1.02);}
-100%{transform:scale(1);}
+0% { transform:scale(1); }
+
+50% { transform:scale(1.015); }
+
+100% { transform:scale(1); }
 
 }
 
@@ -96,6 +79,14 @@ background-repeat:no-repeat;
 filter:grayscale(100%) brightness(1.25) opacity(.45);
 
 transition:.4s;
+}
+
+/* PRIORIDADE VISUAL LOJA */
+
+.loja::before{
+
+filter:grayscale(80%) brightness(1.15) opacity(.55);
+
 }
 
 /* GRADIENTE */
