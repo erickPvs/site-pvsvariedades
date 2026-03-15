@@ -293,21 +293,26 @@ z-index:5;
 
 @media (max-width:900px){
 
+html,body{
+overflow:auto;
+}
+
 .container{
 flex-direction:column;
 height:auto;
 }
 
 .panel{
-height:33vh;
+height:34vh;
+min-height:260px;
 }
 
 .overlay{
-bottom:60px;
+bottom:40px;
 }
 
 .title{
-font-size:32px;
+font-size:30px;
 }
 
 .container:hover .panel{
@@ -319,79 +324,6 @@ display:none;
 }
 
 }
-
-</style>
-
-</head>
-
-<body>
-
-<div class="container">
-
-<div class="panel guia">
-
-<div class="light"></div>
-
-<a href="/guias/guia-acf.html"></a>
-
-<div class="overlay">
-<div class="title">GUIAS</div>
-<div class="subtitle">Tutoriais e manutenção</div>
-<div class="btn">ACESSAR</div>
-</div>
-
-</div>
-
-
-<div class="panel loja">
-
-<div class="light"></div>
-
-<a href="/produtos"></a>
-
-<div class="overlay">
-<div class="title">LOJA</div>
-<div class="subtitle">Consumíveis e acessórios</div>
-<div class="btn">ACESSAR</div>
-</div>
-
-</div>
-
-
-<div class="panel minime">
-
-<div class="light"></div>
-
-<a href="/mini-me"></a>
-
-<div class="overlay">
-<div class="title">MINI-ME</div>
-<div class="subtitle">Seu boneco caricato</div>
-<div class="btn">ACESSAR</div>
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-document.querySelectorAll(".panel").forEach(panel => {
-
-panel.addEventListener("mousemove", e => {
-
-const rect = panel.getBoundingClientRect()
-
-const x = e.clientX - rect.left
-const y = e.clientY - rect.top
-
-panel.style.setProperty("--x", x + "px")
-panel.style.setProperty("--y", y + "px")
-
-})
-
-})
-
 </script>
 
 </body>
