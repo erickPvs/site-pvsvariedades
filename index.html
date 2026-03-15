@@ -39,8 +39,6 @@ cursor:pointer;
 transition:.45s;
 }
 
-/* LOJA MAIOR */
-
 .loja{
 flex:1.35;
 }
@@ -73,10 +71,10 @@ filter:grayscale(100%) brightness(1.25) opacity(.45);
 transition:.4s;
 }
 
-/* PRIORIDADE VISUAL LOJA */
+/* EYE TRACKING PRIORITY */
 
 .loja::before{
-filter:grayscale(80%) brightness(1.15) opacity(.55);
+filter:grayscale(65%) brightness(1.12) opacity(.65);
 }
 
 /* GRADIENTE */
@@ -101,17 +99,19 @@ transition:.45s;
 
 .panel .light{
 position:absolute;
-width:300px;
-height:300px;
+width:320px;
+height:320px;
 pointer-events:none;
 
 background:radial-gradient(circle,
-rgba(255,255,255,.35),
-rgba(255,255,255,.15),
+rgba(255,255,255,.55),
+rgba(255,255,255,.25),
 transparent 70%);
 
 mix-blend-mode:overlay;
+
 opacity:.0;
+
 transition:opacity .2s;
 }
 
@@ -127,7 +127,7 @@ opacity:.45;
 }
 
 .panel:hover .light{
-opacity:.6;
+opacity:.8;
 }
 
 /* DEPTH SHADOW */
@@ -145,6 +145,7 @@ box-shadow:
 
 .container:hover .panel{
 filter:blur(2px) brightness(.85) saturate(.8);
+transition:.5s;
 }
 
 .container:hover .panel:hover{
@@ -218,24 +219,30 @@ transform:translateY(11px);
 /* SOMBRA DIRECIONAL */
 
 .guia .title{
+
 text-shadow:
 -2px -2px 0 rgba(0,0,0,1),
 -6px 6px 14px rgba(0,0,0,.9),
 -18px 22px 55px rgba(0,0,0,.85);
+
 }
 
 .loja .title{
+
 text-shadow:
 0 -2px 0 rgba(0,0,0,1),
 0 8px 18px rgba(0,0,0,.9),
 0 24px 60px rgba(0,0,0,.85);
+
 }
 
 .minime .title{
+
 text-shadow:
 2px -2px 0 rgba(0,0,0,1),
 6px 6px 14px rgba(0,0,0,.9),
 18px 22px 55px rgba(0,0,0,.85);
+
 }
 
 /* BOTÃO */
@@ -370,10 +377,10 @@ const rect = panel.getBoundingClientRect()
 const x = e.clientX - rect.left
 const y = e.clientY - rect.top
 
-light.style.left = (x-150)+"px"
-light.style.top = (y-150)+"px"
+light.style.left = (x-160)+"px"
+light.style.top = (y-160)+"px"
 
-/* MICRO PARALLAX */
+/* PARALLAX */
 
 const moveX=(x-rect.width/2)/40
 const moveY=(y-rect.height/2)/40
@@ -383,9 +390,7 @@ panel.style.transform=`translate(${moveX}px,${moveY}px)`
 })
 
 panel.addEventListener("mouseleave",()=>{
-
 panel.style.transform="translate(0,0)"
-
 })
 
 })
@@ -403,9 +408,7 @@ loja.classList.remove("breathing")
 clearTimeout(breathingTimeout)
 
 breathingTimeout=setTimeout(()=>{
-
 loja.classList.add("breathing")
-
 },3000)
 
 })
