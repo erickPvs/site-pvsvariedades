@@ -59,8 +59,8 @@ content:"";
 
 position:absolute;
 
-width:100%;
-height:100%;
+width:110%;
+height:110%;
 
 background-size:cover;
 background-position:center;
@@ -68,7 +68,7 @@ background-repeat:no-repeat;
 
 filter:grayscale(100%) brightness(1.25) opacity(.45);
 
-transition:.45s;
+transition:.3s;
 
 }
 
@@ -85,8 +85,8 @@ height:100%;
 
 background:linear-gradient(
 to bottom,
-rgba(0,0,0,0) 25%,
-rgba(0,0,0,.6) 100%
+rgba(0,0,0,0) 20%,
+rgba(0,0,0,.55) 100%
 );
 
 opacity:.8;
@@ -181,7 +181,7 @@ position:absolute;
 
 bottom:0;
 
-transform:translateY(35px);
+transform:translateY(10px);
 
 width:100%;
 
@@ -199,7 +199,9 @@ z-index:3;
 
 font-size:42px;
 font-weight:bold;
-letter-spacing:2px;
+letter-spacing:1px;
+
+margin-bottom:4px;
 
 }
 
@@ -208,7 +210,10 @@ letter-spacing:2px;
 .subtitle{
 
 font-size:16px;
-margin-top:8px;
+
+margin-top:2px;
+
+margin-bottom:6px;
 
 text-shadow:
 0 -1px 0 rgba(0,0,0,1),
@@ -250,7 +255,7 @@ text-shadow:
 
 .btn{
 
-margin-top:20px;
+margin-top:6px;
 
 padding:12px 30px;
 
@@ -279,7 +284,7 @@ box-shadow:0 10px 25px rgba(0,0,0,.4);
 
 }
 
-/* LINK INVISIVEL */
+/* LINK */
 
 .panel a{
 
@@ -309,8 +314,7 @@ height:33.3dvh;
 
 .overlay{
 
-bottom:0;
-transform:translateY(20px);
+transform:translateY(5px);
 
 }
 
@@ -353,7 +357,6 @@ display:none;
 </div>
 
 
-
 <div class="panel loja">
 
 <div class="light"></div>
@@ -369,7 +372,6 @@ display:none;
 </div>
 
 </div>
-
 
 
 <div class="panel minime">
@@ -393,7 +395,7 @@ display:none;
 
 <script>
 
-/* CURSOR LIGHT */
+/* CURSOR LIGHT + MICRO PARALLAX */
 
 document.querySelectorAll(".panel").forEach(panel => {
 
@@ -406,6 +408,14 @@ const y = e.clientY - rect.top
 
 panel.style.setProperty("--x", x + "px")
 panel.style.setProperty("--y", y + "px")
+
+const moveX=(x-rect.width/2)/30
+const moveY=(y-rect.height/2)/30
+
+panel.style.setProperty("--px",moveX+"px")
+panel.style.setProperty("--py",moveY+"px")
+
+panel.querySelector("::before")
 
 })
 
