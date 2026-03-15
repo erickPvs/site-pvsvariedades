@@ -18,12 +18,9 @@ background:#f2f2f2;
 /* CONTAINER */
 
 .container{
-
 display:flex;
-
 min-height:100vh;
 width:100%;
-
 }
 
 /* PAINEL */
@@ -46,7 +43,7 @@ transition:.45s;
 
 }
 
-/* LOJA MAIOR */
+/* LOJA MAIOR (DESKTOP) */
 
 .loja{
 flex:1.35;
@@ -193,7 +190,6 @@ z-index:3;
 
 font-size:42px;
 font-weight:bold;
-
 letter-spacing:2px;
 
 }
@@ -201,7 +197,6 @@ letter-spacing:2px;
 .subtitle{
 
 font-size:16px;
-
 margin-top:8px;
 
 text-shadow:
@@ -294,8 +289,9 @@ flex-direction:column;
 }
 
 .panel{
-height:34vh;
-min-height:260px;
+
+height:33.3dvh;
+
 }
 
 .overlay{
@@ -304,6 +300,21 @@ bottom:60px;
 
 .title{
 font-size:30px;
+}
+
+/* MOBILE FOCUS PRIORITY */
+
+.loja::before{
+
+filter:grayscale(40%) brightness(1.2) opacity(.6);
+
+}
+
+.loja .btn{
+
+padding:14px 34px;
+font-size:16px;
+
 }
 
 .container:hover .panel{
