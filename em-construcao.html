@@ -24,8 +24,11 @@ body{
 
 background-image:url("images/construcao.webp");
 
-background-size:cover;
+background-size:contain;
+background-repeat:no-repeat;
 background-position:center;
+
+background-color:#0f0f0f;
 
 display:flex;
 align-items:center;
@@ -33,7 +36,7 @@ justify-content:center;
 
 }
 
-/* OVERLAY ESCURO */
+/* OVERLAY */
 
 body::before{
 
@@ -47,59 +50,37 @@ background:rgba(0,0,0,.65);
 
 }
 
-/* CARD CENTRAL */
+/* CARD */
 
 .card{
 
 position:relative;
 
 width:90%;
-max-width:650px;
+max-width:520px;
 
-background:rgba(255,255,255,.08);
+background:rgba(255,255,255,.06);
 
-backdrop-filter:blur(12px);
+backdrop-filter:blur(10px);
 
 border:1px solid rgba(255,255,255,.15);
 
-padding:50px;
+padding:40px;
 
 border-radius:14px;
 
 text-align:center;
 
 box-shadow:
-0 40px 80px rgba(0,0,0,.5);
+0 30px 60px rgba(0,0,0,.6);
 
 }
 
 /* TITULO */
 
-.logo{
-
-font-size:36px;
-font-weight:bold;
-letter-spacing:2px;
-
-margin-bottom:5px;
-
-}
-
-/* EMPRESA */
-
-.empresa{
-
-font-size:16px;
-opacity:.9;
-margin-bottom:30px;
-
-}
-
-/* STATUS */
-
 .status{
 
-font-size:22px;
+font-size:26px;
 margin-bottom:10px;
 
 }
@@ -107,18 +88,7 @@ margin-bottom:10px;
 .substatus{
 
 opacity:.8;
-margin-bottom:35px;
-
-}
-
-/* INFO */
-
-.info{
-
-font-size:15px;
-line-height:1.8;
-
-margin-bottom:40px;
+margin-bottom:30px;
 
 }
 
@@ -140,6 +110,8 @@ color:white;
 
 font-weight:bold;
 
+letter-spacing:1px;
+
 transition:.25s;
 
 }
@@ -157,14 +129,18 @@ transform:scale(1.05);
 
 /* MOBILE */
 
-@media (max-width:600px){
+@media (max-width:700px){
 
-.card{
-padding:35px;
+body{
+background-size:cover;
 }
 
-.logo{
-font-size:28px;
+.card{
+padding:30px;
+}
+
+.status{
+font-size:22px;
 }
 
 }
@@ -177,30 +153,12 @@ font-size:28px;
 
 <div class="card">
 
-<div class="logo">
-PVS Variedades
-</div>
-
-<div class="empresa">
-PVS Variedades E-commerce Ltda
-</div>
-
 <div class="status">
 Estamos construindo algo especial
 </div>
 
 <div class="substatus">
 Em breve nosso e-commerce estará online.
-</div>
-
-<div class="info">
-
-CNPJ: 62.012.100/0001-95<br>
-
-WhatsApp: (11) 94740-7823<br>
-
-Email: contato@pvsvariedades.com.br
-
 </div>
 
 <a class="btn" href="/index.html">
