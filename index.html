@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PVS Variedades</title>
+
+<style>
+
+html,body{
+margin:0;
+padding:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#f2f2f2;
+overflow-x:hidden;
+}
+
+/* CONTAINER */
+
+.container{
+display:flex;
+min-height:100vh;
+width:100%;
+}
+
+/* PAINEL */
+
+.panel{
+flex:1;
+position:relative;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+cursor:pointer;
+transition:.45s;
+}
+
+.loja{
+flex:1.35;
+}
+
+/* BREATHING */
+
+.loja.breathing{
+animation:breathing 6s ease-in-out infinite;
+}
+
+@keyframes breathing{
+0%{transform:scale(1)}
+50%{transform:scale(1.03)}
+100%{transform:scale(1)}
+}
+
+/* IMAGEM */
+
+.panel::before{
+content:"";
+position:absolute;
+width:110%;
+height:110%;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+
+filter:grayscale(100%) brightness(1.25) opacity(.45);
+
+transition:.4s;
+}
+
+/* EYE TRACKING PRIORITY */
+
+.loja::before{
+filter:grayscale(65%) brightness(1.12) opacity(.65);
+}
+
+/* GRADIENTE */
+
+.panel::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,0) 20%,
+rgba(0,0,0,.55) 100%
+);
+
+opacity:.8;
+transition:.45s;
+}
+
+/* CURSOR LIGHT */
+
+.panel .light{
+position:absolute;
+width:320px;
+height:320px;
+pointer-events:none;
+
+background:radial-gradient(circle,
+rgba(255,255,255,.55),
+rgba(255,255,255,.25),
+transparent 70%);
+
+mix-blend-mode:overlay;
+
+opacity:.0;
+
+transition:opacity .2s;
+}
+
+/* HOVER IMAGEM */
+
+.panel:hover::before{
+filter:grayscale(0%) brightness(1) opacity(1);
+transform:scale(1.05);
+}
+
+.panel:hover::after{
+opacity:.45;
+}
+
+.panel:hover .light{
+opacity:.8;
+}
+
+/* DEPTH SHADOW */
+
+.panel:hover{
+flex:1.45;
+z-index:5;
+
+box-shadow:
+0 40px 80px rgba(0,0,0,.35),
+0 10px 30px rgba(0,0,0,.25);
+}
+
+/* ACTIVE FOCUS */
+
+.container:hover .panel{
+filter:blur(2px) brightness(.85) saturate(.8);
+transition:.5s;
+}
+
+.container:hover .panel:hover{
+filter:none;
+}
+
+/* IMAGENS */
+
+.guia::before{
+background-image:url("images/guia.webp");
+background-position:center 45%;
+}
+
+.loja::before{
+background-image:url("images/loja.webp");
+background-position:center 50%;
+}
+
+.minime::before{
+background-image:url("images/minime.webp");
+background-position:center;
+}
+
+/* TEXTO */
+
+.overlay{
+position:absolute;
+bottom:3px;
+width:60%;
+text-align:center;
+color:white;
+z-index:3;
+}
+
+/* TITULO */
+
+.title{
+font-size:32px;
+font-weight:bold;
+letter-spacing:1px;
+margin-bottom:3px;
+transition:.35s;
+}
+
+/* SUBTITULO */
+
+.subtitle{
+
+font-size:16px;
+margin-bottom:9px;
+
+transition:.35s;
+
+text-shadow:
+0 -1px 0 rgba(0,0,0,1),
+0 6px 12px rgba(0,0,0,.9),
+0 18px 35px rgba(0,0,0,.8);
+
+}
+
+/* CASCATA */
+
+.panel:hover .title{
+transform:translateY(22px);
+}
+
+.panel:hover .subtitle{
+transform:translateY(11px);
+}
+
+/* SOMBRA DIRECIONAL */
+
+.guia .title{
+
+text-shadow:
+-2px -2px 0 rgba(0,0,0,1),
+-6px 6px 14px rgba(0,0,0,.9),
+-18px 22px 55px rgba(0,0,0,.85);
+
+}
+
+.loja .title{
+
+text-shadow:
+0 -2px 0 rgba(0,0,0,1),
+0 8px 18px rgba(0,0,0,.9),
+0 24px 60px rgba(0,0,0,.85);
+
+}
+
+.minime .title{
+
+text-shadow:
+2px -2px 0 rgba(0,0,0,1),
+6px 6px 14px rgba(0,0,0,.9),
+18px 22px 55px rgba(0,0,0,.85);
+
+}
+
+/* BOTÃO */
+
+.btn{
+
+margin-top:4px;
+
+padding:12px 30px;
+
+border:2px solid white;
+
+display:inline-block;
+
+font-size:15px;
+
+letter-spacing:1px;
+
+transition:.2s;
+
+}
+
+/* BOTÃO HOVER */
+
+.btn:hover{
+
+transform:scale(1.12);
+
+background:white;
+color:black;
+
+box-shadow:0 10px 25px rgba(0,0,0,.4);
+
+}
+
+/* LINK */
+
+.panel a{
+position:absolute;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:5;
+}
+
+/* MOBILE */
+
+@media (max-width:900px){
+
+.container{
+flex-direction:column;
+}
+
+.panel{
+height:33.3dvh;
+}
+
+.title{
+font-size:30px;
+}
+
+.container:hover .panel{
+filter:none;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="panel guia">
+<div class="light"></div>
+
+<a href="/guias/guia-acf.html"></a>
+
+<div class="overlay">
+<div class="title">GUIAS</div>
+<div class="subtitle">Tutoriais e manutenção</div>
+<div class="btn">ACESSAR</div>
+</div>
+
+</div>
+
+
+<div class="panel loja breathing">
+<div class="light"></div>
+
+<a href="/produtos"></a>
+
+<div class="overlay">
+<div class="title">LOJA</div>
+<div class="subtitle">Consumíveis e acessórios</div>
+<div class="btn">ACESSAR</div>
+</div>
+
+</div>
+
+
+<div class="panel minime">
+<div class="light"></div>
+
+<a href="/mini-me"></a>
+
+<div class="overlay">
+<div class="title">MINI-ME</div>
+<div class="subtitle">Seu boneco caricato</div>
+<div class="btn">ACESSAR</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* CURSOR LIGHT + PARALLAX */
+
+document.querySelectorAll(".panel").forEach(panel=>{
+
+const light = panel.querySelector(".light")
+
+panel.addEventListener("mousemove",e=>{
+
+const rect = panel.getBoundingClientRect()
+
+const x = e.clientX - rect.left
+const y = e.clientY - rect.top
+
+light.style.left = (x-160)+"px"
+light.style.top = (y-160)+"px"
+
+/* PARALLAX */
+
+const moveX=(x-rect.width/2)/40
+const moveY=(y-rect.height/2)/40
+
+panel.style.transform=`translate(${moveX}px,${moveY}px)`
+
+})
+
+panel.addEventListener("mouseleave",()=>{
+panel.style.transform="translate(0,0)"
+})
+
+})
+
+/* BREATHING CONTROL */
+
+let breathingTimeout
+
+document.addEventListener("mousemove",()=>{
+
+const loja=document.querySelector(".loja")
+
+loja.classList.remove("breathing")
+
+clearTimeout(breathingTimeout)
+
+breathingTimeout=setTimeout(()=>{
+loja.classList.add("breathing")
+},3000)
+
+})
+
+</script>
+
+</body>
+
+</html>
