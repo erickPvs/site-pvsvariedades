@@ -1,63 +1,297 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Guia de Troca do Filme ACF</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troca do Filme ACF | PVS Variedades</title>
+
 <style>
 
-body{
-font-family:Arial;
-max-width:900px;
-margin:auto;
-padding:30px;
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1{
-color:#222;
+/* BASE */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background: #f5f7fb;
+    color: #111;
 }
 
-.step{
-margin-top:20px;
-padding:15px;
-background:#f5f5f5;
-border-left:4px solid #0073ff;
+/* CONTAINER */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #ffffff, #f0f4ff);
+    padding: 60px 40px;
+    border-radius: 16px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.hero h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #555;
+}
+
+.meta {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* BUTTON */
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 22px;
+    background: #0066ff;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    background: #004ed6;
+}
+
+/* SECTION */
+.section {
+    margin-bottom: 40px;
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    font-size: 22px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    gap: 15px;
+}
+
+.grid-4 {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* CARD */
+.card {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    transition: 0.2s;
+    border: 1px solid #eee;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+/* ALERTS */
+.alert {
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.alert.warning {
+    background: #fff4f4;
+    border-left: 4px solid #ff4d4d;
+}
+
+.alert.info {
+    background: #eef6ff;
+    border-left: 4px solid #0066ff;
+}
+
+.alert.success {
+    background: #f1fff5;
+    border-left: 4px solid #28a745;
+}
+
+/* STEPS */
+.step {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #eee;
+    transition: 0.2s;
+}
+
+.step:hover {
+    box-shadow: 0 8px 20px rgba(0,0,0,0.04);
+}
+
+.step h3 {
+    margin-bottom: 10px;
+}
+
+/* CHECKLIST */
+.checklist li {
+    margin-bottom: 8px;
+}
+
+/* FOOT CTA */
+.cta-box {
+    background: linear-gradient(135deg, #0066ff, #004ed6);
+    color: white;
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.cta-box h2 {
+    margin-bottom: 10px;
+}
+
+.cta-box a {
+    background: white;
+    color: #0066ff;
+    margin-top: 15px;
+}
+
+/* RESPONSIVO */
+@media(max-width:768px){
+    .hero h1 {
+        font-size: 24px;
+    }
 }
 
 </style>
+
 </head>
 
 <body>
 
-<h1>Guia de Substituição do Filme ACF</h1>
+<div class="container">
 
-<p>Guia técnico para impressoras Anycubic Photon M7.</p>
+<!-- HERO -->
+<div class="hero">
+    <h1>Troca do Filme ACF sem erro</h1>
+    <p>Evite falhas, desperdício de resina e perda de impressão com um procedimento validado.</p>
 
-<h2>Ferramentas necessárias</h2>
+    <div class="meta">
+        Tempo: 10–15 min • Nível: Intermediário • Manutenção
+    </div>
 
-<ul>
-<li>Chave Allen</li>
-<li>Filme ACF novo</li>
-<li>Pano sem fiapos</li>
-<li>Álcool isopropílico</li>
-</ul>
-
-<h2>Passo a passo</h2>
-
-<div class="step">
-1. Remova o tanque de resina da impressora.
+    <a href="#" class="btn">Ver materiais utilizados</a>
 </div>
 
-<div class="step">
-2. Retire todos os parafusos do suporte do filme.
+<!-- QUANDO TROCAR -->
+<div class="section">
+    <h2>Quando trocar o filme ACF</h2>
+
+    <div class="grid grid-4">
+        <div class="card">Falha na primeira camada</div>
+        <div class="card">Perda de aderência</div>
+        <div class="card">Filme riscado ou opaco</div>
+        <div class="card">Peça descolando</div>
+    </div>
+
+    <div class="alert warning">
+        Ignorar esses sinais gera desperdício de resina e perda de impressão.
+    </div>
 </div>
 
-<div class="step">
-3. Posicione o novo ACF e aperte os parafusos em padrão cruzado.
+<!-- ERROS -->
+<div class="section">
+    <h2>Erros críticos antes de começar</h2>
+
+    <div class="grid grid-4">
+        <div class="card">Apertar demais</div>
+        <div class="card">Tensão irregular</div>
+        <div class="card">Poeira no filme</div>
+        <div class="card">Tocar no centro</div>
+    </div>
+
+    <div class="alert info">
+        Filme mal tensionado = falha garantida.
+    </div>
 </div>
 
-<div class="step">
-4. Corte o excesso do filme.
+<!-- PASSOS -->
+<div class="section">
+    <h2>Passo a passo</h2>
+
+    <div class="step">
+        <h3>1. Remover o tanque</h3>
+        <p>Esvazie completamente antes de iniciar.</p>
+    </div>
+
+    <div class="step">
+        <h3>2. Desmontar o frame</h3>
+        <p>Solte os parafusos em padrão cruzado.</p>
+    </div>
+
+    <div class="step">
+        <h3>3. Remover filme antigo</h3>
+        <p>Limpe totalmente a superfície.</p>
+    </div>
+
+    <div class="step">
+        <h3>4. Posicionar novo filme</h3>
+        <p>Centralização perfeita é obrigatória.</p>
+    </div>
+
+    <div class="step">
+        <h3>5. Fixar com tensão uniforme</h3>
+        <p>Aperte gradualmente em cruz.</p>
+    </div>
+
+    <div class="step">
+        <h3>6. Corte final</h3>
+        <p>Acabamento limpo nas bordas.</p>
+    </div>
+
+</div>
+
+<!-- TESTE -->
+<div class="section">
+    <h2>Teste final</h2>
+
+    <ul class="checklist">
+        <li>Filme uniforme</li>
+        <li>Sem ondulações</li>
+        <li>Boa aderência inicial</li>
+    </ul>
+</div>
+
+<!-- RESULTADO -->
+<div class="section">
+    <div class="alert success">
+        <h2>Resultado esperado</h2>
+        <ul>
+            <li>Menos falhas</li>
+            <li>Melhor qualidade</li>
+            <li>Impressão estável</li>
+        </ul>
+    </div>
+</div>
+
+<!-- CTA FINAL -->
+<div class="cta-box">
+    <h2>Use o mesmo setup que utilizamos</h2>
+    <p>Materiais testados para garantir esse resultado</p>
+    <a href="#" class="btn">Ver produtos recomendados</a>
+</div>
+
 </div>
 
 </body>
