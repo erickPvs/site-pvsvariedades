@@ -1,7 +1,8 @@
 <style>
 
 .step-container {
-    margin-top: 40px;
+    margin-top: 60px;
+}
 }
 
 .step-block {
@@ -29,12 +30,9 @@
 }
 
 .step-number {
-    background: #0066ff;
-    color: white;
-    font-weight: bold;
-    padding: 10px 14px;
-    border-radius: 8px;
-    margin-right: 12px;
+    background: linear-gradient(135deg, #0066ff, #004ed6);
+    box-shadow: 0 4px 10px rgba(0,102,255,0.3);
+}
 }
 
 .step-title {
@@ -44,8 +42,10 @@
 
 .step-image {
     width: 100%;
-    border-radius: 12px;
-    margin-bottom: 20px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
 }
 
 .step-grid {
@@ -54,23 +54,29 @@
 }
 
 .step-card {
-    padding: 15px;
-    border-radius: 10px;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: 0.2s;
+}
+
+.step-card:hover {
+    transform: scale(1.02);
+}
 }
 
 .step-do {
-    background: #eef6ff;
-    border-left: 4px solid #0066ff;
+    background: #f0f6ff;
 }
 
 .step-avoid {
-    background: #fff4f4;
-    border-left: 4px solid #ff4d4d;
+    background: #fff5f5;
 }
 
 .step-check {
-    background: #f1fff5;
-    border-left: 4px solid #28a745;
+    background: #f3fff7;
+}
 }
 
 .step-label {
