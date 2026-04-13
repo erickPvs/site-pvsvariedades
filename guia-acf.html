@@ -1,26 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Troca do Filme ACF | PVS Variedades</title>
+
 <style>
 
-.step-container {
-    margin-top: 60px;
-}
+/* BASE */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+    background: #f5f7fb;
+    color: #111;
 }
 
-.step-block {
+/* CONTAINER */
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 60px 20px;
+}
+
+/* HERO */
+.hero {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.hero h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #555;
+    font-size: 16px;
+}
+
+.meta {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #888;
+}
+
+/* SECTION */
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+/* STEP */
+.step {
     background: linear-gradient(145deg, #ffffff, #f8faff);
-    border-radius: 18px;
+    border-radius: 20px;
     padding: 35px;
-    margin-bottom: 35px;
-    border: 1px solid rgba(0,0,0,0.05);
-    box-shadow: 
-        0 10px 30px rgba(0,0,0,0.06),
-        inset 0 1px 0 rgba(255,255,255,0.6);
-    transition: 0.25s;
+    margin-bottom: 40px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+    transition: 0.3s;
 }
 
-.step-block:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.08);
-}
+.step:hover {
+    transform: translateY(-6px);
 }
 
 .step-header {
@@ -31,8 +72,12 @@
 
 .step-number {
     background: linear-gradient(135deg, #0066ff, #004ed6);
-    box-shadow: 0 4px 10px rgba(0,102,255,0.3);
-}
+    color: white;
+    font-weight: bold;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-right: 12px;
+    box-shadow: 0 6px 15px rgba(0,102,255,0.3);
 }
 
 .step-title {
@@ -40,239 +85,173 @@
     font-weight: 600;
 }
 
-.step-image {
+/* IMAGE */
+.step img {
     width: 100%;
-    border-radius: 14px;
+    border-radius: 16px;
     margin-bottom: 25px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
 }
 
-.step-grid {
+/* GRID */
+.grid {
     display: grid;
     gap: 15px;
 }
 
-.step-card {
+/* CARDS */
+.card {
     padding: 18px;
     border-radius: 12px;
     font-size: 15px;
-    line-height: 1.5;
-    transition: 0.2s;
 }
 
-.step-card:hover {
-    transform: scale(1.02);
-}
-}
-
-.step-do {
+.do {
     background: #f0f6ff;
 }
 
-.step-avoid {
+.avoid {
     background: #fff5f5;
 }
 
-.step-check {
+.check {
     background: #f3fff7;
 }
-}
 
-.step-label {
+.label {
     font-weight: bold;
     margin-bottom: 5px;
 }
 
+/* FOOT */
+.footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 40px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #0066ff, #004ed6);
+    color: white;
+}
+
+.footer a {
+    display: inline-block;
+    margin-top: 15px;
+    padding: 12px 20px;
+    background: white;
+    color: #0066ff;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
 </style>
 
+</head>
 
-<div class="step-container">
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+<div class="hero">
+    <h1>Troca do Filme ACF sem erro</h1>
+    <p>Procedimento seguro para evitar falhas, desperdício de resina e perda de impressão.</p>
+    <div class="meta">Tempo: 10–15 min • Nível: Intermediário • Manutenção</div>
+</div>
+
+<h2 class="section-title">Passo a passo</h2>
 
 <!-- PASSO 1 -->
-<div class="step-block">
-
+<div class="step">
     <div class="step-header">
         <div class="step-number">1</div>
-        <div class="step-title">Remover o tanque e esvaziar</div>
+        <div class="step-title">Remover o tanque</div>
     </div>
-
-    <img src="/assets/guias/troca-acf/passo-1.jpg" class="step-image">
-
-    <div class="step-grid">
-
-        <div class="step-card step-do">
-            <div class="step-label">O que fazer</div>
-            Retire o tanque da impressora e esvazie completamente a resina.
-        </div>
-
-        <div class="step-card step-avoid">
-            <div class="step-label">Evite</div>
-            Derramar resina ou iniciar o processo com o tanque sujo.
-        </div>
-
-        <div class="step-card step-check">
-            <div class="step-label">Validação</div>
-            O tanque deve estar limpo, seco e sem resíduos.
-        </div>
-
+    <img src="/assets/guias/troca-acf/passo-1.jpg">
+    <div class="grid">
+        <div class="card do"><div class="label">O que fazer</div>Remova o tanque e esvazie a resina.</div>
+        <div class="card avoid"><div class="label">Evite</div>Derramamentos e sujeira.</div>
+        <div class="card check"><div class="label">Validação</div>Tanque limpo e seco.</div>
     </div>
-
 </div>
 
 <!-- PASSO 2 -->
-<div class="step-block">
-
+<div class="step">
     <div class="step-header">
         <div class="step-number">2</div>
         <div class="step-title">Desmontar o frame</div>
     </div>
-
-    <img src="/assets/guias/troca-acf/passo-2.jpg" class="step-image">
-
-    <div class="step-grid">
-
-        <div class="step-card step-do">
-            <div class="step-label">O que fazer</div>
-            Solte os parafusos em padrão cruzado até liberar a moldura.
-        </div>
-
-        <div class="step-card step-avoid">
-            <div class="step-label">Evite</div>
-            Soltar apenas um lado, causando deformação do frame.
-        </div>
-
-        <div class="step-card step-check">
-            <div class="step-label">Validação</div>
-            A moldura deve se separar sem esforço ou tensão.
-        </div>
-
+    <img src="/assets/guias/troca-acf/passo-2.jpg">
+    <div class="grid">
+        <div class="card do"><div class="label">O que fazer</div>Solte os parafusos em cruz.</div>
+        <div class="card avoid"><div class="label">Evite</div>Soltar apenas um lado.</div>
+        <div class="card check"><div class="label">Validação</div>Frame solto sem tensão.</div>
     </div>
-
 </div>
 
 <!-- PASSO 3 -->
-<div class="step-block">
-
+<div class="step">
     <div class="step-header">
         <div class="step-number">3</div>
-        <div class="step-title">Remover o filme antigo</div>
+        <div class="step-title">Remover filme antigo</div>
     </div>
-
-    <img src="/assets/guias/troca-acf/passo-3.jpg" class="step-image">
-
-    <div class="step-grid">
-
-        <div class="step-card step-do">
-            <div class="step-label">O que fazer</div>
-            Retire o filme antigo completamente e limpe a superfície.
-        </div>
-
-        <div class="step-card step-avoid">
-            <div class="step-label">Evite</div>
-            Deixar resíduos ou riscar a base do tanque.
-        </div>
-
-        <div class="step-card step-check">
-            <div class="step-label">Validação</div>
-            A base deve estar lisa, limpa e sem partículas.
-        </div>
-
+    <img src="/assets/guias/troca-acf/passo-3.jpg">
+    <div class="grid">
+        <div class="card do"><div class="label">O que fazer</div>Remova o ACF antigo.</div>
+        <div class="card avoid"><div class="label">Evite</div>Deixar resíduos.</div>
+        <div class="card check"><div class="label">Validação</div>Base limpa e lisa.</div>
     </div>
-
 </div>
 
 <!-- PASSO 4 -->
-<div class="step-block">
-
+<div class="step">
     <div class="step-header">
         <div class="step-number">4</div>
-        <div class="step-title">Posicionar o novo ACF</div>
+        <div class="step-title">Posicionar novo ACF</div>
     </div>
-
-    <img src="/assets/guias/troca-acf/passo-4.jpg" class="step-image">
-
-    <div class="step-grid">
-
-        <div class="step-card step-do">
-            <div class="step-label">O que fazer</div>
-            Posicione o novo filme centralizado e totalmente plano.
-        </div>
-
-        <div class="step-card step-avoid">
-            <div class="step-label">Evite</div>
-            Dobras, desalinhamento ou contato com sujeira.
-        </div>
-
-        <div class="step-card step-check">
-            <div class="step-label">Validação</div>
-            O filme deve estar perfeitamente alinhado e sem ondulações.
-        </div>
-
+    <img src="/assets/guias/troca-acf/passo-4.jpg">
+    <div class="grid">
+        <div class="card do"><div class="label">O que fazer</div>Centralize o filme.</div>
+        <div class="card avoid"><div class="label">Evite</div>Dobras e desalinhamento.</div>
+        <div class="card check"><div class="label">Validação</div>Filme plano.</div>
     </div>
-
 </div>
 
 <!-- PASSO 5 -->
-<div class="step-block">
-
+<div class="step">
     <div class="step-header">
         <div class="step-number">5</div>
-        <div class="step-title">Fixar com tensão uniforme</div>
+        <div class="step-title">Tensionar corretamente</div>
     </div>
-
-    <img src="/assets/guias/troca-acf/passo-5.jpg" class="step-image">
-
-    <div class="step-grid">
-
-        <div class="step-card step-do">
-            <div class="step-label">O que fazer</div>
-            Aperte os parafusos gradualmente em padrão cruzado.
-        </div>
-
-        <div class="step-card step-avoid">
-            <div class="step-label">Evite</div>
-            Apertar um lado completamente antes dos outros.
-        </div>
-
-        <div class="step-card step-check">
-            <div class="step-label">Validação</div>
-            O filme deve estar firme e emitir leve som ao toque.
-        </div>
-
+    <img src="/assets/guias/troca-acf/passo-5.jpg">
+    <div class="grid">
+        <div class="card do"><div class="label">O que fazer</div>Aperte em cruz.</div>
+        <div class="card avoid"><div class="label">Evite</div>Apertar um lado só.</div>
+        <div class="card check"><div class="label">Validação</div>Filme firme.</div>
     </div>
-
 </div>
 
 <!-- PASSO 6 -->
-<div class="step-block">
-
+<div class="step">
     <div class="step-header">
         <div class="step-number">6</div>
-        <div class="step-title">Corte final e revisão</div>
+        <div class="step-title">Corte final</div>
     </div>
-
-    <img src="/assets/guias/troca-acf/passo-6.jpg" class="step-image">
-
-    <div class="step-grid">
-
-        <div class="step-card step-do">
-            <div class="step-label">O que fazer</div>
-            Corte o excesso de filme e finalize a montagem.
-        </div>
-
-        <div class="step-card step-avoid">
-            <div class="step-label">Evite</div>
-            Cortes irregulares ou deixar rebarbas.
-        </div>
-
-        <div class="step-card step-check">
-            <div class="step-label">Validação</div>
-            O acabamento deve estar limpo e uniforme.
-        </div>
-
+    <img src="/assets/guias/troca-acf/passo-6.jpg">
+    <div class="grid">
+        <div class="card do"><div class="label">O que fazer</div>Corte o excesso.</div>
+        <div class="card avoid"><div class="label">Evite</div>Acabamento irregular.</div>
+        <div class="card check"><div class="label">Validação</div>Acabamento limpo.</div>
     </div>
+</div>
 
+<!-- CTA -->
+<div class="footer">
+    <h2>Use o mesmo material que utilizamos</h2>
+    <p>Garantia de resultado consistente</p>
+    <a href="#">Ver produtos recomendados</a>
 </div>
 
 </div>
+
+</body>
+</html>
