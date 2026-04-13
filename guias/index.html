@@ -15,7 +15,46 @@ margin:0;
 padding:0;
 font-family:Arial, Helvetica, sans-serif;
 background:#f2f2f2;
-overflow-x:hidden;
+overflow:hidden;
+}
+
+/* NAV */
+
+.top-nav{
+position:absolute;
+top:20px;
+left:20px;
+z-index:20;
+}
+
+.top-nav a{
+color:white;
+text-decoration:none;
+font-size:14px;
+background:rgba(0,0,0,.4);
+padding:8px 12px;
+border-radius:8px;
+}
+
+/* HERO */
+
+.hero{
+position:absolute;
+top:90px;
+width:100%;
+text-align:center;
+color:white;
+z-index:15;
+}
+
+.hero h1{
+font-size:34px;
+margin-bottom:10px;
+}
+
+.hero p{
+font-size:16px;
+opacity:.85;
 }
 
 /* CONTAINER */
@@ -37,6 +76,7 @@ justify-content:center;
 overflow:hidden;
 cursor:pointer;
 transition:.45s;
+border:1px solid rgba(255,255,255,.08);
 }
 
 /* IMAGEM */
@@ -66,10 +106,10 @@ height:100%;
 background:linear-gradient(
 to bottom,
 rgba(0,0,0,0) 20%,
-rgba(0,0,0,.55) 100%
+rgba(0,0,0,.6) 100%
 );
 
-opacity:.8;
+opacity:.85;
 transition:.45s;
 }
 
@@ -117,7 +157,7 @@ background-image:url("../images/minime.webp");
 
 .overlay{
 position:absolute;
-bottom:20px;
+bottom:30px;
 width:70%;
 text-align:center;
 color:white;
@@ -132,12 +172,15 @@ margin-bottom:10px;
 
 .subtitle{
 font-size:16px;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
 .badge{
-font-size:13px;
-opacity:.8;
+font-size:12px;
+background:rgba(255,255,255,.15);
+padding:6px 10px;
+border-radius:8px;
+display:inline-block;
 }
 
 /* LINK */
@@ -151,22 +194,12 @@ left:0;
 z-index:5;
 }
 
-/* NAV */
+/* DESATIVADO */
 
-.top-nav{
-position:absolute;
-top:20px;
-left:20px;
-z-index:10;
-}
-
-.top-nav a{
-color:white;
-text-decoration:none;
-font-size:14px;
-background:rgba(0,0,0,.4);
-padding:8px 12px;
-border-radius:8px;
+.disabled{
+opacity:.65;
+filter:grayscale(40%);
+cursor:not-allowed;
 }
 
 /* MOBILE */
@@ -185,6 +218,10 @@ height:50vh;
 filter:none;
 }
 
+.hero{
+top:60px;
+}
+
 }
 
 </style>
@@ -193,8 +230,15 @@ filter:none;
 
 <body>
 
+<!-- NAV -->
 <div class="top-nav">
-<a href="/">← Início</a>
+<a href="/">← Página inicial</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+<h1>Guias técnicos</h1>
+<p>Aprenda a resolver problemas e obter resultados profissionais</p>
 </div>
 
 <div class="container">
@@ -208,7 +252,7 @@ filter:none;
 <div class="overlay">
 
 <div class="title">Troca do Filme ACF</div>
-<div class="subtitle">Manutenção essencial para evitar falhas</div>
+<div class="subtitle">Evite falhas e mantenha qualidade constante</div>
 
 </div>
 
@@ -216,12 +260,12 @@ filter:none;
 
 <!-- POSICIONAMENTO -->
 
-<div class="panel posicionamento">
+<div class="panel posicionamento disabled">
 
 <div class="overlay">
 
 <div class="title">Posicionamento e furação</div>
-<div class="subtitle">Precisão e acabamento profissional</div>
+<div class="subtitle">Melhore encaixe, alinhamento e resultado final</div>
 <div class="badge">Em breve</div>
 
 </div>
@@ -231,4 +275,5 @@ filter:none;
 </div>
 
 </body>
+
 </html>
