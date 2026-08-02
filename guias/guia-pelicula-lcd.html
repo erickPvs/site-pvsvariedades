@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,6 +10,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
@@ -17,27 +18,25 @@
           },
           colors: {
             tech: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
+              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe',
+              300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6',
+              600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
             },
             industrial: {
-              400: '#fb923c',
-              500: '#f97316',
-              600: '#ea580c',
+              400: '#fb923c', 500: '#f97316', 600: '#ea580c',
             },
-            lead: {
-              800: '#1e293b',
-              900: '#0f172a',
-              950: '#020617',
+            neon: {
+              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2',
             },
           },
           boxShadow: {
-            soft: '0 4px 24px -6px rgba(15, 23, 42, 0.12)',
-            lift: '0 12px 40px -8px rgba(15, 23, 42, 0.18)',
-            glow: '0 0 0 4px rgba(59, 130, 246, 0.15)',
+            soft: '0 4px 24px -6px rgba(15, 23, 42, 0.08)',
+            lift: '0 20px 50px -12px rgba(15, 23, 42, 0.18)',
+            'glow-tech': '0 0 0 4px rgba(59, 130, 246, 0.15)',
+            'glow-neon': '0 0 24px rgba(34, 211, 238, 0.25)',
+          },
+          backdropBlur: {
+            xs: '2px',
           },
         },
       },
@@ -54,16 +53,16 @@
 
   <style>
     /* ====== Base ====== */
-    html { scroll-behavior: smooth; }
     body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
-
     ::selection { background: #2563eb; color: #fff; }
 
     /* Scrollbar custom */
     ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .dark ::-webkit-scrollbar-thumb { background: #334155; }
+    .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
 
     /* ====== Animações ====== */
     @keyframes fadeUp {
@@ -79,22 +78,23 @@
     /* Grid pattern sutil no hero */
     .hero-grid {
       background-image:
-        linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
       background-size: 44px 44px;
     }
 
     /* ====== Timeline ====== */
-    .timeline-item { position: relative; padding-left: 3.5rem; }
+    .timeline-item { position: relative; padding-left: 4rem; }
     .timeline-item::before {
       content: '';
       position: absolute;
-      left: 1.15rem;
-      top: 3.25rem;
+      left: 1.3rem;
+      top: 3.5rem;
       bottom: -1.5rem;
       width: 2px;
-      background: linear-gradient(to bottom, #3b82f6, #93c5fd);
+      background: linear-gradient(to bottom, #3b82f6, #22d3ee);
       border-radius: 9999px;
+      opacity: 0.5;
     }
     .timeline-item:last-child::before { display: none; }
 
@@ -102,8 +102,8 @@
       position: absolute;
       left: 0;
       top: 0.25rem;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 2.75rem;
+      height: 2.75rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -112,27 +112,84 @@
       border: 2px solid #3b82f6;
       color: #2563eb;
       font-weight: 800;
-      font-size: 0.95rem;
-      box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.12);
+      font-size: 1rem;
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.12);
       z-index: 1;
+      transition: all 0.3s ease;
+    }
+    .timeline-item:hover .timeline-node {
+      background: #3b82f6;
+      color: #fff;
+      box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.2), 0 0 24px rgba(59, 130, 246, 0.35);
+      transform: scale(1.08);
+    }
+    .dark .timeline-node {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: #22d3ee;
+      color: #22d3ee;
+      box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.12);
+    }
+    .dark .timeline-item:hover .timeline-node {
+      background: #22d3ee;
+      color: #0f172a;
+      box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.2), 0 0 28px rgba(34, 211, 238, 0.4);
     }
 
-    /* Hover dos cards */
-    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.18); }
+    /* Cards com hover */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); }
+
+    /* Transição suave de tema */
+    html.theme-transition *,
+    html.theme-transition *::before,
+    html.theme-transition *::after {
+      transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
+    }
+
+    /* ====== Glassmorphism (dark) ====== */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
   </style>
 </head>
 
-<body class="bg-slate-50 font-sans text-slate-700 antialiased">
+<body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
+
+  <!-- ====== NAVBAR (com Toggle de Tema) ====== -->
+  <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2.5">
+        <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-tech-600 to-neon-500 text-sm font-black text-white shadow-lg shadow-tech-600/30">
+          PVS
+        </div>
+        <span class="hidden text-sm font-bold text-slate-800 sm:block dark:text-white">PVS Variedades</span>
+      </a>
+
+      <!-- Toggle Theme -->
+      <button id="theme-toggle"
+              aria-label="Alternar tema claro/escuro"
+              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
+        <!-- Ícone Lua (modo claro -> clicar para escuro) -->
+        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
+        <!-- Ícone Sol (modo escuro -> clicar para claro) -->
+        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
+      </button>
+    </div>
+  </nav>
 
   <!-- 
        1. HEADER / HERO SECTION
    -->
-  <header class="relative overflow-hidden bg-lead-900 text-white">
-    <div class="hero-grid absolute inset-0"></div>
+  <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
+    <div class="hero-grid absolute inset-0 opacity-60"></div>
     <!-- Glow decorativo -->
     <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
     <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
+    <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
 
     <!-- Breadcrumb -->
     <nav class="relative z-10 mx-auto max-w-6xl px-6 pt-8 text-sm text-slate-400">
@@ -145,7 +202,7 @@
 
     <div class="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-14 md:pb-28 md:pt-20">
       <!-- Badge -->
-      <div class="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100">
+      <div class="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100 backdrop-blur">
         <i class="fa-solid fa-shield-halved mr-1"></i>
         GUIA TÉCNICO · MANUTENÇÃO PREVENTIVA
       </div>
@@ -153,7 +210,7 @@
       <!-- Título -->
       <h1 class="animate-fade-up delay-100 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
         Guia Definitivo:
-        <span class="bg-gradient-to-r from-tech-400 via-tech-300 to-industrial-400 bg-clip-text text-transparent">
+        <span class="bg-gradient-to-r from-tech-400 via-neon-300 to-industrial-400 bg-clip-text text-transparent">
           Proteção de LCD
         </span>
       </h1>
@@ -167,12 +224,12 @@
       <!-- CTAs -->
       <div class="animate-fade-up delay-300 mt-10 flex flex-wrap items-center gap-4">
         <a href="#passo-a-passo"
-           class="group inline-flex items-center gap-3 rounded-xl bg-tech-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-tech-600/30 transition hover:bg-tech-500 hover:shadow-tech-500/40">
+           class="group inline-flex items-center gap-3 rounded-xl bg-tech-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-tech-600/30 transition-all duration-300 hover:bg-tech-500 hover:shadow-tech-500/40 hover:-translate-y-0.5">
           <i class="fa-solid fa-wand-magic-sparkles transition group-hover:rotate-12"></i>
           Ver passo a passo
         </a>
         <a href="#ferramentas"
-           class="inline-flex items-center gap-3 rounded-xl border border-slate-600 bg-white/5 px-7 py-3.5 text-sm font-bold text-slate-200 backdrop-blur transition hover:border-slate-400 hover:bg-white/10 hover:text-white">
+           class="inline-flex items-center gap-3 rounded-xl border border-slate-600 bg-white/5 px-7 py-3.5 text-sm font-bold text-slate-200 backdrop-blur transition-all duration-300 hover:border-slate-400 hover:bg-white/10 hover:text-white hover:-translate-y-0.5">
           <i class="fa-solid fa-toolbox"></i>
           Ferramentas necessárias
         </a>
@@ -197,73 +254,83 @@
   </header>
 
   <!-- 
-       2. GRID DE BENEFÍCIOS / INTRODUÇÃO
+       2. GRID DE BENEFÍCIOS / INTRODUÇÃO (Bento Grid)
    -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mx-auto mb-14 max-w-2xl text-center">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600">Por que isso importa</p>
-      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-lead-900 md:text-4xl">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Por que isso importa</p>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
         A tela LCD é o coração da sua impressora
       </h2>
-      <p class="mt-4 text-lg leading-relaxed text-slate-500">
+      <p class="mt-4 text-lg leading-relaxed text-slate-500 dark:text-slate-400">
         Entenda o papel da película antes de começar — é isso que separa uma
         troca bem-feita de um painel destruído.
       </p>
     </div>
 
+    <!-- Bento Grid: card grande + cards menores -->
     <div class="grid gap-6 md:grid-cols-3">
-      <!-- Card 1 -->
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-8 shadow-soft">
-        <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600">
-          <i class="fa-solid fa-lightbulb"></i>
+      <!-- Card 1 (destaque - ocupa 2 colunas no desktop) -->
+      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft md:col-span-2 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
+        <div class="relative">
+          <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
+            <i class="fa-solid fa-lightbulb"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Uma máscara de luz UV</h3>
+          <p class="mt-3 max-w-xl leading-relaxed text-slate-500 dark:text-slate-400">
+            O LCD funciona como um projetor de luz UV: ele "desenha" cada camada
+            da peça na resina. Qualquer interferência na superfície compromete a
+            precisão de tudo o que você imprime.
+          </p>
         </div>
-        <h3 class="text-lg font-bold text-lead-900">Uma máscara de luz UV</h3>
-        <p class="mt-3 leading-relaxed text-slate-500">
-          O LCD funciona como um projetor de luz UV: ele "desenha" cada camada
-          da peça na resina. Qualquer interferência na superfície compromete a
-          precisão de tudo o que você imprime.
-        </p>
       </div>
 
       <!-- Card 2 -->
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-8 shadow-soft">
-        <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-industrial-500/10 text-2xl text-industrial-600">
-          <i class="fa-solid fa-triangle-exclamation"></i>
+      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-industrial-500/10 blur-2xl transition-all duration-500 group-hover:bg-industrial-500/20"></div>
+        <div class="relative">
+          <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-industrial-500/10 text-2xl text-industrial-600 dark:bg-industrial-500/15 dark:text-industrial-400">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Proteção contra vazamentos</h3>
+          <p class="mt-3 leading-relaxed text-slate-500 dark:text-slate-400">
+            Um vazamento de resina entre a película e o LCD é catastrófico: a
+            resina cura com a luz UV e gruda no painel. A película é a barreira
+            que transforma um desastre em um simples pano úmido.
+          </p>
         </div>
-        <h3 class="text-lg font-bold text-lead-900">Proteção contra vazamentos</h3>
-        <p class="mt-3 leading-relaxed text-slate-500">
-          Um vazamento de resina entre a película e o LCD é catastrófico: a
-          resina cura com a luz UV e gruda no painel. A película é a barreira
-          que transforma um desastre em um simples pano úmido.
-        </p>
       </div>
 
       <!-- Card 3 -->
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-8 shadow-soft">
-        <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600">
-          <i class="fa-solid fa-shield-halved"></i>
+      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-500 group-hover:bg-emerald-500/20"></div>
+        <div class="relative">
+          <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Blindagem contra arranhões</h3>
+          <p class="mt-3 leading-relaxed text-slate-500 dark:text-slate-400">
+            Raspagem de espátula, partículas de resina curada, limpeza com pano
+            seco... A película absorve tudo isso e mantém o LCD original
+            impecável — e o valor de revenda da máquina intacto.
+          </p>
         </div>
-        <h3 class="text-lg font-bold text-lead-900">Blindagem contra arranhões</h3>
-        <p class="mt-3 leading-relaxed text-slate-500">
-          Raspagem de espátula, partículas de resina curada, limpeza com pano
-          seco... A película absorve tudo isso e mantém o LCD original
-          impecável — e o valor de revenda da máquina intacto.
-        </p>
       </div>
     </div>
   </section>
 
   <!-- 
-       3. FERRAMENTAS NECESSÁRIAS
+       3. FERRAMENTAS NECESSÁRIAS (Bento Grid)
    -->
-  <section id="ferramentas" class="bg-lead-800 py-20 md:py-24">
+  <section id="ferramentas" class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
       <div class="mb-14 max-w-2xl">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-400">Antes de começar</p>
-        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Antes de começar</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
           Ferramentas necessárias
         </h2>
-        <p class="mt-4 text-lg leading-relaxed text-slate-400">
+        <p class="mt-4 text-lg leading-relaxed text-slate-500 dark:text-slate-400">
           Separe tudo antes de iniciar. Trabalho profissional é trabalho
           preparado — nada de parar no meio do processo para procurar material.
         </p>
@@ -271,48 +338,48 @@
 
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
         <!-- Ferramenta 1 -->
-        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
-          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+        <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-spray-can-sparkles"></i>
           </div>
-          <h3 class="font-bold text-white">Álcool Isopropílico</h3>
-          <p class="mt-2 text-sm text-slate-400">99% de pureza — limpeza absoluta sem resíduos</p>
+          <h3 class="font-bold text-slate-900 dark:text-white">Álcool Isopropílico</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">99% de pureza — limpeza absoluta sem resíduos</p>
         </div>
 
         <!-- Ferramenta 2 -->
-        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
-          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+        <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-hand-sparkles"></i>
           </div>
-          <h3 class="font-bold text-white">Pano de Microfibra</h3>
-          <p class="mt-2 text-sm text-slate-400">Sem fiapos, sem arranhões, sem surpresas</p>
+          <h3 class="font-bold text-slate-900 dark:text-white">Pano de Microfibra</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Sem fiapos, sem arranhões, sem surpresas</p>
         </div>
 
         <!-- Ferramenta 3 -->
-        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
-          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+        <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-tape"></i>
           </div>
-          <h3 class="font-bold text-white">Fita de Acetato</h3>
-          <p class="mt-2 text-sm text-slate-400">Mara Tape — vedação hermética das bordas</p>
+          <h3 class="font-bold text-slate-900 dark:text-white">Fita de Acetato</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Mara Tape — vedação hermética das bordas</p>
         </div>
 
         <!-- Ferramenta 4 -->
-        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
-          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+        <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-credit-card"></i>
           </div>
-          <h3 class="font-bold text-white">Espátula Plástica</h3>
-          <p class="mt-2 text-sm text-slate-400">Para expulsar bolhas sem riscar a superfície</p>
+          <h3 class="font-bold text-slate-900 dark:text-white">Espátula Plástica</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Para expulsar bolhas sem riscar a superfície</p>
         </div>
 
         <!-- Ferramenta 5 -->
-        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
-          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+        <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-hand"></i>
           </div>
-          <h3 class="font-bold text-white">Luvas de Nitrilo</h3>
-          <p class="mt-2 text-sm text-slate-400">Proteção para você e zero oleosidade na tela</p>
+          <h3 class="font-bold text-slate-900 dark:text-white">Luvas de Nitrilo</h3>
+          <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Proteção para você e zero oleosidade na tela</p>
         </div>
       </div>
     </div>
@@ -322,29 +389,29 @@
        4. ALERTA CRÍTICO (CALL-OUT DE RISCO)
    -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
-    <div class="relative overflow-hidden rounded-3xl border-4 border-red-500 bg-gradient-to-br from-red-50 to-amber-50 p-8 shadow-lift md:p-12">
+    <div class="relative overflow-hidden rounded-3xl border-4 border-red-500 bg-gradient-to-br from-red-50 to-amber-50 p-8 shadow-lift md:p-12 dark:border-red-500 dark:from-red-950/40 dark:to-amber-950/30 dark:shadow-none dark:ring-1 dark:ring-red-500/30">
       <!-- Ícone decorativo -->
-      <div class="absolute -right-6 -top-6 text-[10rem] text-red-500/10">
+      <div class="absolute -right-6 -top-6 text-[10rem] text-red-500/10 dark:text-red-500/15">
         <i class="fa-solid fa-circle-exclamation"></i>
       </div>
 
       <div class="relative flex flex-col gap-6 md:flex-row md:items-start">
-        <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-red-500 text-3xl text-white shadow-lg shadow-red-500/30">
+        <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-red-500 text-3xl text-white shadow-lg shadow-red-500/30 dark:shadow-red-500/20">
           <i class="fa-solid fa-triangle-exclamation"></i>
         </div>
         <div>
-          <p class="text-xs font-extrabold uppercase tracking-[0.2em] text-red-600">Atenção · Risco crítico</p>
-          <h2 class="mt-2 text-2xl font-extrabold tracking-tight text-red-900 md:text-3xl">
+          <p class="text-xs font-extrabold uppercase tracking-[0.2em] text-red-600 dark:text-red-400">Atenção · Risco crítico</p>
+          <h2 class="mt-2 text-2xl font-extrabold tracking-tight text-red-900 md:text-3xl dark:text-red-300">
             Nunca remova o filme polarizador
           </h2>
-          <p class="mt-4 max-w-3xl text-lg leading-relaxed text-red-800/90">
+          <p class="mt-4 max-w-3xl text-lg leading-relaxed text-red-800/90 dark:text-red-200/90">
             <strong class="font-bold">CUIDADO:</strong> Nunca remova o filme
             polarizador que vem colado de fábrica no LCD. A película de proteção
             vai <strong class="font-bold">por cima</strong> dele. Remover o
             polarizador destrói a capacidade de impressão da tela — de forma
             permanente e irreversível.
           </p>
-          <div class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-red-600 shadow-soft">
+          <div class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-red-600 shadow-soft dark:bg-red-950/60 dark:text-red-300 dark:shadow-none dark:ring-1 dark:ring-red-500/30">
             <i class="fa-solid fa-ban"></i>
             Se a tela parece "esbranquiçada" ou sem contraste, pare e revise — isso NÃO é a película.
           </div>
@@ -354,16 +421,16 @@
   </section>
 
   <!-- 
-       5. PASSO A PASSO (TIMELINE VERTICAL)
+       5. PASSO A PASSO (TIMELINE INTERATIVA)
    -->
-  <section id="passo-a-passo" class="bg-white py-20 md:py-24">
+  <section id="passo-a-passo" class="bg-white py-20 md:py-24 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-4xl px-6">
       <div class="mb-16 text-center">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600">Execução guiada</p>
-        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-lead-900 md:text-4xl">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Execução guiada</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
           Passo a passo profissional
         </h2>
-        <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-500">
+        <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-500 dark:text-slate-400">
           Siga na ordem exata. Cada etapa tem um objetivo claro e um critério
           de validação — você só avança quando o passo anterior está perfeito.
         </p>
@@ -373,22 +440,22 @@
         <!-- PASSO 1 -->
         <div class="timeline-item">
           <div class="timeline-node">1</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-broom mr-1"></i> Limpeza
               </span>
-              <h3 class="text-xl font-extrabold text-lead-900">Limpeza absoluta da tela antiga e das bordas</h3>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Limpeza absoluta da tela antiga e das bordas</h3>
             </div>
-            <p class="mt-4 leading-relaxed text-slate-600">
+            <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               Com a cuba removida, aplique <strong>álcool isopropílico 99%</strong> em um
               pano de microfibra limpo e passe em toda a superfície do LCD e nas
               bordas do quadro. O objetivo é eliminar qualquer resíduo de resina,
               poeira ou oleosidade — uma única partícula vira uma bolha visível
               na impressão.
             </p>
-            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
-              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
               <p><strong>Validação:</strong> a tela deve estar 100% limpa, sem marcas de dedo e sem fiapos. Se necessário, repita a limpeza antes de prosseguir.</p>
             </div>
           </div>
@@ -397,21 +464,21 @@
         <!-- PASSO 2 -->
         <div class="timeline-item">
           <div class="timeline-node">2</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-crosshairs mr-1"></i> Alinhamento
               </span>
-              <h3 class="text-xl font-extrabold text-lead-900">Alinhamento preciso da nova película</h3>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Alinhamento preciso da nova película</h3>
             </div>
-            <p class="mt-4 leading-relaxed text-slate-600">
+            <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               Posicione a película sobre o LCD <strong>sem remover totalmente a
               proteção adesiva</strong>. Alinhe as bordas e os furos de encaixe com
               calma — use o quadro como referência. Um alinhamento torto de 1 mm
               já compromete a vedação e a área útil de impressão.
             </p>
-            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
-              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
               <p><strong>Validação:</strong> a película cobre toda a área ativa do LCD, com margens iguais nos quatro lados.</p>
             </div>
           </div>
@@ -420,22 +487,22 @@
         <!-- PASSO 3 -->
         <div class="timeline-item">
           <div class="timeline-node">3</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-arrows-up-down-left-right mr-1"></i> Aplicação
               </span>
-              <h3 class="text-xl font-extrabold text-lead-900">Aplicação lenta com a espátula (removendo bolhas)</h3>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Aplicação lenta com a espátula (removendo bolhas)</h3>
             </div>
-            <p class="mt-4 leading-relaxed text-slate-600">
+            <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               Solte a película de um lado e vá aplicando <strong>lentamente</strong>, de
               dentro para fora, empurrando o ar com a espátula plástica em um
               ângulo de ~45°. Movimentos curtos e firmes. Se uma bolha insistir,
               levante a película até ela e repita o movimento — nunca pressione
               com a unha ou com objetos metálicos.
             </p>
-            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
-              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
               <p><strong>Validação:</strong> superfície lisa, sem bolhas de ar e sem dobras. Olhe contra a luz para conferir.</p>
             </div>
           </div>
@@ -444,22 +511,22 @@
         <!-- PASSO 4 -->
         <div class="timeline-item">
           <div class="timeline-node">4</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-tape mr-1"></i> Vedação
               </span>
-              <h3 class="text-xl font-extrabold text-lead-900">Vedação das bordas com fita Mara Tape</h3>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Vedação das bordas com fita Mara Tape</h3>
             </div>
-            <p class="mt-4 leading-relaxed text-slate-600">
+            <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               Aplique a <strong>fita de acetato (Mara Tape)</strong> em todo o perímetro
               do LCD, cobrindo a borda da película. Pressione bem com o dedo ou
               com a espátula. Essa é a sua defesa principal contra vazamentos:
               resina que escorre para a lateral não pode entrar em contato com o
               painel.
             </p>
-            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
-              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
               <p><strong>Validação:</strong> fita contínua, sem emendas abertas e sem dobras. Nenhum ponto do LCD fica exposto.</p>
             </div>
           </div>
@@ -468,21 +535,21 @@
         <!-- PASSO 5 -->
         <div class="timeline-item">
           <div class="timeline-node">5</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-level-down-alt mr-1"></i> Nivelamento
               </span>
-              <h3 class="text-xl font-extrabold text-lead-900">Nivelamento obrigatório da mesa (Z=0)</h3>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Nivelamento obrigatório da mesa (Z=0)</h3>
             </div>
-            <p class="mt-4 leading-relaxed text-slate-600">
+            <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               Recoloque a cuba e faça o <strong>nivelamento completo da mesa</strong>.
               A nova película tem espessura própria e altera a distância real
               entre a mesa e o LCD. Ignorar isso gera falhas de adesão na
               primeira camada — ou pior, a mesa "afunda" na película e a danifica.
             </p>
-            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
-              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
               <p><strong>Validação:</strong> teste de folha de papel com leve resistência nos 4 cantos e no centro, depois ajuste o Z-offset se sua máquina permitir.</p>
             </div>
           </div>
@@ -490,18 +557,18 @@
       </div>
 
       <!-- CTA final -->
-      <div class="mt-16 rounded-3xl bg-gradient-to-br from-tech-600 to-tech-700 p-10 text-center shadow-lift md:p-14">
+      <div class="mt-16 rounded-3xl bg-gradient-to-br from-tech-600 to-neon-600 p-10 text-center shadow-lift md:p-14 dark:from-tech-700 dark:to-neon-700 dark:shadow-none dark:ring-1 dark:ring-white/10">
         <h3 class="text-2xl font-extrabold text-white md:text-3xl">Pronto. Sua impressora está blindada.</h3>
-        <p class="mx-auto mt-3 max-w-xl text-tech-100">
+        <p class="mx-auto mt-3 max-w-xl text-tech-100 dark:text-neon-100">
           Troque a película a cada sinais de desgaste ou após qualquer vazamento
           de resina. Prevenção de R$ 30 evita um painel de R$ 600.
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
-          <a href="/guias/" class="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-tech-700 shadow-lg transition hover:bg-tech-50">
+          <a href="/guias/" class="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-tech-700 shadow-lg transition-all duration-300 hover:bg-tech-50 hover:-translate-y-0.5">
             <i class="fa-solid fa-book-open"></i>
             Ver outros guias
           </a>
-          <a href="/" class="inline-flex items-center gap-2 rounded-xl border border-white/30 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-white/10">
+          <a href="/" class="inline-flex items-center gap-2 rounded-xl border border-white/30 px-7 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/10 hover:-translate-y-0.5">
             <i class="fa-solid fa-house"></i>
             Voltar ao início
           </a>
@@ -513,15 +580,80 @@
   <!-- 
        FOOTER
    -->
-  <footer class="bg-lead-950 py-10">
-    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-500 md:flex-row">
+  <footer class="bg-slate-100 py-10 transition-colors duration-300 dark:bg-slate-900">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-500 md:flex-row dark:text-slate-400">
       <p>© 2026 PVS Variedades — Guias técnicos para impressão 3D em resina.</p>
       <p class="flex items-center gap-2">
-        <i class="fa-solid fa-shield-halved text-tech-500"></i>
+        <i class="fa-solid fa-shield-halved text-tech-500 dark:text-neon-400"></i>
         Conteúdo técnico revisado para iniciantes e intermediários.
       </p>
     </div>
   </footer>
+
+  <!-- ====== SCRIPT: DARK MODE TOGGLE (JS nativo e leve) ====== -->
+  <script>
+    (function () {
+      // Elementos do toggle
+      var toggleBtn = document.getElementById('theme-toggle');
+      var iconMoon = document.getElementById('icon-moon');
+      var iconSun = document.getElementById('icon-sun');
+
+      // Chave de armazenamento
+      var STORAGE_KEY = 'pvs-theme';
+
+      // Função para aplicar o tema
+      function applyTheme(theme) {
+        var root = document.documentElement;
+
+        // Ativa transição suave apenas durante a troca
+        root.classList.add('theme-transition');
+        setTimeout(function () {
+          root.classList.remove('theme-transition');
+        }, 450);
+
+        if (theme === 'dark') {
+          root.classList.add('dark');
+          iconMoon.classList.add('hidden');
+          iconSun.classList.remove('hidden');
+        } else {
+          root.classList.remove('dark');
+          iconMoon.classList.remove('hidden');
+          iconSun.classList.add('hidden');
+        }
+      }
+
+      // Detecta preferência do sistema + salva em localStorage
+      function getInitialTheme() {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'dark' || saved === 'light') return saved;
+        // Se não houver preferência salva, usa a do sistema
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+
+      // Aplica o tema inicial ANTES da primeira pintura (evita flash)
+      var initialTheme = getInitialTheme();
+      if (initialTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        iconMoon && iconMoon.classList.add('hidden');
+        iconSun && iconSun.classList.remove('hidden');
+      }
+
+      // Evento de clique no botão
+      toggleBtn.addEventListener('click', function () {
+        var isDark = document.documentElement.classList.contains('dark');
+        var nextTheme = isDark ? 'light' : 'dark';
+        localStorage.setItem(STORAGE_KEY, nextTheme);
+        applyTheme(nextTheme);
+      });
+
+      // Reage a mudanças de tema do sistema (se o usuário não escolheu manualmente)
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+          applyTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
