@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guia Definitivo: Proteção de LCD — PVS Variedades</title>
+  <meta name="description" content="Aprenda a instalar e trocar a película de proteção de LCD da sua impressora 3D de resina. Passo a passo profissional para evitar vazamentos e arranhões." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            tech: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            },
+            industrial: {
+              400: '#fb923c',
+              500: '#f97316',
+              600: '#ea580c',
+            },
+            lead: {
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            },
+          },
+          boxShadow: {
+            soft: '0 4px 24px -6px rgba(15, 23, 42, 0.12)',
+            lift: '0 12px 40px -8px rgba(15, 23, 42, 0.18)',
+            glow: '0 0 0 4px rgba(59, 130, 246, 0.15)',
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ====== Base ====== */
+    html { scroll-behavior: smooth; }
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+
+    ::selection { background: #2563eb; color: #fff; }
+
+    /* Scrollbar custom */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* ====== Animações ====== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp 0.7s ease-out both; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+
+    /* Grid pattern sutil no hero */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.07) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+
+    /* ====== Timeline ====== */
+    .timeline-item { position: relative; padding-left: 3.5rem; }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 1.15rem;
+      top: 3.25rem;
+      bottom: -1.5rem;
+      width: 2px;
+      background: linear-gradient(to bottom, #3b82f6, #93c5fd);
+      border-radius: 9999px;
+    }
+    .timeline-item:last-child::before { display: none; }
+
+    .timeline-node {
+      position: absolute;
+      left: 0;
+      top: 0.25rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      background: #fff;
+      border: 2px solid #3b82f6;
+      color: #2563eb;
+      font-weight: 800;
+      font-size: 0.95rem;
+      box-shadow: 0 0 0 5px rgba(59, 130, 246, 0.12);
+      z-index: 1;
+    }
+
+    /* Hover dos cards */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -10px rgba(15, 23, 42, 0.18); }
+  </style>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-700 antialiased">
+
+  <!-- 
+       1. HEADER / HERO SECTION
+   -->
+  <header class="relative overflow-hidden bg-lead-900 text-white">
+    <div class="hero-grid absolute inset-0"></div>
+    <!-- Glow decorativo -->
+    <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
+
+    <!-- Breadcrumb -->
+    <nav class="relative z-10 mx-auto max-w-6xl px-6 pt-8 text-sm text-slate-400">
+      <a href="/" class="transition hover:text-white">Início</a>
+      <span class="mx-2 text-slate-600">/</span>
+      <a href="/guias/" class="transition hover:text-white">Guias</a>
+      <span class="mx-2 text-slate-600">/</span>
+      <span class="text-slate-300">Proteção de LCD</span>
+    </nav>
+
+    <div class="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-14 md:pb-28 md:pt-20">
+      <!-- Badge -->
+      <div class="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100">
+        <i class="fa-solid fa-shield-halved mr-1"></i>
+        GUIA TÉCNICO · MANUTENÇÃO PREVENTIVA
+      </div>
+
+      <!-- Título -->
+      <h1 class="animate-fade-up delay-100 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+        Guia Definitivo:
+        <span class="bg-gradient-to-r from-tech-400 via-tech-300 to-industrial-400 bg-clip-text text-transparent">
+          Proteção de LCD
+        </span>
+      </h1>
+
+      <!-- Subtítulo -->
+      <p class="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
+        A manutenção preventiva mais barata para salvar o painel da sua
+        impressora 3D de resina.
+      </p>
+
+      <!-- CTAs -->
+      <div class="animate-fade-up delay-300 mt-10 flex flex-wrap items-center gap-4">
+        <a href="#passo-a-passo"
+           class="group inline-flex items-center gap-3 rounded-xl bg-tech-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-tech-600/30 transition hover:bg-tech-500 hover:shadow-tech-500/40">
+          <i class="fa-solid fa-wand-magic-sparkles transition group-hover:rotate-12"></i>
+          Ver passo a passo
+        </a>
+        <a href="#ferramentas"
+           class="inline-flex items-center gap-3 rounded-xl border border-slate-600 bg-white/5 px-7 py-3.5 text-sm font-bold text-slate-200 backdrop-blur transition hover:border-slate-400 hover:bg-white/10 hover:text-white">
+          <i class="fa-solid fa-toolbox"></i>
+          Ferramentas necessárias
+        </a>
+      </div>
+
+      <!-- Mini-stats de autoridade -->
+      <div class="animate-fade-up delay-400 mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/10 pt-8">
+        <div>
+          <p class="text-2xl font-extrabold text-white md:text-3xl">5</p>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Passos simples</p>
+        </div>
+        <div>
+          <p class="text-2xl font-extrabold text-white md:text-3xl">~15</p>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Minutos de serviço</p>
+        </div>
+        <div>
+          <p class="text-2xl font-extrabold text-white md:text-3xl">R$ 0</p>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Custo de mão de obra</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 
+       2. GRID DE BENEFÍCIOS / INTRODUÇÃO
+   -->
+  <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
+    <div class="mx-auto mb-14 max-w-2xl text-center">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600">Por que isso importa</p>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-lead-900 md:text-4xl">
+        A tela LCD é o coração da sua impressora
+      </h2>
+      <p class="mt-4 text-lg leading-relaxed text-slate-500">
+        Entenda o papel da película antes de começar — é isso que separa uma
+        troca bem-feita de um painel destruído.
+      </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-3">
+      <!-- Card 1 -->
+      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-8 shadow-soft">
+        <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600">
+          <i class="fa-solid fa-lightbulb"></i>
+        </div>
+        <h3 class="text-lg font-bold text-lead-900">Uma máscara de luz UV</h3>
+        <p class="mt-3 leading-relaxed text-slate-500">
+          O LCD funciona como um projetor de luz UV: ele "desenha" cada camada
+          da peça na resina. Qualquer interferência na superfície compromete a
+          precisão de tudo o que você imprime.
+        </p>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-8 shadow-soft">
+        <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-industrial-500/10 text-2xl text-industrial-600">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3 class="text-lg font-bold text-lead-900">Proteção contra vazamentos</h3>
+        <p class="mt-3 leading-relaxed text-slate-500">
+          Um vazamento de resina entre a película e o LCD é catastrófico: a
+          resina cura com a luz UV e gruda no painel. A película é a barreira
+          que transforma um desastre em um simples pano úmido.
+        </p>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-8 shadow-soft">
+        <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h3 class="text-lg font-bold text-lead-900">Blindagem contra arranhões</h3>
+        <p class="mt-3 leading-relaxed text-slate-500">
+          Raspagem de espátula, partículas de resina curada, limpeza com pano
+          seco... A película absorve tudo isso e mantém o LCD original
+          impecável — e o valor de revenda da máquina intacto.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+       3. FERRAMENTAS NECESSÁRIAS
+   -->
+  <section id="ferramentas" class="bg-lead-800 py-20 md:py-24">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mb-14 max-w-2xl">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-400">Antes de começar</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-white md:text-4xl">
+          Ferramentas necessárias
+        </h2>
+        <p class="mt-4 text-lg leading-relaxed text-slate-400">
+          Separe tudo antes de iniciar. Trabalho profissional é trabalho
+          preparado — nada de parar no meio do processo para procurar material.
+        </p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        <!-- Ferramenta 1 -->
+        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+            <i class="fa-solid fa-spray-can-sparkles"></i>
+          </div>
+          <h3 class="font-bold text-white">Álcool Isopropílico</h3>
+          <p class="mt-2 text-sm text-slate-400">99% de pureza — limpeza absoluta sem resíduos</p>
+        </div>
+
+        <!-- Ferramenta 2 -->
+        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+            <i class="fa-solid fa-hand-sparkles"></i>
+          </div>
+          <h3 class="font-bold text-white">Pano de Microfibra</h3>
+          <p class="mt-2 text-sm text-slate-400">Sem fiapos, sem arranhões, sem surpresas</p>
+        </div>
+
+        <!-- Ferramenta 3 -->
+        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+            <i class="fa-solid fa-tape"></i>
+          </div>
+          <h3 class="font-bold text-white">Fita de Acetato</h3>
+          <p class="mt-2 text-sm text-slate-400">Mara Tape — vedação hermética das bordas</p>
+        </div>
+
+        <!-- Ferramenta 4 -->
+        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+            <i class="fa-solid fa-credit-card"></i>
+          </div>
+          <h3 class="font-bold text-white">Espátula Plástica</h3>
+          <p class="mt-2 text-sm text-slate-400">Para expulsar bolhas sem riscar a superfície</p>
+        </div>
+
+        <!-- Ferramenta 5 -->
+        <div class="card-hover group rounded-2xl border border-white/10 bg-white/5 p-6 text-center backdrop-blur">
+          <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-600/20 text-3xl text-tech-400 transition group-hover:scale-110">
+            <i class="fa-solid fa-hand"></i>
+          </div>
+          <h3 class="font-bold text-white">Luvas de Nitrilo</h3>
+          <p class="mt-2 text-sm text-slate-400">Proteção para você e zero oleosidade na tela</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+       4. ALERTA CRÍTICO (CALL-OUT DE RISCO)
+   -->
+  <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <div class="relative overflow-hidden rounded-3xl border-4 border-red-500 bg-gradient-to-br from-red-50 to-amber-50 p-8 shadow-lift md:p-12">
+      <!-- Ícone decorativo -->
+      <div class="absolute -right-6 -top-6 text-[10rem] text-red-500/10">
+        <i class="fa-solid fa-circle-exclamation"></i>
+      </div>
+
+      <div class="relative flex flex-col gap-6 md:flex-row md:items-start">
+        <div class="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-red-500 text-3xl text-white shadow-lg shadow-red-500/30">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <div>
+          <p class="text-xs font-extrabold uppercase tracking-[0.2em] text-red-600">Atenção · Risco crítico</p>
+          <h2 class="mt-2 text-2xl font-extrabold tracking-tight text-red-900 md:text-3xl">
+            Nunca remova o filme polarizador
+          </h2>
+          <p class="mt-4 max-w-3xl text-lg leading-relaxed text-red-800/90">
+            <strong class="font-bold">CUIDADO:</strong> Nunca remova o filme
+            polarizador que vem colado de fábrica no LCD. A película de proteção
+            vai <strong class="font-bold">por cima</strong> dele. Remover o
+            polarizador destrói a capacidade de impressão da tela — de forma
+            permanente e irreversível.
+          </p>
+          <div class="mt-6 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-bold text-red-600 shadow-soft">
+            <i class="fa-solid fa-ban"></i>
+            Se a tela parece "esbranquiçada" ou sem contraste, pare e revise — isso NÃO é a película.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+       5. PASSO A PASSO (TIMELINE VERTICAL)
+   -->
+  <section id="passo-a-passo" class="bg-white py-20 md:py-24">
+    <div class="mx-auto max-w-4xl px-6">
+      <div class="mb-16 text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600">Execução guiada</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-lead-900 md:text-4xl">
+          Passo a passo profissional
+        </h2>
+        <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-500">
+          Siga na ordem exata. Cada etapa tem um objetivo claro e um critério
+          de validação — você só avança quando o passo anterior está perfeito.
+        </p>
+      </div>
+
+      <div class="space-y-10">
+        <!-- PASSO 1 -->
+        <div class="timeline-item">
+          <div class="timeline-node">1</div>
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+                <i class="fa-solid fa-broom mr-1"></i> Limpeza
+              </span>
+              <h3 class="text-xl font-extrabold text-lead-900">Limpeza absoluta da tela antiga e das bordas</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-slate-600">
+              Com a cuba removida, aplique <strong>álcool isopropílico 99%</strong> em um
+              pano de microfibra limpo e passe em toda a superfície do LCD e nas
+              bordas do quadro. O objetivo é eliminar qualquer resíduo de resina,
+              poeira ou oleosidade — uma única partícula vira uma bolha visível
+              na impressão.
+            </p>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+              <p><strong>Validação:</strong> a tela deve estar 100% limpa, sem marcas de dedo e sem fiapos. Se necessário, repita a limpeza antes de prosseguir.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 2 -->
+        <div class="timeline-item">
+          <div class="timeline-node">2</div>
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+                <i class="fa-solid fa-crosshairs mr-1"></i> Alinhamento
+              </span>
+              <h3 class="text-xl font-extrabold text-lead-900">Alinhamento preciso da nova película</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-slate-600">
+              Posicione a película sobre o LCD <strong>sem remover totalmente a
+              proteção adesiva</strong>. Alinhe as bordas e os furos de encaixe com
+              calma — use o quadro como referência. Um alinhamento torto de 1 mm
+              já compromete a vedação e a área útil de impressão.
+            </p>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+              <p><strong>Validação:</strong> a película cobre toda a área ativa do LCD, com margens iguais nos quatro lados.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 3 -->
+        <div class="timeline-item">
+          <div class="timeline-node">3</div>
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+                <i class="fa-solid fa-arrows-up-down-left-right mr-1"></i> Aplicação
+              </span>
+              <h3 class="text-xl font-extrabold text-lead-900">Aplicação lenta com a espátula (removendo bolhas)</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-slate-600">
+              Solte a película de um lado e vá aplicando <strong>lentamente</strong>, de
+              dentro para fora, empurrando o ar com a espátula plástica em um
+              ângulo de ~45°. Movimentos curtos e firmes. Se uma bolha insistir,
+              levante a película até ela e repita o movimento — nunca pressione
+              com a unha ou com objetos metálicos.
+            </p>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+              <p><strong>Validação:</strong> superfície lisa, sem bolhas de ar e sem dobras. Olhe contra a luz para conferir.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 4 -->
+        <div class="timeline-item">
+          <div class="timeline-node">4</div>
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+                <i class="fa-solid fa-tape mr-1"></i> Vedação
+              </span>
+              <h3 class="text-xl font-extrabold text-lead-900">Vedação das bordas com fita Mara Tape</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-slate-600">
+              Aplique a <strong>fita de acetato (Mara Tape)</strong> em todo o perímetro
+              do LCD, cobrindo a borda da película. Pressione bem com o dedo ou
+              com a espátula. Essa é a sua defesa principal contra vazamentos:
+              resina que escorre para a lateral não pode entrar em contato com o
+              painel.
+            </p>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+              <p><strong>Validação:</strong> fita contínua, sem emendas abertas e sem dobras. Nenhum ponto do LCD fica exposto.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASSO 5 -->
+        <div class="timeline-item">
+          <div class="timeline-node">5</div>
+          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft">
+            <div class="flex flex-wrap items-center gap-3">
+              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700">
+                <i class="fa-solid fa-level-down-alt mr-1"></i> Nivelamento
+              </span>
+              <h3 class="text-xl font-extrabold text-lead-900">Nivelamento obrigatório da mesa (Z=0)</h3>
+            </div>
+            <p class="mt-4 leading-relaxed text-slate-600">
+              Recoloque a cuba e faça o <strong>nivelamento completo da mesa</strong>.
+              A nova película tem espessura própria e altera a distância real
+              entre a mesa e o LCD. Ignorar isso gera falhas de adesão na
+              primeira camada — ou pior, a mesa "afunda" na película e a danifica.
+            </p>
+            <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800">
+              <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600"></i>
+              <p><strong>Validação:</strong> teste de folha de papel com leve resistência nos 4 cantos e no centro, depois ajuste o Z-offset se sua máquina permitir.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA final -->
+      <div class="mt-16 rounded-3xl bg-gradient-to-br from-tech-600 to-tech-700 p-10 text-center shadow-lift md:p-14">
+        <h3 class="text-2xl font-extrabold text-white md:text-3xl">Pronto. Sua impressora está blindada.</h3>
+        <p class="mx-auto mt-3 max-w-xl text-tech-100">
+          Troque a película a cada sinais de desgaste ou após qualquer vazamento
+          de resina. Prevenção de R$ 30 evita um painel de R$ 600.
+        </p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="/guias/" class="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-tech-700 shadow-lg transition hover:bg-tech-50">
+            <i class="fa-solid fa-book-open"></i>
+            Ver outros guias
+          </a>
+          <a href="/" class="inline-flex items-center gap-2 rounded-xl border border-white/30 px-7 py-3.5 text-sm font-bold text-white transition hover:bg-white/10">
+            <i class="fa-solid fa-house"></i>
+            Voltar ao início
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 
+       FOOTER
+   -->
+  <footer class="bg-lead-950 py-10">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-500 md:flex-row">
+      <p>© 2026 PVS Variedades — Guias técnicos para impressão 3D em resina.</p>
+      <p class="flex items-center gap-2">
+        <i class="fa-solid fa-shield-halved text-tech-500"></i>
+        Conteúdo técnico revisado para iniciantes e intermediários.
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
