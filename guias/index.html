@@ -4,6 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guias | PVS Variedades</title>
+<!-- Tailwind CSS (CDN) para as classes de Glassmorphism -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Arial', 'Helvetica', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
 <style>
 html,body{
 margin:0;
@@ -12,25 +25,10 @@ font-family:Arial, Helvetica, sans-serif;
 background:#f2f2f2;
 overflow:hidden;
 }
-/* NAV */
-.top-nav{
-position:absolute;
-top:20px;
-left:20px;
-z-index:20;
-}
-.top-nav a{
-color:white;
-text-decoration:none;
-font-size:14px;
-background:rgba(0,0,0,.4);
-padding:8px 12px;
-border-radius:8px;
-}
 /* HERO */
 .hero{
 position:absolute;
-top:90px;
+top:110px;
 width:100%;
 text-align:center;
 color:white;
@@ -74,7 +72,7 @@ background-repeat:no-repeat;
 filter:grayscale(100%) brightness(1.25) opacity(.45);
 transition:.4s;
 }
-/* GRADIENTE (overlay de legibilidade) */
+/* GRADIENTE (overlay de legibilidade - mais leve, a cápsula de vidro assume o contraste) */
 .panel::after{
 content:"";
 position:absolute;
@@ -82,9 +80,9 @@ width:100%;
 height:100%;
 background:linear-gradient(
 to bottom,
-rgba(0,0,0,0) 15%,
-rgba(0,0,0,.35) 55%,
-rgba(0,0,0,.92) 100%
+rgba(0,0,0,0) 20%,
+rgba(0,0,0,.35) 60%,
+rgba(0,0,0,.6) 100%
 );
 opacity:1;
 transition:.45s;
@@ -95,7 +93,7 @@ filter:grayscale(0%) brightness(1) opacity(1);
 transform:scale(1.05);
 }
 .panel:hover::after{
-opacity:.7;
+opacity:.5;
 }
 .panel:hover{
 flex:1.4;
@@ -126,13 +124,6 @@ width:70%;
 text-align:center;
 color:white;
 z-index:3;
-text-shadow:0 2px 12px rgba(0,0,0,.55);
-}
-.title{
-font-size:32px;
-font-weight:bold;
-margin-bottom:10px;
-text-shadow:0 2px 8px rgba(0,0,0,.65), 0 0 24px rgba(0,0,0,.35);
 }
 .subtitle{
 font-size:16px;
@@ -167,27 +158,35 @@ height:50vh;
 filter:none;
 }
 .hero{
-top:60px;
+top:100px;
 }
 }
 </style>
 </head>
 <body>
-<!-- NAV -->
-<div class="top-nav">
-<a href="/">← Página inicial</a>
-</div>
+
+<!-- HEADER / NAVBAR (minimalista com logo) -->
+<header class="absolute top-0 left-0 right-0 z-40 flex items-center justify-between px-6 py-4">
+  <a href="/" aria-label="PVS Variedades - Página inicial">
+    <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-12 w-auto" />
+  </a>
+  <a href="/" class="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-black/30 px-4 py-2 text-sm text-white shadow-lg backdrop-blur-md transition hover:bg-black/50">
+    ← Página inicial
+  </a>
+</header>
+
 <!-- HERO -->
 <div class="hero">
 <h1>Guias técnicos</h1>
 <p>Aprenda a resolver problemas e obter resultados profissionais</p>
 </div>
+
 <div class="container">
 <!-- ACF -->
 <div class="panel acf">
 <a href="/guias/guia-acf.html"></a>
 <div class="overlay">
-<div class="title">Troca do Filme ACF</div>
+<h3 class="mb-3 inline-block rounded-2xl border border-white/10 bg-black/40 px-5 py-2.5 text-2xl font-bold text-white shadow-lg backdrop-blur-md md:text-3xl">Troca do Filme ACF</h3>
 <div class="subtitle">Evite falhas e mantenha qualidade constante</div>
 </div>
 </div>
@@ -195,10 +194,11 @@ top:60px;
 <div class="panel pelicula-lcd">
 <a href="/guias/guia-pelicula-lcd.html"></a>
 <div class="overlay">
-<div class="title">Película de Proteção de LCD</div>
+<h3 class="mb-3 inline-block rounded-2xl border border-white/10 bg-black/40 px-5 py-2.5 text-2xl font-bold text-white shadow-lg backdrop-blur-md md:text-3xl">Película de Proteção de LCD</h3>
 <div class="subtitle">Passo a passo completo para instalação da película protetora.</div>
 </div>
 </div>
 </div>
+
 </body>
 </html>
