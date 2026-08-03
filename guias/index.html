@@ -26,8 +26,16 @@ margin:0;
 padding:0;
 font-family:Arial, Helvetica, sans-serif;
 background:#f2f2f2;
-overflow-x:hidden;
+overflow-x:clip;
+scrollbar-gutter:stable;
 }
+/* SCROLLBAR ELEGANTE (discreta, combina com o tema) */
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;}
+::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+.dark ::-webkit-scrollbar-thumb{background:#334155;}
+.dark ::-webkit-scrollbar-thumb:hover{background:#475569;}
 /* CONTAINER - grid responsivo (suporta N cards + rolagem) */
 .container{
 display:grid;
@@ -49,7 +57,7 @@ align-items:center;
 justify-content:center;
 overflow:hidden;
 cursor:pointer;
-transition:transform .45s ease, box-shadow .45s ease;
+transition:transform .45s ease, box-shadow .45s ease, border-color .3s ease;
 border:1px solid rgba(255,255,255,.08);
 border-radius:16px;
 min-height:380px;
@@ -87,7 +95,7 @@ rgba(0,0,0,.9) 100%
 opacity:1;
 transition:.45s;
 }
-/* HOVER - zoom suave, sem deslocar o layout */
+/* HOVER - card cresce visivelmente (sem empurrar o layout) */
 .panel:hover::before{
 filter:grayscale(0%) brightness(1) opacity(1);
 transform:scale(1.05);
@@ -96,7 +104,7 @@ transform:scale(1.05);
 opacity:.65;
 }
 .panel:hover{
-transform:scale(1.02);
+transform:scale(1.04);
 z-index:10;
 box-shadow:
 0 40px 80px rgba(0,0,0,.35),
@@ -160,21 +168,21 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
 </header>
 
 <!-- CONTEÚDO -->
-<main class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pt-20">
+<main class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pt-14">
 
-  <!-- TARJA DO TÍTULO "GUIAS / TUTORIAIS" -->
-  <div class="mb-6 mt-6 rounded-2xl border border-slate-700/60 bg-slate-900/80 p-5 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-slate-900/95 hover:shadow-lg hover:shadow-cyan-500/10 md:p-6">
+  <!-- TARJA DO TÍTULO "GUIAS / TUTORIAIS" (mais compacta) -->
+  <div class="mb-4 mt-2 rounded-2xl border border-slate-700/60 bg-slate-900/80 px-5 py-4 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-slate-900/95 hover:shadow-lg hover:shadow-cyan-500/10 md:px-6 md:py-5">
     <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-cyan-400/90">Central de conhecimento</p>
-    <h1 class="mt-1.5 text-3xl font-extrabold tracking-tight text-white md:text-4xl">GUIAS / TUTORIAIS</h1>
-    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
+    <h1 class="mt-1 text-3xl font-extrabold tracking-tight text-white md:text-4xl">GUIAS / TUTORIAIS</h1>
+    <p class="mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
       Aprenda a resolver problemas e obter resultados profissionais com o passo a passo completo da PVS Variedades.
     </p>
   </div>
 
-  <!-- CARDS DAS GUIAS -->
+  <!-- CARDS DAS GUIAS (com borda neon no modo escuro) -->
   <div class="container">
     <!-- ACF -->
-    <div class="panel acf">
+    <div class="panel acf border border-slate-200 dark:border-cyan-500/40 dark:hover:border-cyan-400/70 dark:hover:shadow-lg dark:hover:shadow-cyan-500/20">
       <a href="/guias/guia-acf.html"></a>
       <div class="overlay">
         <div class="title">Troca do Filme ACF</div>
@@ -182,7 +190,7 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
       </div>
     </div>
     <!-- PELICULA DE LCD -->
-    <div class="panel pelicula-lcd">
+    <div class="panel pelicula-lcd border border-slate-200 dark:border-cyan-500/40 dark:hover:border-cyan-400/70 dark:hover:shadow-lg dark:hover:shadow-cyan-500/20">
       <a href="/guias/guia-pelicula-lcd.html"></a>
       <div class="overlay">
         <div class="title">Película de Proteção de LCD</div>
