@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Guias | PVS Variedades</title>
-<!-- Tailwind CSS (CDN) para as classes de Glassmorphism e Dark Mode -->
+<!-- Tailwind CSS (CDN) -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
 tailwind.config = {
@@ -26,26 +26,38 @@ margin:0;
 padding:0;
 font-family:Arial, Helvetica, sans-serif;
 background:#f2f2f2;
-overflow:hidden;
+overflow-x:hidden;
 }
-/* CONTAINER */
+/* CONTAINER - grid responsivo (suporta N cards + rolagem) */
 .container{
-display:flex;
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
 flex:1;
-min-height:0;
 width:100%;
+}
+@media (min-width:900px){
+.container{
+grid-template-columns:1fr 1fr;
+}
 }
 /* PAINEL */
 .panel{
-flex:1;
 position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
 overflow:hidden;
 cursor:pointer;
-transition:.45s;
+transition:transform .45s ease, box-shadow .45s ease;
 border:1px solid rgba(255,255,255,.08);
+border-radius:16px;
+min-height:380px;
+}
+@media (min-width:900px){
+.panel{
+min-height:0;
+}
 }
 /* IMAGEM */
 .panel::before{
@@ -59,7 +71,7 @@ background-repeat:no-repeat;
 filter:grayscale(100%) brightness(1.25) opacity(.45);
 transition:.4s;
 }
-/* GRADIENTE (overlay de legibilidade - mais leve, a cápsula de vidro assume o contraste) */
+/* GRADIENTE DE LEGIBILIDADE (reforçado - sem tarjas) */
 .panel::after{
 content:"";
 position:absolute;
@@ -67,34 +79,28 @@ width:100%;
 height:100%;
 background:linear-gradient(
 to bottom,
-rgba(0,0,0,0) 20%,
-rgba(0,0,0,.35) 60%,
-rgba(0,0,0,.6) 100%
+rgba(0,0,0,0) 15%,
+rgba(0,0,0,.3) 50%,
+rgba(0,0,0,.65) 78%,
+rgba(0,0,0,.9) 100%
 );
 opacity:1;
 transition:.45s;
 }
-/* HOVER */
+/* HOVER - zoom suave, sem deslocar o layout */
 .panel:hover::before{
 filter:grayscale(0%) brightness(1) opacity(1);
 transform:scale(1.05);
 }
 .panel:hover::after{
-opacity:.5;
+opacity:.65;
 }
 .panel:hover{
-flex:1.4;
-z-index:5;
+transform:scale(1.02);
+z-index:10;
 box-shadow:
 0 40px 80px rgba(0,0,0,.35),
 0 10px 30px rgba(0,0,0,.25);
-}
-/* ACTIVE */
-.container:hover .panel{
-filter:blur(2px) brightness(.85);
-}
-.container:hover .panel:hover{
-filter:none;
 }
 /* IMAGENS */
 .acf::before{
@@ -106,57 +112,28 @@ background-image:url("../images/pelicula-lcd.webp");
 /* TEXTO */
 .overlay{
 position:absolute;
-bottom:30px;
-width:70%;
+bottom:28px;
+width:75%;
 text-align:center;
 color:white;
 z-index:3;
 }
+.title{
+font-size:30px;
+font-weight:bold;
+margin-bottom:10px;
+text-shadow:0 2px 10px rgba(0,0,0,.75), 0 4px 28px rgba(0,0,0,.45);
+}
 .subtitle{
 font-size:16px;
 margin-bottom:10px;
-text-shadow:0 1px 6px rgba(0,0,0,.6);
-}
-.badge{
-font-size:12px;
-background:rgba(255,255,255,.15);
-padding:6px 10px;
-border-radius:8px;
-display:inline-block;
-}
-/* LINK */
-.panel a{
-position:absolute;
-width:100%;
-height:100%;
-top:0;
-left:0;
-z-index:5;
+text-shadow:0 1px 8px rgba(0,0,0,.7);
 }
 /* Transição suave de tema */
 html.theme-transition *,
 html.theme-transition *::before,
 html.theme-transition *::after {
-  transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
-}
-/* MOBILE */
-@media (max-width:900px){
-html,body{
-overflow:auto;
-}
-main{
-height:auto;
-min-height:100vh;
-}
-.container{
-flex-direction:column;
-}
-.panel{
-height:52vh;
-}
-.container:hover .panel{
-filter:none;
-}
+transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
 }
 </style>
 </head>
@@ -165,11 +142,9 @@ filter:none;
 <!-- HEADER FIXO (logo + dark mode) -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/85 px-6 py-3 shadow-md backdrop-blur-md border-b border-slate-800/80">
   <div class="mx-auto flex max-w-6xl items-center justify-between">
-    <!-- Logo -->
     <a href="/" aria-label="PVS Variedades - Página inicial" class="flex items-center">
       <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
     </a>
-    <!-- Navegação + Toggle de tema -->
     <div class="flex items-center gap-3">
       <a href="/" class="hidden items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-200 backdrop-blur-md transition hover:bg-white/10 hover:text-white sm:inline-flex">
         ← Página inicial
@@ -177,9 +152,7 @@ filter:none;
       <button id="theme-toggle"
               aria-label="Alternar tema claro/escuro"
               class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-md transition-all duration-300 hover:border-cyan-400/50 hover:text-cyan-300 hover:shadow-lg hover:shadow-cyan-500/20">
-        <!-- Lua (modo claro -> clicar para escuro) -->
         <i id="icon-moon" class="fa-solid fa-moon text-lg transition-transform duration-300 group-hover:scale-110"></i>
-        <!-- Sol (modo escuro -> clicar para claro) -->
         <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-transform duration-300 group-hover:scale-110"></i>
       </button>
     </div>
@@ -187,24 +160,24 @@ filter:none;
 </header>
 
 <!-- CONTEÚDO -->
-<main class="relative mx-auto flex h-screen w-full max-w-6xl flex-col px-6 pt-20">
+<main class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pt-20">
 
   <!-- TARJA DO TÍTULO "GUIAS / TUTORIAIS" -->
-  <div class="mb-8 mt-6 rounded-2xl border border-slate-700/60 bg-slate-900/80 p-6 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-slate-900/95 hover:shadow-lg hover:shadow-cyan-500/10 md:p-8">
+  <div class="mb-6 mt-6 rounded-2xl border border-slate-700/60 bg-slate-900/80 p-5 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-slate-900/95 hover:shadow-lg hover:shadow-cyan-500/10 md:p-6">
     <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-cyan-400/90">Central de conhecimento</p>
-    <h1 class="mt-2 text-3xl font-extrabold tracking-tight text-white md:text-4xl">GUIAS / TUTORIAIS</h1>
-    <p class="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
+    <h1 class="mt-1.5 text-3xl font-extrabold tracking-tight text-white md:text-4xl">GUIAS / TUTORIAIS</h1>
+    <p class="mt-2 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
       Aprenda a resolver problemas e obter resultados profissionais com o passo a passo completo da PVS Variedades.
     </p>
   </div>
 
-  <!-- CARDS DAS GUIAS (preservados) -->
+  <!-- CARDS DAS GUIAS -->
   <div class="container">
     <!-- ACF -->
     <div class="panel acf">
       <a href="/guias/guia-acf.html"></a>
       <div class="overlay">
-        <h3 class="mb-3 inline-block rounded-2xl border border-white/10 bg-black/40 px-5 py-2.5 text-2xl font-bold text-white shadow-lg backdrop-blur-md md:text-3xl">Troca do Filme ACF</h3>
+        <div class="title">Troca do Filme ACF</div>
         <div class="subtitle">Evite falhas e mantenha qualidade constante</div>
       </div>
     </div>
@@ -212,7 +185,7 @@ filter:none;
     <div class="panel pelicula-lcd">
       <a href="/guias/guia-pelicula-lcd.html"></a>
       <div class="overlay">
-        <h3 class="mb-3 inline-block rounded-2xl border border-white/10 bg-black/40 px-5 py-2.5 text-2xl font-bold text-white shadow-lg backdrop-blur-md md:text-3xl">Película de Proteção de LCD</h3>
+        <div class="title">Película de Proteção de LCD</div>
         <div class="subtitle">Passo a passo completo para instalação da película protetora.</div>
       </div>
     </div>
