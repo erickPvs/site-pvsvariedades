@@ -663,7 +663,6 @@
                 <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
                 <p><strong>Validação:</strong> ~300 Hz no app e papel toalha seco após 10 min — vedação perfeita.</p>
               </div>
-              <!-- Botão "Saiba mais" (abre o popup) -->
               <button type="button"
                       onclick="document.getElementById('modal-hz').classList.add('open'); document.body.classList.add('modal-open');"
                       class="inline-flex items-center gap-2 rounded-xl border border-tech-500/40 bg-tech-500/10 px-4 py-2.5 text-sm font-bold text-tech-600 transition-all duration-300 hover:bg-tech-500 hover:text-white hover:shadow-glow-tech dark:text-neon-400 dark:hover:bg-neon-500 dark:hover:text-slate-900">
@@ -936,7 +935,7 @@
     </div>
   </footer>
 
-  <!-- ====== MODAL "SAIBA MAIS SOBRE O TESTE DE HZ" ====== -->
+  <!-- ====== MODAL "SAIBA MAIS SOBRE O TESTE DE HZ" (com links para as lojas) ====== -->
   <div id="modal-hz" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-hz-title">
     <div class="modal-card">
       <!-- Cabeçalho -->
@@ -984,9 +983,21 @@
               <i class="fa-brands fa-android text-2xl text-emerald-500"></i>
               <span class="font-bold text-slate-900 dark:text-white">Android</span>
             </div>
-            <ul class="mt-2 space-y-1 text-sm text-slate-600 dark:text-slate-300">
-              <li><strong>Spectroid</strong> — gratuito, o mais usado pela comunidade 3D</li>
-              <li><strong>Sound Frequency Analyzer</strong> — gratuito</li>
+            <ul class="mt-2 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+              <li>
+                <a href="https://play.google.com/store/apps/details?id=org.intoorbit.spectrum" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 font-semibold text-tech-600 underline-offset-2 transition hover:text-tech-500 hover:underline dark:text-neon-400">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Spectroid
+                </a>
+                <span class="block text-xs text-slate-500 dark:text-slate-400">gratuito · o mais usado pela comunidade 3D</span>
+              </li>
+              <li>
+                <a href="https://play.google.com/store/apps/details?id=com.tooltoolnam.sound_frequency_analyzer" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 font-semibold text-tech-600 underline-offset-2 transition hover:text-tech-500 hover:underline dark:text-neon-400">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Sound Frequency Analyzer
+                </a>
+                <span class="block text-xs text-slate-500 dark:text-slate-400">gratuito</span>
+              </li>
             </ul>
           </div>
           <!-- iPhone -->
@@ -995,9 +1006,21 @@
               <i class="fa-brands fa-apple text-2xl text-slate-700 dark:text-slate-200"></i>
               <span class="font-bold text-slate-900 dark:text-white">iPhone</span>
             </div>
-            <ul class="mt-2 space-y-1 text-sm text-slate-600 dark:text-slate-300">
-              <li><strong>Frequency Analyzer</strong> — gratuito com compras internas</li>
-              <li><strong>Frequency Counter+ (Hz FFT)</strong> — gratuito</li>
+            <ul class="mt-2 space-y-2 text-sm text-slate-600 dark:text-slate-300">
+              <li>
+                <a href="https://apps.apple.com/us/app/frequency-analyzer/id6468837339" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 font-semibold text-tech-600 underline-offset-2 transition hover:text-tech-500 hover:underline dark:text-neon-400">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Frequency Analyzer
+                </a>
+                <span class="block text-xs text-slate-500 dark:text-slate-400">gratuito com compras internas</span>
+              </li>
+              <li>
+                <a href="https://apps.apple.com/ca/app/frequency-counter-hz-fft/id6761234058" target="_blank" rel="noopener"
+                   class="inline-flex items-center gap-1.5 font-semibold text-tech-600 underline-offset-2 transition hover:text-tech-500 hover:underline dark:text-neon-400">
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i> Frequency Counter+ (Hz FFT)
+                </a>
+                <span class="block text-xs text-slate-500 dark:text-slate-400">gratuito</span>
+              </li>
             </ul>
           </div>
         </div>
@@ -1007,7 +1030,8 @@
           <p>
             <strong>Dica:</strong> um afinador de guitarra gratuito também
             funciona — qualquer app que mostre a frequência em Hz serve para
-            esse teste.
+            esse teste. Se algum link não abrir, basta buscar o nome do app na
+            loja do seu celular.
           </p>
         </div>
 
