@@ -177,12 +177,11 @@
   <!-- ====== NAVBAR (com Toggle de Tema) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <a href="/" class="flex items-center gap-2.5">
-        <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-tech-600 to-neon-500 text-sm font-black text-white shadow-lg shadow-tech-600/30">
-          PVS
-        </div>
-        <span class="hidden text-sm font-bold text-slate-800 sm:block dark:text-white">PVS Variedades</span>
+      <!-- Logo -->
+      <a href="/" class="flex items-center">
+        <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
       </a>
+      <!-- Toggle Theme -->
       <button id="theme-toggle"
               aria-label="Alternar tema claro/escuro"
               class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
@@ -938,7 +937,6 @@
   <!-- ====== MODAL "SAIBA MAIS SOBRE O TESTE DE HZ" (com links para as lojas) ====== -->
   <div id="modal-hz" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-hz-title">
     <div class="modal-card">
-      <!-- Cabeçalho -->
       <div class="relative overflow-hidden rounded-t-3xl bg-slate-900 p-6 text-white dark:bg-slate-950">
         <div class="hero-grid absolute inset-0 opacity-40"></div>
         <div class="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-tech-600/30 blur-2xl"></div>
@@ -955,7 +953,6 @@
           </button>
         </div>
       </div>
-      <!-- Corpo -->
       <div class="p-6 md:p-8">
         <h4 class="text-sm font-extrabold uppercase tracking-wider text-tech-600 dark:text-neon-400">Como funciona</h4>
         <p class="mt-2 leading-relaxed text-slate-600 dark:text-slate-300">
@@ -977,7 +974,6 @@
 
         <h4 class="mt-6 text-sm font-extrabold uppercase tracking-wider text-tech-600 dark:text-neon-400">Apps recomendados</h4>
         <div class="mt-3 grid gap-3 sm:grid-cols-2">
-          <!-- Android -->
           <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
             <div class="flex items-center gap-2">
               <i class="fa-brands fa-android text-2xl text-emerald-500"></i>
@@ -1000,7 +996,6 @@
               </li>
             </ul>
           </div>
-          <!-- iPhone -->
           <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 dark:border-white/10 dark:bg-white/5">
             <div class="flex items-center gap-2">
               <i class="fa-brands fa-apple text-2xl text-slate-700 dark:text-slate-200"></i>
@@ -1089,7 +1084,6 @@
           applyTheme(e.matches ? 'dark' : 'light');
         }
       });
-      // Fechar modal com a tecla ESC
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
           var modal = document.getElementById('modal-hz');
