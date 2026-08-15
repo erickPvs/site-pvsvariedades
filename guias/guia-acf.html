@@ -141,24 +141,18 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    /* ====== FAQ (acordeão nativo) ====== */
-    details.faq summary::-webkit-details-marker { display: none; }
-    details.faq summary { cursor: pointer; list-style: none; }
-    details.faq[open] summary .fa-chevron-down { transform: rotate(180deg); }
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
   <!-- ====== NAVBAR (com Toggle de Tema) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-      <!-- Logo -->
       <a href="/" class="flex items-center gap-2.5">
         <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-tech-600 to-neon-500 text-sm font-black text-white shadow-lg shadow-tech-600/30">
           PVS
         </div>
         <span class="hidden text-sm font-bold text-slate-800 sm:block dark:text-white">PVS Variedades</span>
       </a>
-      <!-- Toggle Theme -->
       <button id="theme-toggle"
               aria-label="Alternar tema claro/escuro"
               class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
@@ -172,11 +166,9 @@
    -->
   <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
     <div class="hero-grid absolute inset-0 opacity-60"></div>
-    <!-- Glow decorativo -->
     <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
     <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
     <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
-    <!-- Breadcrumb -->
     <nav class="relative z-10 mx-auto max-w-6xl px-6 pt-8 text-sm text-slate-400">
       <a href="/" class="transition hover:text-white">Início</a>
       <span class="mx-2 text-slate-600">/</span>
@@ -185,24 +177,20 @@
       <span class="text-slate-300">Troca do Filme ACF</span>
     </nav>
     <div class="relative z-10 mx-auto max-w-6xl px-6 pb-20 pt-14 md:pb-28 md:pt-20">
-      <!-- Badge -->
       <div class="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100 backdrop-blur">
         <i class="fa-solid fa-shield-halved mr-1"></i>
         GUIA TÉCNICO · MANUTENÇÃO PREVENTIVA
       </div>
-      <!-- Título -->
       <h1 class="animate-fade-up delay-100 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
         Troca do Filme ACF:
         <span class="bg-gradient-to-r from-tech-400 via-neon-300 to-industrial-400 bg-clip-text text-transparent">
           guia definitivo
         </span>
       </h1>
-      <!-- Subtítulo -->
       <p class="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
         A película ACF é o item de desgaste número 1 em falhas de impressão.
         Aprenda a trocar com tensão correta, vedação perfeita e zero retrabalho.
       </p>
-      <!-- CTAs -->
       <div class="animate-fade-up delay-300 mt-10 flex flex-wrap items-center gap-4">
         <a href="#passo-a-passo"
            class="group inline-flex items-center gap-3 rounded-xl bg-tech-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-tech-600/30 transition-all duration-300 hover:bg-tech-500 hover:shadow-tech-500/40 hover:-translate-y-0.5">
@@ -215,7 +203,6 @@
           Ferramentas necessárias
         </a>
       </div>
-      <!-- Mini-stats de autoridade -->
       <div class="animate-fade-up delay-400 mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/10 pt-8">
         <div>
           <p class="text-2xl font-extrabold text-white md:text-3xl">6</p>
@@ -246,9 +233,7 @@
         troca bem-feita de semanas de impressões falhadas.
       </p>
     </div>
-    <!-- Bento Grid: card grande + cards menores -->
     <div class="grid gap-6 md:grid-cols-3">
-      <!-- Card 1 (destaque - ocupa 2 colunas no desktop) -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft md:col-span-2 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
@@ -266,7 +251,6 @@
           </p>
         </div>
       </div>
-      <!-- Card 2 -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-industrial-500/10 blur-2xl transition-all duration-500 group-hover:bg-industrial-500/20"></div>
         <div class="relative">
@@ -281,7 +265,6 @@
           </p>
         </div>
       </div>
-      <!-- Card 3 -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-500 group-hover:bg-emerald-500/20"></div>
         <div class="relative">
@@ -316,7 +299,6 @@
         </p>
       </div>
       <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Sinal 1 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="flex items-center gap-3">
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-500 dark:bg-red-500/15 dark:text-red-400"><i class="fa-solid fa-circle-exclamation"></i></span>
@@ -326,7 +308,6 @@
             </div>
           </div>
         </div>
-        <!-- Sinal 2 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="flex items-center gap-3">
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-500 dark:bg-red-500/15 dark:text-red-400"><i class="fa-solid fa-circle-exclamation"></i></span>
@@ -336,7 +317,6 @@
             </div>
           </div>
         </div>
-        <!-- Sinal 3 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="flex items-center gap-3">
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-500 dark:bg-red-500/15 dark:text-red-400"><i class="fa-solid fa-circle-exclamation"></i></span>
@@ -346,7 +326,6 @@
             </div>
           </div>
         </div>
-        <!-- Sinal 4 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="flex items-center gap-3">
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-500 dark:bg-amber-500/15 dark:text-amber-400"><i class="fa-solid fa-circle-exclamation"></i></span>
@@ -356,7 +335,6 @@
             </div>
           </div>
         </div>
-        <!-- Sinal 5 -->
         <div class="card-hover rounded-2xl border-2 border-red-500 bg-red-50 p-6 shadow-soft dark:border-red-500 dark:bg-red-950/40 dark:shadow-none">
           <div class="flex items-center gap-3">
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-500 text-white"><i class="fa-solid fa-ban"></i></span>
@@ -366,7 +344,6 @@
             </div>
           </div>
         </div>
-        <!-- Sinal 6 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="flex items-center gap-3">
             <span class="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-red-50 text-red-500 dark:bg-red-500/15 dark:text-red-400"><i class="fa-solid fa-circle-exclamation"></i></span>
@@ -394,7 +371,6 @@
       </p>
     </div>
     <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      <!-- Ferramenta 1 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-film"></i>
@@ -402,7 +378,6 @@
         <h3 class="font-bold text-slate-900 dark:text-white">Película ACF nova</h3>
         <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Compatível com as dimensões do seu tanque</p>
       </div>
-      <!-- Ferramenta 2 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-wrench"></i>
@@ -410,15 +385,13 @@
         <h3 class="font-bold text-slate-900 dark:text-white">Chaves Allen</h3>
         <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Geralmente 2,0 / 2,5 / 3,0 mm — varia por fabricante</p>
       </div>
-      <!-- Ferramenta 3 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-spray-can-sparkles"></i>
         </div>
-        <h3 class="font-bold text-slate-900 dark:text-white">Álcool Isopropílico</h3>
-        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">IPA ou álcool 95% — limpeza sem resíduos</p>
+        <h3 class="font-bold text-slate-900 dark:text-white">Álcool isopropílico</h3>
+        <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Álcool acima de 90° — limpeza sem resíduos</p>
       </div>
-      <!-- Ferramenta 4 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-hand-sparkles"></i>
@@ -426,15 +399,13 @@
         <h3 class="font-bold text-slate-900 dark:text-white">Panos sem fiapos</h3>
         <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">Lint-free ou papel toalha de alta qualidade</p>
       </div>
-      <!-- Ferramenta 5 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-hand"></i>
         </div>
-        <h3 class="font-bold text-slate-900 dark:text-white">Luvas de Nitrila</h3>
+        <h3 class="font-bold text-slate-900 dark:text-white">Luvas de nitrila</h3>
         <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">+ óculos de proteção. EPIs sempre</p>
       </div>
-      <!-- Ferramenta 6 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-filter"></i>
@@ -442,7 +413,6 @@
         <h3 class="font-bold text-slate-900 dark:text-white">Funil com filtro</h3>
         <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">+ frasco opaco para armazenar a resina</p>
       </div>
-      <!-- Ferramenta 7 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-stapler"></i>
@@ -450,7 +420,6 @@
         <h3 class="font-bold text-slate-900 dark:text-white">Estilete / lâmina</h3>
         <p class="mt-2 text-sm text-slate-500 dark:text-slate-400">De precisão e afiada, para o corte final</p>
       </div>
-      <!-- Ferramenta 8 -->
       <div class="card-hover group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-soft hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-tech-50 text-3xl text-tech-600 transition-all duration-300 group-hover:scale-110 group-hover:shadow-glow-tech dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-mobile-screen-button"></i>
@@ -530,9 +499,10 @@
               Remova o tanque com cuidado. Após esvaziar e filtrar a resina
               (sempre com funil filtrado para um frasco opaco — nunca pelo lado
               traseiro do tanque e jamais misture resina usada com virgem sem
-              filtrar), realize uma limpeza profunda com IPA. Vire o tanque de
-              cabeça para baixo sobre uma superfície macia ou esteira de
-              silicone para evitar riscos na moldura externa.
+              filtrar), realize uma limpeza profunda com álcool isopropílico
+              (ou álcool acima de 90°). Vire o tanque de cabeça para baixo sobre
+              uma superfície macia ou esteira de silicone para evitar riscos na
+              moldura externa.
             </p>
             <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
               <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
@@ -576,10 +546,10 @@
             </div>
             <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
               Separe as duas partes da moldura e descarte o filme antigo. Limpe
-              rigorosamente as molduras com álcool: qualquer grão de resina
-              curada deixado ali atuará como um ponto de pressão que irá furar o
-              filme novo durante o aperto. Aproveite para inspecionar o LCD da
-              impressora em busca de vazamentos passados.
+              rigorosamente as molduras com álcool isopropílico: qualquer grão
+              de resina curada deixado ali atuará como um ponto de pressão que
+              irá furar o filme novo durante o aperto. Aproveite para inspecionar
+              o LCD da impressora em busca de vazamentos passados.
             </p>
             <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
               <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
@@ -689,10 +659,13 @@
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-level-down-alt"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Nivele o eixo Z</h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Renivele o eixo Z apenas se trocar de tecnologia</h3>
           <p class="mt-3 leading-relaxed text-slate-500 dark:text-slate-400">
-            O ACF tem <strong>0,3 mm</strong> de espessura — diferente do FEP
-            comum. Recalibre o ponto zero nivelando a plataforma novamente.
+            O renivelamento só é obrigatório quando você <strong>migra do FEP
+            ou nFEP para o ACF</strong> (0,3 mm de espessura). Se o filme
+            anterior já era ACF, a altura do eixo Z permanece a mesma — não
+            precisa recalibrar. Se notar falha de adesão na primeira camada, aí
+            sim confira o nivelamento.
           </p>
         </div>
       </div>
@@ -703,10 +676,13 @@
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
             <i class="fa-solid fa-hand-sparkles"></i>
           </div>
-          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Limpe a base</h3>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Limpe a base (plate)</h3>
           <p class="mt-3 leading-relaxed text-slate-500 dark:text-slate-400">
-            Limpe a plataforma de construção com IPA para remover gordura das
-            mãos e poeira acumulada durante a manutenção.
+            Limpe a plataforma de construção (plate) com <strong>álcool
+            isopropílico</strong> — ou álcool acima de 90°, álcool de cereais;
+            em casos extremos, até etanol de posto de combustível — para
+            remover gordura e poeira. Sempre com EPI, devido à toxicidade dos
+            solventes.
           </p>
         </div>
       </div>
@@ -742,7 +718,6 @@
         </p>
       </div>
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Erro 1 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Lado fosco para a resina
@@ -750,7 +725,6 @@
           <p class="text-sm text-slate-500 dark:text-slate-400">Impressão não adere ou falha totalmente.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Liso sempre para a resina</p>
         </div>
-        <!-- Erro 2 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Esquecer o 2º plástico protetor
@@ -758,7 +732,6 @@
           <p class="text-sm text-slate-500 dark:text-slate-400">Filme fica opaco e sem aderência.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Remover após fixar todos os parafusos</p>
         </div>
-        <!-- Erro 3 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Tocar no filme sem luvas
@@ -766,7 +739,6 @@
           <p class="text-sm text-slate-500 dark:text-slate-400">Gordura causa falhas de cura localizadas.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Manusear apenas pelas bordas, com luvas</p>
         </div>
-        <!-- Erro 4 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Apertar com parafusadeira
@@ -774,7 +746,6 @@
           <p class="text-sm text-slate-500 dark:text-slate-400">Parafusos espanados ou filme rasgado.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Torque manual, 75% + torque final</p>
         </div>
-        <!-- Erro 5 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Tensão baixa (frouxo)
@@ -782,7 +753,6 @@
           <p class="text-sm text-slate-500 dark:text-slate-400">Peça não descola e gruda no fundo.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Teste do tambor — alvo de 300 Hz</p>
         </div>
-        <!-- Erro 6 -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Ruga no centro do filme
@@ -802,7 +772,6 @@
       <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">FAQ</h2>
     </div>
     <div class="space-y-4">
-      <!-- FAQ 1 -->
       <details class="faq group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-colors duration-300 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <summary class="flex items-center justify-between gap-4">
           <span class="font-bold text-slate-900 dark:text-white">Qual a diferença real entre FEP, nFEP e ACF?</span>
@@ -816,7 +785,6 @@
           ligeiramente mais caro e espesso (0,3 mm).
         </p>
       </details>
-      <!-- FAQ 2 -->
       <details class="faq group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-colors duration-300 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <summary class="flex items-center justify-between gap-4">
           <span class="font-bold text-slate-900 dark:text-white">Posso trocar ACF por FEP?</span>
@@ -828,15 +796,17 @@
           reduza drasticamente as velocidades no fatiador para evitar falhas.
         </p>
       </details>
-      <!-- FAQ 3 -->
       <details class="faq group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-colors duration-300 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <summary class="flex items-center justify-between gap-4">
-          <span class="font-bold text-slate-900 dark:text-white">Preciso mesmo nivelar a mesa?</span>
+          <span class="font-bold text-slate-900 dark:text-white">Troquei o ACF por outro ACF. Preciso renivelar a mesa?</span>
           <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 group-open:rotate-180"></i>
         </summary>
         <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
-          Sim. Ignorar o nivelamento após trocar o filme é a causa principal de
-          peças que não grudam na base — ou que esmagam o LCD.
+          <strong>Não.</strong> Se o filme anterior já era ACF, a espessura é a
+          mesma (0,3 mm) e o eixo Z já está ajustado — não é preciso renivelar.
+          O renivelamento só é obrigatório quando você <strong>migra do FEP ou
+          nFEP para o ACF</strong>, porque a espessura muda. Se mesmo com ACF →
+          ACF a primeira camada falhar, aí sim confira o nivelamento.
         </p>
       </details>
     </div>
