@@ -25,9 +25,30 @@ html,body{
 margin:0;
 padding:0;
 font-family:Arial, Helvetica, sans-serif;
-background:#f2f2f2;
 overflow-x:clip;
 scrollbar-gutter:stable;
+}
+/* FUNDO DA PÁGINA INTEIRA - mesma identidade da guia da Película:
+   grid sutil + brilhos azul (sup. dir.) e laranja (inf. esq.) fixos */
+body{
+background:
+  radial-gradient(circle at 100% 0%, rgba(56,132,255,.18) 0%, rgba(56,132,255,.04) 35%, rgba(56,132,255,0) 60%),
+  radial-gradient(circle at 0% 100%, rgba(255,140,40,.14) 0%, rgba(255,140,40,.03) 35%, rgba(255,140,40,0) 60%),
+  linear-gradient(rgba(100,116,139,.12) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(100,116,139,.12) 1px, transparent 1px),
+  linear-gradient(180deg,#eef2f8,#f8faff);
+background-size:auto,auto,44px 44px,44px 44px,auto;
+background-attachment:fixed;
+}
+.dark body{
+background:
+  radial-gradient(circle at 100% 0%, rgba(56,132,255,.32) 0%, rgba(56,132,255,.07) 35%, rgba(56,132,255,0) 60%),
+  radial-gradient(circle at 0% 100%, rgba(255,140,40,.26) 0%, rgba(255,140,40,.06) 35%, rgba(255,140,40,0) 60%),
+  linear-gradient(rgba(148,163,184,.07) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(148,163,184,.07) 1px, transparent 1px),
+  linear-gradient(180deg,#0a0f1d,#0d1526);
+background-size:auto,auto,44px 44px,44px 44px,auto;
+background-attachment:fixed;
 }
 /* SCROLLBAR ELEGANTE (discreta, combina com o tema) */
 ::-webkit-scrollbar{width:10px;}
@@ -36,20 +57,6 @@ scrollbar-gutter:stable;
 ::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
 .dark ::-webkit-scrollbar-thumb{background:#334155;}
 .dark ::-webkit-scrollbar-thumb:hover{background:#475569;}
-/* GRID SUTIL (padrão da capa do Guia de Proteção de LCD) */
-.hero-grid{
-background-image:
-linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px),
-linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px);
-background-size:44px 44px;
-}
-/* GLOWS DECORATIVOS - gradientes radiais (mesma assinatura da capa do Guia LCD) */
-.glow-blue{
-background:radial-gradient(circle, rgba(56,132,255,.6) 0%, rgba(56,132,255,.18) 45%, rgba(56,132,255,0) 72%);
-}
-.glow-orange{
-background:radial-gradient(circle, rgba(255,140,40,.5) 0%, rgba(255,140,40,.15) 45%, rgba(255,140,40,0) 72%);
-}
 /* CONTAINER - grid responsivo (suporta N cards + rolagem) */
 .container{
 display:grid;
@@ -174,7 +181,7 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
 }
 </style>
 </head>
-<body class="bg-slate-100 font-sans dark:bg-slate-950">
+<body class="font-sans">
 
 <!-- HEADER FIXO (logo + dark mode) -->
 <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/85 px-6 py-3 shadow-md backdrop-blur-md border-b border-slate-800/80">
@@ -199,21 +206,13 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
 <!-- CONTEÚDO -->
 <main class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pt-20">
 
-  <!-- TARJA DO TÍTULO "GUIAS / TUTORIAIS" (grid + glows, mesma identidade da capa do Guia LCD) -->
-  <div class="relative mb-6 mt-2 overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900/80 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-slate-900/95 hover:shadow-lg hover:shadow-cyan-500/10">
-    <!-- Grid sutil (igual à capa do Guia) -->
-    <div class="hero-grid absolute inset-0 opacity-50"></div>
-    <!-- Glows decorativos - agora com gradiente radial, bem visíveis (azul no canto sup. dir. + laranja no canto inf. esq.) -->
-    <div class="glow-blue absolute -right-20 -top-24 h-72 w-72"></div>
-    <div class="glow-orange absolute -bottom-24 -left-16 h-64 w-64"></div>
-    <!-- Conteúdo (acima dos efeitos, sempre legível) -->
-    <div class="relative px-5 py-3 md:px-6 md:py-4">
-      <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-cyan-400/90">Central de conhecimento</p>
-      <h1 class="mt-1 text-3xl font-extrabold tracking-tight text-white md:text-4xl">GUIAS / TUTORIAIS</h1>
-      <p class="mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
-        Aprenda a resolver problemas e obter resultados profissionais com o passo a passo completo da PVS Variedades.
-      </p>
-    </div>
+  <!-- TARJA DO TÍTULO "GUIAS / TUTORIAIS" (limpa - a identidade agora está no fundo da página) -->
+  <div class="mb-6 mt-2 rounded-2xl border border-slate-700/60 bg-slate-900/80 px-5 py-3 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-slate-900/95 hover:shadow-lg hover:shadow-cyan-500/10 md:py-4">
+    <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-cyan-400/90">Central de conhecimento</p>
+    <h1 class="mt-1 text-3xl font-extrabold tracking-tight text-white md:text-4xl">GUIAS / TUTORIAIS</h1>
+    <p class="mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
+      Aprenda a resolver problemas e obter resultados profissionais com o passo a passo completo da PVS Variedades.
+    </p>
   </div>
 
   <!-- CARDS DAS GUIAS (links funcionando, bordas idênticas à tarja) -->
