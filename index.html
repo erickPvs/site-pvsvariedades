@@ -1,221 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PVS Variedades</title>
-
+<title>Guias | PVS Variedades</title>
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Arial', 'Helvetica', 'sans-serif'],
+      },
+    },
+  },
+};
+</script>
+<!-- Font Awesome (ícones do Dark Mode) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 <style>
-
 html,body{
 margin:0;
 padding:0;
 font-family:Arial, Helvetica, sans-serif;
 background:#f2f2f2;
-overflow-x:hidden;
+overflow-x:clip;
+scrollbar-gutter:stable;
 }
-
-/* CONTAINER */
-
+/* SCROLLBAR ELEGANTE (discreta, combina com o tema) */
+::-webkit-scrollbar{width:10px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;}
+::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
+.dark ::-webkit-scrollbar-thumb{background:#334155;}
+.dark ::-webkit-scrollbar-thumb:hover{background:#475569;}
+/* GRID SUTIL (padrão da capa do Guia de Proteção de LCD) */
+.hero-grid{
+background-image:
+linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px),
+linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px);
+background-size:44px 44px;
+}
+/* CONTAINER - grid responsivo (suporta N cards + rolagem) */
 .container{
-display:flex;
-min-height:100vh;
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
+flex:1;
 width:100%;
 }
-
+@media (min-width:900px){
+.container{
+grid-template-columns:1fr 1fr;
+}
+}
 /* PAINEL */
-
 .panel{
-flex:1;
 position:relative;
 display:flex;
 align-items:center;
 justify-content:center;
 overflow:hidden;
 cursor:pointer;
-transition:.45s;
+transition:transform .45s ease, box-shadow .45s ease, border-color .3s ease;
+border-radius:16px;
+min-height:380px;
 }
-
-.loja{
-flex:1.35;
+@media (min-width:900px){
+.panel{
+min-height:0;
 }
-
-/* IMAGEM */
-
-.panel::before{
-content:"";
-position:absolute;
-width:110%;
-height:110%;
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
-filter:grayscale(100%) brightness(1.25) opacity(.45);
-
-transition:.4s;
 }
-
-/* GRADIENTE */
-
-.panel::after{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-
-background:linear-gradient(
-to bottom,
-rgba(0,0,0,0) 20%,
-rgba(0,0,0,.55) 100%
-);
-
-opacity:.8;
-transition:.45s;
-}
-
-/* HOVER IMAGEM */
-
-.panel:hover::before{
-filter:grayscale(0%) brightness(1) opacity(1);
-transform:scale(1.05);
-}
-
-.panel:hover::after{
-opacity:.45;
-}
-
-/* DEPTH SHADOW */
-
-.panel:hover{
-flex:1.45;
-z-index:5;
-
-box-shadow:
-0 40px 80px rgba(0,0,0,.35),
-0 10px 30px rgba(0,0,0,.25);
-}
-
-/* ACTIVE FOCUS */
-
-.container:hover .panel{
-filter:blur(2px) brightness(.85) saturate(.8);
-}
-
-.container:hover .panel:hover{
-filter:none;
-}
-
-/* IMAGENS */
-
-.guia::before{
-background-image:url("images/guia.webp");
-background-position:center 45%;
-}
-
-.loja::before{
-background-image:url("images/loja.webp");
-background-position:center 50%;
-}
-
-.minime::before{
-background-image:url("images/minime.webp");
-background-position:center;
-}
-
-/* TEXTO */
-
-.overlay{
-position:absolute;
-bottom:3px;
-width:60%;
-text-align:center;
-color:white;
-z-index:3;
-}
-
-/* TITULO */
-
-.title{
-font-size:32px;
-font-weight:bold;
-letter-spacing:1px;
-margin-bottom:3px;
-transition:.35s;
-}
-
-/* SUBTITULO */
-
-.subtitle{
-font-size:16px;
-margin-bottom:9px;
-transition:.35s;
-
-text-shadow:
-0 -1px 0 rgba(0,0,0,1),
-0 6px 12px rgba(0,0,0,.9),
-0 18px 35px rgba(0,0,0,.8);
-}
-
-/* CASCATA */
-
-.panel:hover .title{
-transform:translateY(22px);
-}
-
-.panel:hover .subtitle{
-transform:translateY(11px);
-}
-
-/* SOMBRA DIRECIONAL */
-
-.guia .title{
-text-shadow:
--2px -2px 0 rgba(0,0,0,1),
--6px 6px 14px rgba(0,0,0,.9),
--18px 22px 55px rgba(0,0,0,.85);
-}
-
-.loja .title{
-text-shadow:
-0 -2px 0 rgba(0,0,0,1),
-0 8px 18px rgba(0,0,0,.9),
-0 24px 60px rgba(0,0,0,.85);
-}
-
-.minime .title{
-text-shadow:
-2px -2px 0 rgba(0,0,0,1),
-6px 6px 14px rgba(0,0,0,.9),
-18px 22px 55px rgba(0,0,0,.85);
-}
-
-/* BOTÃO */
-
-.btn{
-margin-top:4px;
-padding:12px 30px;
-border:2px solid white;
-display:inline-block;
-font-size:15px;
-letter-spacing:1px;
-transition:.2s;
-}
-
-/* BOTÃO HOVER */
-
-.btn:hover{
-transform:scale(1.12);
-background:white;
-color:black;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
-}
-
-/* LINK */
-
+/* LINK - faz o link ocupar o card inteiro (CLIQUE FUNCIONANDO) */
 .panel a{
 position:absolute;
 width:100%;
@@ -224,78 +82,207 @@ top:0;
 left:0;
 z-index:5;
 }
-
-/* MOBILE */
-
-@media (max-width:900px){
-
-.container{
-flex-direction:column;
+/* IMAGEM */
+.panel::before{
+content:"";
+position:absolute;
+width:110%;
+height:110%;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+filter:grayscale(100%) brightness(1.25) opacity(.45);
+transition:.4s;
 }
-
-.panel{
-height:33.3dvh;
+/* GRADIENTE DE LEGIBILIDADE (reforçado - sem tarjas) */
+.panel::after{
+content:"";
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(
+to bottom,
+rgba(0,0,0,0) 15%,
+rgba(0,0,0,.3) 50%,
+rgba(0,0,0,.65) 78%,
+rgba(0,0,0,.9) 100%
+);
+opacity:1;
+transition:.45s;
 }
-
+/* HOVER - o card cresce mais e se sobrepõe ao vizinho (sem empurrar o layout) */
+.panel:hover::before{
+filter:grayscale(0%) brightness(1) opacity(1);
+transform:scale(1.05);
+}
+.panel:hover::after{
+opacity:.65;
+}
+.panel:hover{
+transform:scale(1.06);
+z-index:10;
+box-shadow:
+0 40px 80px rgba(0,0,0,.35),
+0 10px 30px rgba(0,0,0,.25);
+}
+/* Modo noturno: glow ciano no hover, igual à tarja */
+.dark .panel:hover{
+box-shadow:
+0 40px 80px rgba(0,0,0,.5),
+0 10px 30px rgba(0,0,0,.3),
+0 0 24px rgba(34,211,238,.18);
+}
+/* IMAGENS */
+.acf::before{
+background-image:url("../images/guia.webp");
+}
+.pelicula-lcd::before{
+background-image:url("../images/pelicula-lcd.webp");
+}
+/* TEXTO */
+.overlay{
+position:absolute;
+bottom:28px;
+width:75%;
+text-align:center;
+color:white;
+z-index:3;
+}
 .title{
 font-size:30px;
+font-weight:bold;
+margin-bottom:10px;
+text-shadow:0 2px 10px rgba(0,0,0,.75), 0 4px 28px rgba(0,0,0,.45);
 }
-
-.container:hover .panel{
-filter:none;
+.subtitle{
+font-size:16px;
+margin-bottom:10px;
+text-shadow:0 1px 8px rgba(0,0,0,.7);
 }
-
+/* Transição suave de tema */
+html.theme-transition *,
+html.theme-transition *::before,
+html.theme-transition *::after {
+transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
 }
-
 </style>
-
 </head>
+<body class="bg-slate-100 font-sans dark:bg-slate-950">
 
-<body>
+<!-- HEADER FIXO (logo + dark mode) -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/85 px-6 py-3 shadow-md backdrop-blur-md border-b border-slate-800/80">
+  <div class="mx-auto flex max-w-6xl items-center justify-between">
+    <a href="/" aria-label="PVS Variedades - Página inicial" class="flex items-center">
+      <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
+    </a>
+    <div class="flex items-center gap-3">
+      <a href="/" class="hidden items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-slate-200 backdrop-blur-md transition hover:bg-white/10 hover:text-white sm:inline-flex">
+        ← Página inicial
+      </a>
+      <button id="theme-toggle"
+              aria-label="Alternar tema claro/escuro"
+              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-slate-200 shadow-md transition-all duration-300 hover:border-cyan-400/50 hover:text-cyan-300 hover:shadow-lg hover:shadow-cyan-500/20">
+        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-transform duration-300 group-hover:scale-110"></i>
+        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-transform duration-300 group-hover:scale-110"></i>
+      </button>
+    </div>
+  </div>
+</header>
 
-<div class="container">
+<!-- CONTEÚDO -->
+<main class="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-6 pt-20">
 
-<!-- GUIAS -->
+  <!-- TARJA DO TÍTULO "GUIAS / TUTORIAIS" (mesma identidade da capa do Guia LCD: chumbo + grid + brilho) -->
+  <div class="relative mb-6 mt-2 overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900/80 shadow-md backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan-500/50 hover:bg-slate-900/95 hover:shadow-lg hover:shadow-cyan-500/10">
+    <!-- Grid sutil (igual à capa do Guia) -->
+    <div class="hero-grid absolute inset-0 opacity-50"></div>
+    <!-- Glows decorativos (igual à capa: azul técnico + laranja industrial) -->
+    <div class="absolute -right-16 -top-16 h-48 w-48 rounded-full bg-blue-600/20 blur-3xl"></div>
+    <div class="absolute -bottom-20 -left-10 h-40 w-40 rounded-full bg-orange-500/10 blur-3xl"></div>
+    <!-- Conteúdo (acima dos efeitos, sempre legível) -->
+    <div class="relative px-5 py-3 md:px-6 md:py-4">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.25em] text-cyan-400/90">Central de conhecimento</p>
+      <h1 class="mt-1 text-3xl font-extrabold tracking-tight text-white md:text-4xl">GUIAS / TUTORIAIS</h1>
+      <p class="mt-1.5 max-w-2xl text-sm leading-relaxed text-slate-300 md:text-base">
+        Aprenda a resolver problemas e obter resultados profissionais com o passo a passo completo da PVS Variedades.
+      </p>
+    </div>
+  </div>
 
-<div class="panel guia">
-<a href="/guias/"></a>
+  <!-- CARDS DAS GUIAS (links funcionando, bordas idênticas à tarja) -->
+  <div class="container">
+    <!-- ACF -->
+    <div class="panel acf border border-slate-700/60 hover:border-cyan-500/50">
+      <a href="/guias/guia-acf.html"></a>
+      <div class="overlay">
+        <div class="title">Troca do Filme ACF</div>
+        <div class="subtitle">Evite falhas e mantenha qualidade constante</div>
+      </div>
+    </div>
+    <!-- PELICULA DE LCD -->
+    <div class="panel pelicula-lcd border border-slate-700/60 hover:border-cyan-500/50">
+      <a href="/guias/guia-pelicula-lcd.html"></a>
+      <div class="overlay">
+        <div class="title">Película de Proteção de LCD</div>
+        <div class="subtitle">Passo a passo completo para instalação da película protetora.</div>
+      </div>
+    </div>
+  </div>
+</main>
 
-<div class="overlay">
-<div class="title">GUIAS</div>
-<div class="subtitle">Tutoriais e manutenção</div>
-<div class="btn">ACESSAR</div>
-</div>
+<!-- SCRIPT: DARK MODE TOGGLE (JS nativo e leve) -->
+<script>
+(function () {
+  var toggleBtn = document.getElementById('theme-toggle');
+  var iconMoon = document.getElementById('icon-moon');
+  var iconSun = document.getElementById('icon-sun');
+  var STORAGE_KEY = 'pvs-theme';
 
-</div>
+  function applyTheme(theme) {
+    var root = document.documentElement;
+    root.classList.add('theme-transition');
+    setTimeout(function () {
+      root.classList.remove('theme-transition');
+    }, 450);
 
-<!-- LOJA -->
+    if (theme === 'dark') {
+      root.classList.add('dark');
+      iconMoon.classList.add('hidden');
+      iconSun.classList.remove('hidden');
+    } else {
+      root.classList.remove('dark');
+      iconMoon.classList.remove('hidden');
+      iconSun.classList.add('hidden');
+    }
+  }
 
-<div class="panel loja">
-<a href="/em-construcao.html"></a>
+  function getInitialTheme() {
+    var saved = localStorage.getItem(STORAGE_KEY);
+    if (saved === 'dark' || saved === 'light') return saved;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
 
-<div class="overlay">
-<div class="title">LOJA</div>
-<div class="subtitle">Consumíveis e acessórios</div>
-<div class="btn">ACESSAR</div>
-</div>
+  var initialTheme = getInitialTheme();
+  if (initialTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+    iconMoon && iconMoon.classList.add('hidden');
+    iconSun && iconSun.classList.remove('hidden');
+  }
 
-</div>
+  toggleBtn.addEventListener('click', function () {
+    var isDark = document.documentElement.classList.contains('dark');
+    var nextTheme = isDark ? 'light' : 'dark';
+    localStorage.setItem(STORAGE_KEY, nextTheme);
+    applyTheme(nextTheme);
+  });
 
-<!-- MINI-ME -->
-
-<div class="panel minime">
-<a href="/em-construcao.html"></a>
-
-<div class="overlay">
-<div class="title">MINI-ME</div>
-<div class="subtitle">Seu boneco caricato</div>
-<div class="btn">ACESSAR</div>
-</div>
-
-</div>
-
-</div>
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+    if (!localStorage.getItem(STORAGE_KEY)) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
+})();
+</script>
 
 </body>
-
 </html>
