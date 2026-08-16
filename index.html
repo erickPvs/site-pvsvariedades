@@ -1,301 +1,570 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PVS Variedades</title>
-
-<style>
-
-html,body{
-margin:0;
-padding:0;
-font-family:Arial, Helvetica, sans-serif;
-background:#f2f2f2;
-overflow-x:hidden;
-}
-
-/* CONTAINER */
-
-.container{
-display:flex;
-min-height:100vh;
-width:100%;
-}
-
-/* PAINEL */
-
-.panel{
-flex:1;
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-cursor:pointer;
-transition:.45s;
-}
-
-.loja{
-flex:1.35;
-}
-
-/* IMAGEM */
-
-.panel::before{
-content:"";
-position:absolute;
-width:110%;
-height:110%;
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
-filter:grayscale(100%) brightness(1.25) opacity(.45);
-
-transition:.4s;
-}
-
-/* GRADIENTE */
-
-.panel::after{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-
-background:linear-gradient(
-to bottom,
-rgba(0,0,0,0) 20%,
-rgba(0,0,0,.55) 100%
-);
-
-opacity:.8;
-transition:.45s;
-}
-
-/* HOVER IMAGEM */
-
-.panel:hover::before{
-filter:grayscale(0%) brightness(1) opacity(1);
-transform:scale(1.05);
-}
-
-.panel:hover::after{
-opacity:.45;
-}
-
-/* DEPTH SHADOW */
-
-.panel:hover{
-flex:1.45;
-z-index:5;
-
-box-shadow:
-0 40px 80px rgba(0,0,0,.35),
-0 10px 30px rgba(0,0,0,.25);
-}
-
-/* ACTIVE FOCUS */
-
-.container:hover .panel{
-filter:blur(2px) brightness(.85) saturate(.8);
-}
-
-.container:hover .panel:hover{
-filter:none;
-}
-
-/* IMAGENS */
-
-.guia::before{
-background-image:url("images/guia.webp");
-background-position:center 45%;
-}
-
-.loja::before{
-background-image:url("images/loja.webp");
-background-position:center 50%;
-}
-
-.minime::before{
-background-image:url("images/minime.webp");
-background-position:center;
-}
-
-/* TEXTO */
-
-.overlay{
-position:absolute;
-bottom:3px;
-width:60%;
-text-align:center;
-color:white;
-z-index:3;
-}
-
-/* TITULO */
-
-.title{
-font-size:32px;
-font-weight:bold;
-letter-spacing:1px;
-margin-bottom:3px;
-transition:.35s;
-}
-
-/* SUBTITULO */
-
-.subtitle{
-font-size:16px;
-margin-bottom:9px;
-transition:.35s;
-
-text-shadow:
-0 -1px 0 rgba(0,0,0,1),
-0 6px 12px rgba(0,0,0,.9),
-0 18px 35px rgba(0,0,0,.8);
-}
-
-/* CASCATA */
-
-.panel:hover .title{
-transform:translateY(22px);
-}
-
-.panel:hover .subtitle{
-transform:translateY(11px);
-}
-
-/* SOMBRA DIRECIONAL */
-
-.guia .title{
-text-shadow:
--2px -2px 0 rgba(0,0,0,1),
--6px 6px 14px rgba(0,0,0,.9),
--18px 22px 55px rgba(0,0,0,.85);
-}
-
-.loja .title{
-text-shadow:
-0 -2px 0 rgba(0,0,0,1),
-0 8px 18px rgba(0,0,0,.9),
-0 24px 60px rgba(0,0,0,.85);
-}
-
-.minime .title{
-text-shadow:
-2px -2px 0 rgba(0,0,0,1),
-6px 6px 14px rgba(0,0,0,.9),
-18px 22px 55px rgba(0,0,0,.85);
-}
-
-/* BOTÃO */
-
-.btn{
-margin-top:4px;
-padding:12px 30px;
-border:2px solid white;
-display:inline-block;
-font-size:15px;
-letter-spacing:1px;
-transition:.2s;
-}
-
-/* BOTÃO HOVER */
-
-.btn:hover{
-transform:scale(1.12);
-background:white;
-color:black;
-box-shadow:0 10px 25px rgba(0,0,0,.4);
-}
-
-/* LINK */
-
-.panel a{
-position:absolute;
-width:100%;
-height:100%;
-top:0;
-left:0;
-z-index:5;
-}
-
-/* MOBILE */
-
-@media (max-width:900px){
-
-.container{
-flex-direction:column;
-}
-
-.panel{
-height:33.3dvh;
-}
-
-.title{
-font-size:30px;
-}
-
-.container:hover .panel{
-filter:none;
-}
-
-}
-
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PVS Variedades — Impressão 3D em Resina</title>
+  <meta name="description" content="Guias técnicos gratuitos, consumíveis e acessórios para impressão 3D em resina. Aprenda a manter sua impressora e compre com segurança." />
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            tech: {
+              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe',
+              300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6',
+              600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
+            },
+            industrial: {
+              400: '#fb923c', 500: '#f97316', 600: '#ea580c',
+            },
+            neon: {
+              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2',
+            },
+          },
+          boxShadow: {
+            soft: '0 4px 24px -6px rgba(15, 23, 42, 0.08)',
+            lift: '0 20px 50px -12px rgba(15, 23, 42, 0.18)',
+            'glow-tech': '0 0 0 4px rgba(59, 130, 246, 0.15)',
+            'glow-neon': '0 0 24px rgba(34, 211, 238, 0.25)',
+          },
+          backdropBlur: {
+            xs: '2px',
+          },
+        },
+      },
+    };
+  </script>
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ====== Base ====== */
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    ::selection { background: #2563eb; color: #fff; }
+    /* Scrollbar custom */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .dark ::-webkit-scrollbar-thumb { background: #334155; }
+    .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    /* ====== Animações ====== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp 0.7s ease-out both; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    /* Grid pattern sutil (padrão das guias) */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    /* Cards com hover */
+    .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease; }
+    .card-hover:hover { transform: translateY(-4px); }
+    /* Transição suave de tema */
+    html.theme-transition *,
+    html.theme-transition *::before,
+    html.theme-transition *::after {
+      transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
+    }
+    /* ====== Glassmorphism (dark) ====== */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    /* ====== Painéis (cards imersivos) ====== */
+    .panel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .45s ease, box-shadow .45s ease, border-color .3s ease;
+      border-radius: 20px;
+      min-height: 380px;
+    }
+    @media (min-width: 900px) {
+      .panel { min-height: 440px; }
+    }
+    .panel a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+    /* Camada de imagem (apenas painéis com foto) */
+    .panel.panel-image::before {
+      content: "";
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(100%) brightness(1.25) opacity(.45);
+      transition: .4s;
+    }
+    .panel.panel-image:hover::before {
+      filter: grayscale(0%) brightness(1) opacity(1);
+      transform: scale(1.05);
+    }
+    /* Gradiente de legibilidade */
+    .panel::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 15%,
+        rgba(0,0,0,.3) 50%,
+        rgba(0,0,0,.65) 78%,
+        rgba(0,0,0,.9) 100%
+      );
+      opacity: 1;
+      transition: .45s;
+    }
+    .panel:hover::after { opacity: .65; }
+    .panel:hover {
+      transform: scale(1.04);
+      z-index: 10;
+      box-shadow: 0 40px 80px rgba(0,0,0,.35), 0 10px 30px rgba(0,0,0,.25);
+    }
+    .dark .panel:hover {
+      box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.3), 0 0 24px rgba(34,211,238,.18);
+    }
+    /* Fundos dos painéis */
+    .panel-guias::before { background-image: url("images/guia.webp"); }
+    .panel-loja { background: linear-gradient(135deg, #0f172a 0%, #7c2d12 100%); }
+    .panel-portfolio { background: linear-gradient(135deg, #0f172a 0%, #4c1d95 100%); }
+    /* Ícone decorativo dos painéis sem foto */
+    .panel-icon {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 90px;
+      color: rgba(255, 255, 255, 0.14);
+      transition: .4s;
+      z-index: 1;
+    }
+    .panel:hover .panel-icon {
+      transform: translate(-50%, -50%) scale(1.12);
+      color: rgba(255, 255, 255, 0.28);
+    }
+    /* Texto */
+    .overlay {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      text-align: center;
+      color: #fff;
+      z-index: 3;
+    }
+    .panel-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-bottom: .6rem;
+      padding: .3rem .8rem;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(4px);
+    }
+    .title {
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0,0,0,.75), 0 4px 28px rgba(0,0,0,.45);
+    }
+    .subtitle {
+      font-size: 15px;
+      margin-top: .5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.7);
+    }
+    .cta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 1rem;
+      padding: .55rem 1.2rem;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #fff;
+      color: #0f172a;
+      transition: .25s;
+    }
+    .panel:hover .cta-chip {
+      background: #2563eb;
+      color: #fff;
+      box-shadow: 0 0 24px rgba(59,130,246,.45);
+    }
+  </style>
 </head>
+<body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
 
-<body>
+  <!-- ====== NAVBAR (padrão das guias: logo + toggle) ====== -->
+  <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a href="/" class="flex items-center">
+        <img src="images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
+      </a>
+      <button id="theme-toggle"
+              aria-label="Alternar tema claro/escuro"
+              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
+        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
+        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
+      </button>
+    </div>
+  </nav>
 
-<div class="container">
+  <!-- ====== HERO (escuro com grid + brilhos, padrão das guias) ====== -->
+  <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
+    <div class="hero-grid absolute inset-0 opacity-60"></div>
+    <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
+    <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
+    <div class="relative z-10 mx-auto max-w-6xl px-6 pb-24 pt-16 md:pb-32 md:pt-24">
+      <div class="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100 backdrop-blur">
+        <i class="fa-solid fa-cubes mr-1"></i>
+        IMPRESSÃO 3D EM RESINA
+      </div>
+      <h1 class="animate-fade-up delay-100 max-w-4xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+        Sua impressora 3D
+        <span class="bg-gradient-to-r from-tech-400 via-neon-300 to-industrial-400 bg-clip-text text-transparent">
+          em outro nível
+        </span>
+      </h1>
+      <p class="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
+        Guias técnicos gratuitos, consumíveis e acessórios para quem imprime em
+        resina. Aprenda, mantenha e evolua sem dor de cabeça.
+      </p>
+      <div class="animate-fade-up delay-300 mt-10 flex flex-wrap items-center gap-4">
+        <a href="/guias/"
+           class="group inline-flex items-center gap-3 rounded-xl bg-tech-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-tech-600/30 transition-all duration-300 hover:bg-tech-500 hover:shadow-tech-500/40 hover:-translate-y-0.5">
+          <i class="fa-solid fa-book-open transition group-hover:rotate-12"></i>
+          Explorar guias
+        </a>
+        <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
+        <a href="#loja"
+           class="inline-flex items-center gap-3 rounded-xl border border-slate-600 bg-white/5 px-7 py-3.5 text-sm font-bold text-slate-200 backdrop-blur transition-all duration-300 hover:border-slate-400 hover:bg-white/10 hover:text-white hover:-translate-y-0.5">
+          <i class="fa-solid fa-bag-shopping"></i>
+          Ver a loja
+        </a>
+      </div>
+      <div class="animate-fade-up delay-400 mt-14 grid max-w-2xl grid-cols-3 gap-6 border-t border-white/10 pt-8">
+        <div>
+          <p class="text-2xl font-extrabold text-white md:text-3xl">2</p>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Guias técnicos gratuitos</p>
+        </div>
+        <div>
+          <p class="text-2xl font-extrabold text-white md:text-3xl">3</p>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Áreas de apoio</p>
+        </div>
+        <div>
+          <p class="text-2xl font-extrabold text-white md:text-3xl">R$ 0</p>
+          <p class="mt-1 text-xs font-medium uppercase tracking-wider text-slate-400">Custo do conhecimento</p>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<!-- GUIAS -->
+  <!-- ====== PAINÉIS PRINCIPAIS (Guias / Loja / Portfólio) ====== -->
+  <main class="mx-auto w-full max-w-6xl px-6 py-16 md:py-20">
+    <div class="mb-12 text-center">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Escolha seu caminho</p>
+      <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
+        Tudo para quem imprime em resina
+      </h2>
+    </div>
+    <div class="grid gap-6 md:grid-cols-3">
+      <!-- Guias -->
+      <div class="panel panel-image panel-guias border border-slate-200 dark:border-slate-700/60">
+        <a href="/guias/"></a>
+        <div class="overlay">
+          <span class="panel-tag"><i class="fa-solid fa-book-open"></i> Tutoriais e manutenção</span>
+          <div class="title">Guias</div>
+          <div class="subtitle">Aprenda a resolver problemas e manter sua impressora</div>
+          <span class="cta-chip">Acessar <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <!-- Loja -->
+      <div class="panel panel-loja border border-slate-200 dark:border-slate-700/60">
+        <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
+        <a href="#loja"></a>
+        <div class="panel-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+        <div class="overlay">
+          <span class="panel-tag"><i class="fa-solid fa-box"></i> Consumíveis e acessórios</span>
+          <div class="title">Loja</div>
+          <div class="subtitle">Tudo para sua impressão 3D em resina</div>
+          <span class="cta-chip">Acessar <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <!-- Portfólio / Mini-Me -->
+      <div class="panel panel-portfolio border border-slate-200 dark:border-slate-700/60">
+        <!-- LINK DO PORTFÓLIO: troque o href abaixo pelo link do seu WhatsApp com número -->
+        <a href="#portfolio"></a>
+        <div class="panel-icon"><i class="fa-solid fa-face-smile"></i></div>
+        <div class="overlay">
+          <span class="panel-tag"><i class="fa-solid fa-star"></i> Trabalhos personalizados</span>
+          <div class="title">Mini-Me</div>
+          <div class="subtitle">Seu boneco caricato em impressão 3D</div>
+          <span class="cta-chip">Fazer orçamento <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+    </div>
+  </main>
 
-<div class="panel guia">
-<a href="/guias/"></a>
+  <!-- ====== DIFERENCIAIS ====== -->
+  <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mx-auto mb-14 max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Por que a PVS</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
+          Feito para quem imprime a sério
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
+          <div class="relative">
+            <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white">Guias técnicos gratuitos</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Passo a passo validado para resolver problemas reais da impressão em resina.</p>
+          </div>
+        </div>
+        <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-500 group-hover:bg-emerald-500/20"></div>
+          <div class="relative">
+            <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white">Produtos testados</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Consumíveis e acessórios selecionados para uso real em impressoras de resina.</p>
+          </div>
+        </div>
+        <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-industrial-500/10 blur-2xl transition-all duration-500 group-hover:bg-industrial-500/20"></div>
+          <div class="relative">
+            <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-industrial-500/10 text-2xl text-industrial-600 dark:bg-industrial-500/15 dark:text-industrial-400">
+              <i class="fa-solid fa-headset"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white">Suporte especializado</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Atendimento que entende do assunto e ajuda antes e depois da compra.</p>
+          </div>
+        </div>
+        <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-neon-500/10 blur-2xl transition-all duration-500 group-hover:bg-neon-500/20"></div>
+          <div class="relative">
+            <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-neon-50 text-2xl text-neon-600 dark:bg-neon-500/15 dark:text-neon-400">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <h3 class="font-bold text-slate-900 dark:text-white">Compra segura</h3>
+            <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Toda a experiência de compra pelo Mercado Livre, com a proteção da plataforma.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<div class="overlay">
-<div class="title">GUIAS</div>
-<div class="subtitle">Tutoriais e manutenção</div>
-<div class="btn">ACESSAR</div>
-</div>
+  <!-- ====== GUIAS EM DESTAQUE ====== -->
+  <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
+    <div class="mb-14 flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Central de conhecimento</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
+          Guias em destaque
+        </h2>
+      </div>
+      <a href="/guias/" class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-2.5 text-sm font-bold text-slate-700 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400">
+        Ver todos <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="grid gap-6 md:grid-cols-2">
+      <!-- Guia ACF -->
+      <a href="/guias/guia-acf.html"
+         class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
+        <div class="relative">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-tech-50 text-xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
+            <i class="fa-solid fa-film"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Troca do Filme ACF</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Passo a passo completo com tensão correta (300 Hz), teste de vazamento e erros para evitar.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-tech-600 dark:text-neon-400">
+            Ler o guia <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+          </span>
+        </div>
+      </a>
+      <!-- Guia Película -->
+      <a href="/guias/guia-pelicula-lcd.html"
+         class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-neon-500/10 blur-2xl transition-all duration-500 group-hover:bg-neon-500/20"></div>
+        <div class="relative">
+          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-neon-50 text-xl text-neon-600 dark:bg-neon-500/15 dark:text-neon-400">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 dark:text-white">Película de Proteção de LCD</h3>
+          <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Proteja o painel da sua impressora com a instalação profissional da película protetora.</p>
+          <span class="mt-4 inline-flex items-center gap-2 text-sm font-bold text-tech-600 dark:text-neon-400">
+            Ler o guia <i class="fa-solid fa-arrow-right transition-transform group-hover:translate-x-1"></i>
+          </span>
+        </div>
+      </a>
+    </div>
+  </section>
 
-</div>
+  <!-- ====== DEPOIMENTOS (troque pelos depoimentos reais dos seus clientes) ====== -->
+  <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
+    <div class="mx-auto max-w-6xl px-6">
+      <div class="mx-auto mb-14 max-w-2xl text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Quem já imprimiu confia</p>
+        <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">
+          Depoimentos
+        </h2>
+      </div>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <i class="fa-solid fa-quote-right text-2xl text-tech-200 dark:text-tech-800"></i>
+          <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
+            "Troquei o ACF seguindo o guia e a primeira impressão saiu perfeita.
+            Nunca imaginei que conseguiria fazer sozinho."
+          </p>
+          <p class="mt-5 text-sm font-bold text-slate-900 dark:text-white">Cliente PVS</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Compra verificada</p>
+        </div>
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <i class="fa-solid fa-quote-right text-2xl text-tech-200 dark:text-tech-800"></i>
+          <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
+            "O passo a passo é claro demais. Semana que vem vou trocar a película
+            do LCD com total confiança."
+          </p>
+          <p class="mt-5 text-sm font-bold text-slate-900 dark:text-white">Cliente PVS</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Compra verificada</p>
+        </div>
+        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <i class="fa-solid fa-quote-right text-2xl text-tech-200 dark:text-tech-800"></i>
+          <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
+            "Material de apoio que nenhuma outra loja oferece. Vale muito a pena
+            comprar com quem entende do assunto."
+          </p>
+          <p class="mt-5 text-sm font-bold text-slate-900 dark:text-white">Cliente PVS</p>
+          <p class="text-xs text-slate-500 dark:text-slate-400">Compra verificada</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- LOJA -->
+  <!-- ====== CTA FINAL ====== -->
+  <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
+    <div class="rounded-3xl bg-gradient-to-br from-tech-600 to-neon-600 p-10 text-center shadow-lift md:p-14 dark:from-tech-700 dark:to-neon-700 dark:shadow-none dark:ring-1 dark:ring-white/10">
+      <h2 class="text-2xl font-extrabold text-white md:text-3xl">Pronto para imprimir sem dor de cabeça?</h2>
+      <p class="mx-auto mt-3 max-w-xl text-tech-100 dark:text-neon-100">
+        Comece pelos guias gratuitos ou confira os consumíveis da nossa loja.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a href="/guias/" class="inline-flex items-center gap-2 rounded-xl bg-white px-7 py-3.5 text-sm font-bold text-tech-700 shadow-lg transition-all duration-300 hover:bg-tech-50 hover:-translate-y-0.5">
+          <i class="fa-solid fa-book-open"></i>
+          Explorar guias
+        </a>
+        <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
+        <a href="#loja" class="inline-flex items-center gap-2 rounded-xl border border-white/30 px-7 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:bg-white/10 hover:-translate-y-0.5">
+          <i class="fa-solid fa-bag-shopping"></i>
+          Ver a loja
+        </a>
+      </div>
+    </div>
+  </section>
 
-<div class="panel loja">
-<a href="/em-construcao.html"></a>
+  <!-- ====== FOOTER ====== -->
+  <footer class="bg-slate-100 py-10 transition-colors duration-300 dark:bg-slate-900">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-6 text-sm text-slate-500 md:flex-row dark:text-slate-400">
+      <p>© 2026 PVS Variedades — Impressão 3D em resina.</p>
+      <p class="flex items-center gap-2">
+        <i class="fa-solid fa-shield-halved text-tech-500 dark:text-neon-400"></i>
+        Conteúdo técnico revisado para iniciantes e intermediários.
+      </p>
+    </div>
+  </footer>
 
-<div class="overlay">
-<div class="title">LOJA</div>
-<div class="subtitle">Consumíveis e acessórios</div>
-<div class="btn">ACESSAR</div>
-</div>
-
-</div>
-
-<!-- MINI-ME -->
-
-<div class="panel minime">
-<a href="/em-construcao.html"></a>
-
-<div class="overlay">
-<div class="title">MINI-ME</div>
-<div class="subtitle">Seu boneco caricato</div>
-<div class="btn">ACESSAR</div>
-</div>
-
-</div>
-
-</div>
-
+  <!-- ====== SCRIPT: DARK MODE TOGGLE (JS nativo e leve) ====== -->
+  <script>
+    (function () {
+      var toggleBtn = document.getElementById('theme-toggle');
+      var iconMoon = document.getElementById('icon-moon');
+      var iconSun = document.getElementById('icon-sun');
+      var STORAGE_KEY = 'pvs-theme';
+      function applyTheme(theme) {
+        var root = document.documentElement;
+        root.classList.add('theme-transition');
+        setTimeout(function () {
+          root.classList.remove('theme-transition');
+        }, 450);
+        if (theme === 'dark') {
+          root.classList.add('dark');
+          iconMoon.classList.add('hidden');
+          iconSun.classList.remove('hidden');
+        } else {
+          root.classList.remove('dark');
+          iconMoon.classList.remove('hidden');
+          iconSun.classList.add('hidden');
+        }
+      }
+      function getInitialTheme() {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'dark' || saved === 'light') return saved;
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      var initialTheme = getInitialTheme();
+      if (initialTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        iconMoon && iconMoon.classList.add('hidden');
+        iconSun && iconSun.classList.remove('hidden');
+      }
+      toggleBtn.addEventListener('click', function () {
+        var isDark = document.documentElement.classList.contains('dark');
+        var nextTheme = isDark ? 'light' : 'dark';
+        localStorage.setItem(STORAGE_KEY, nextTheme);
+        applyTheme(nextTheme);
+      });
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+          applyTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    })();
+  </script>
 </body>
-
 </html>
