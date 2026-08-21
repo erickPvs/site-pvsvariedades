@@ -74,11 +74,11 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    /* ====== Grid sutil no fundo da página (item 3) ====== */
-    .page-grid {
+    /* ====== Grid sutil (APENAS nas seções de fundo, NÃO no body/cards) ====== */
+    .hero-grid {
       background-image:
-        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
       background-size: 44px 44px;
     }
     /* ====== Painéis (cards imersivos) ====== */
@@ -218,13 +218,16 @@
       box-shadow: 0 0 24px rgba(59,130,246,.45);
     }
     /* Fundos dos painéis */
-    .panel-loja { background: linear-gradient(135deg, #0f172a 0%, #7c2d12 100%); }
+    .panel-loja {
+      background: linear-gradient(135deg, #0f172a 0%, #7c2d12 100%);
+      aspect-ratio: 1 / 1; /* card Loja QUADRADO */
+    }
     .panel-guias::before { background-image: url("images/guia.webp"); }
     .panel-minime { background: linear-gradient(135deg, #0f172a 0%, #4c1d95 100%); }
     .panel-custom { background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%); }
   </style>
 </head>
-<body class="page-grid bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
+<body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
 
   <!-- ====== NAVBAR (padrão das guias: logo + toggle) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
@@ -241,69 +244,79 @@
     </div>
   </nav>
 
-  <!-- ====== SEÇÃO PRINCIPAL: ESCOLHA SEU CAMINHO (primeira coisa vista) ====== -->
-  <main class="mx-auto w-full max-w-6xl px-6 py-14 md:py-20">
-    <div class="mb-12 text-center">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Escolha seu caminho</p>
-      <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-5xl dark:text-white">
-        Tudo para você, em um só lugar
-      </h1>
-      <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-500 dark:text-slate-400">
-        Produtos variados, guias gratuitos e trabalhos personalizados.
-      </p>
-    </div>
+  <!-- ====== SEÇÃO PRINCIPAL: ESCOLHA SEU CAMINHO (com grid + brilhos no fundo, igual às guias) ====== -->
+  <main class="relative overflow-hidden">
+    <!-- Grid sutil no fundo da seção (NÃO sobre os cards) -->
+    <div class="hero-grid absolute inset-0 opacity-60"></div>
+    <!-- Glows decorativos (mesmos valores das guias) -->
+    <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
+    <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
 
-    <!-- Grid: Loja grande à esquerda (2 linhas, mais larga) + Tutoriais no topo direito (2 colunas) + Mini-Me e Customização embaixo -->
-    <div class="grid gap-6 md:grid-cols-3">
-      <!-- LOJA (card principal: 2 linhas de altura, mais larga/equilibrada) -->
-      <div class="panel panel-loja border border-slate-200 dark:border-slate-700/60 md:col-span-1 md:row-span-2" style="min-height:520px;">
-        <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
-        <a href="#loja"></a>
-        <div class="panel-icon"><i class="fa-solid fa-store"></i></div>
-        <div class="overlay">
-          <span class="panel-tag"><i class="fa-solid fa-bag-shopping"></i> E-commerce · Variedades</span>
-          <div class="title">Loja</div>
-          <div class="subtitle">Produtos variados para o seu dia a dia</div>
-          <span class="cta-chip">Ver produtos <i class="fa-solid fa-arrow-right"></i></span>
-        </div>
+    <!-- Conteúdo (acima do grid e dos brilhos) -->
+    <div class="relative z-10 mx-auto w-full max-w-6xl px-6 py-14 md:py-20">
+      <div class="mb-12 text-center">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Escolha seu caminho</p>
+        <h1 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-5xl dark:text-white">
+          Tudo para você, em um só lugar
+        </h1>
+        <p class="mx-auto mt-4 max-w-2xl text-lg leading-relaxed text-slate-500 dark:text-slate-400">
+          Produtos variados, guias gratuitos e trabalhos personalizados.
+        </p>
       </div>
 
-      <!-- TUTORIAIS DE MANUTENÇÃO (topo direito, 2 colunas — tamanho da antiga Customização) -->
-      <div class="panel panel-image panel-guias border border-slate-200 dark:border-slate-700/60 md:col-span-2" style="min-height:250px;">
-        <a href="/guias/"></a>
-        <div class="overlay">
-          <span class="panel-tag"><i class="fa-solid fa-book-open"></i> Aprenda com o passo a passo</span>
-          <div class="title-sm">Tutoriais de Manutenção</div>
-          <div class="subtitle">Resolva problemas e mantenha seu equipamento em dia</div>
-          <span class="cta-chip">Acessar <i class="fa-solid fa-arrow-right"></i></span>
+      <!-- Grid de 4 colunas: Loja quadrada (2x2) à esquerda + Tutoriais (2 col) no topo direito + Mini-Me e Customização (1 col cada) embaixo -->
+      <div class="grid gap-6 md:grid-cols-4">
+        <!-- LOJA (card principal, QUADRADO: 2 colunas de largura × 2 linhas de altura) -->
+        <div class="panel panel-loja border border-slate-200 dark:border-slate-700/60 md:col-span-2 md:row-span-2">
+          <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
+          <a href="#loja"></a>
+          <div class="panel-icon"><i class="fa-solid fa-store"></i></div>
+          <div class="overlay">
+            <span class="panel-tag"><i class="fa-solid fa-bag-shopping"></i> E-commerce · Variedades</span>
+            <div class="title">Loja</div>
+            <div class="subtitle">Produtos variados para o seu dia a dia</div>
+            <span class="cta-chip">Ver produtos <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
         </div>
-      </div>
 
-      <!-- MINI-ME (embaixo, 1 coluna) -->
-      <div class="panel panel-minime border border-slate-200 dark:border-slate-700/60" style="min-height:250px;">
-        <!-- LINK DO MINI-ME: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
-        <a href="#mini-me"></a>
-        <!-- IMAGEM DO MINI-ME: troque pelo arquivo do boneco caricato (ex.: images/mini-me.webp) se quiser usar a imagem em vez do ícone -->
-        <div class="panel-icon"><i class="fa-solid fa-face-smile"></i></div>
-        <div class="overlay">
-          <span class="panel-tag"><i class="fa-solid fa-star"></i> Sob encomenda</span>
-          <div class="title-sm">Mini-Me</div>
-          <div class="subtitle">Seu boneco caricato, feito sob encomenda</div>
-          <span class="cta-chip">Fazer orçamento <i class="fa-solid fa-arrow-right"></i></span>
+        <!-- TUTORIAIS DE MANUTENÇÃO (topo direito, 2 colunas) -->
+        <div class="panel panel-image panel-guias border border-slate-200 dark:border-slate-700/60 md:col-span-2" style="min-height:250px;">
+          <a href="/guias/"></a>
+          <div class="overlay">
+            <span class="panel-tag"><i class="fa-solid fa-book-open"></i> Aprenda com o passo a passo</span>
+            <div class="title-sm">Tutoriais de Manutenção</div>
+            <div class="subtitle">Resolva problemas e mantenha seu equipamento em dia</div>
+            <span class="cta-chip">Acessar <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
         </div>
-      </div>
 
-      <!-- CUSTOMIZAÇÃO DE MINIATURAS (embaixo, 1 coluna) -->
-      <div class="panel panel-custom border border-slate-200 dark:border-slate-700/60" style="min-height:250px;">
-        <!-- LINK DA CUSTOMIZAÇÃO: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
-        <a href="#custom"></a>
-        <!-- IMAGEM DE FUNDO: se quiser, troque o gradiente por uma imagem de fundo (ex.: images/miniaturas.webp) -->
-        <div class="panel-icon"><i class="fa-solid fa-car"></i></div>
-        <div class="overlay">
-          <span class="panel-tag"><i class="fa-solid fa-palette"></i> Sob encomenda</span>
-          <div class="title-sm">Customização de Miniaturas</div>
-          <div class="subtitle">Personalização de miniaturas de carros do seu jeito</div>
-          <span class="cta-chip">Fazer orçamento <i class="fa-solid fa-arrow-right"></i></span>
+        <!-- MINI-ME (embaixo, 1 coluna) -->
+        <div class="panel panel-minime border border-slate-200 dark:border-slate-700/60" style="min-height:250px;">
+          <!-- LINK DO MINI-ME: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
+          <a href="#mini-me"></a>
+          <!-- IMAGEM DO MINI-ME: troque pelo arquivo do boneco caricato (ex.: images/mini-me.webp) se quiser usar a imagem em vez do ícone -->
+          <div class="panel-icon"><i class="fa-solid fa-face-smile"></i></div>
+          <div class="overlay">
+            <span class="panel-tag"><i class="fa-solid fa-star"></i> Sob encomenda</span>
+            <div class="title-sm">Mini-Me</div>
+            <div class="subtitle">Seu boneco caricato, feito sob encomenda</div>
+            <span class="cta-chip">Fazer orçamento <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- CUSTOMIZAÇÃO DE MINIATURAS (embaixo, 1 coluna) -->
+        <div class="panel panel-custom border border-slate-200 dark:border-slate-700/60" style="min-height:250px;">
+          <!-- LINK DA CUSTOMIZAÇÃO: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
+          <a href="#custom"></a>
+          <!-- IMAGEM DE FUNDO: se quiser, troque o gradiente por uma imagem de fundo (ex.: images/miniaturas.webp) -->
+          <div class="panel-icon"><i class="fa-solid fa-car"></i></div>
+          <div class="overlay">
+            <span class="panel-tag"><i class="fa-solid fa-palette"></i> Sob encomenda</span>
+            <div class="title-sm">Customização de Miniaturas</div>
+            <div class="subtitle">Personalização de miniaturas de carros do seu jeito</div>
+            <span class="cta-chip">Fazer orçamento <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
         </div>
       </div>
     </div>
@@ -363,11 +376,10 @@
     </div>
   </section>
 
-  <!-- ====== CTA FINAL (item 4: reformulado, sem cara de blog antigo) ====== -->
+  <!-- ====== CTA FINAL ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="relative overflow-hidden rounded-3xl bg-slate-900 p-10 text-center shadow-lift md:p-14 dark:bg-slate-950 dark:shadow-none dark:ring-1 dark:ring-white/10">
-      <!-- Grid + brilhos no CTA -->
-      <div class="page-grid absolute inset-0 opacity-40"></div>
+      <div class="hero-grid absolute inset-0 opacity-40"></div>
       <div class="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-tech-600/30 blur-3xl"></div>
       <div class="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-neon-500/20 blur-3xl"></div>
       <div class="relative">
@@ -390,10 +402,9 @@
     </div>
   </section>
 
-  <!-- ====== FOOTER (item 2: nome da empresa + redes sociais) ====== -->
+  <!-- ====== FOOTER ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
-      <!-- Redes sociais -->
       <div class="mb-8 flex items-center justify-center gap-4">
         <!-- WHATSAPP: troque o href pelo seu link (https://wa.me/SEUNUMERO) -->
         <a href="#whatsapp" aria-label="WhatsApp"
@@ -416,7 +427,6 @@
           <i class="fa-brands fa-youtube"></i>
         </a>
       </div>
-      <!-- Nome da empresa em letras brancas pequenas -->
       <div class="text-center">
         <p class="text-sm font-medium text-white">PVS Variedades Ecommerce Ltda</p>
         <p class="mt-2 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
