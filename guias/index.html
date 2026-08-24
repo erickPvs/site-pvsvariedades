@@ -50,21 +50,21 @@ font-family:Arial, Helvetica, sans-serif;
 overflow-x:clip;
 scrollbar-gutter:stable;
 }
-/* SCROLLBAR ELEGANTE (discreta, combina com o tema) */
+/* SCROLLBAR */
 ::-webkit-scrollbar{width:10px;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;}
 ::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
 .dark ::-webkit-scrollbar-thumb{background:#334155;}
 .dark ::-webkit-scrollbar-thumb:hover{background:#475569;}
-/* GRID SUTIL (padrão da capa do Guia de Proteção de LCD) */
+/* GRID SUTIL */
 .hero-grid{
 background-image:
 linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px),
 linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px);
 background-size:44px 44px;
 }
-/* CONTAINER - grid responsivo (suporta N cards + rolagem) */
+/* CONTAINER - grid responsivo */
 .container{
 display:grid;
 grid-template-columns:1fr;
@@ -87,13 +87,14 @@ cursor:pointer;
 transition:transform .45s ease, box-shadow .45s ease, border-color .3s ease;
 border-radius:16px;
 min-height:340px;
+background-color:#0f172a; /* fundo opaco: impede o grid/brilhos de atravessarem */
 }
 @media (min-width:900px){
 .panel{
 min-height:420px;
 }
 }
-/* LINK - faz o link ocupar o card inteiro (CLIQUE FUNCIONANDO) */
+/* LINK - faz o link ocupar o card inteiro */
 .panel a{
 position:absolute;
 width:100%;
@@ -102,7 +103,7 @@ top:0;
 left:0;
 z-index:5;
 }
-/* IMAGEM */
+/* IMAGEM (apenas cards com foto) */
 .panel::before{
 content:"";
 position:absolute;
@@ -114,7 +115,7 @@ background-repeat:no-repeat;
 filter:grayscale(100%) brightness(1.25) opacity(.45);
 transition:.4s;
 }
-/* GRADIENTE DE LEGIBILIDADE (reforçado - sem tarjas) */
+/* GRADIENTE DE LEGIBILIDADE */
 .panel::after{
 content:"";
 position:absolute;
@@ -130,7 +131,7 @@ rgba(0,0,0,.9) 100%
 opacity:1;
 transition:.45s;
 }
-/* HOVER - o card cresce mais e se sobrepõe ao vizinho (sem empurrar o layout) */
+/* HOVER */
 .panel:hover::before{
 filter:grayscale(0%) brightness(1) opacity(1);
 transform:scale(1.05);
@@ -145,7 +146,6 @@ box-shadow:
 0 40px 80px rgba(0,0,0,.35),
 0 10px 30px rgba(0,0,0,.25);
 }
-/* Modo noturno: glow ciano no hover */
 .dark .panel:hover{
 box-shadow:
 0 40px 80px rgba(0,0,0,.5),
@@ -158,6 +158,27 @@ background-image:url("../images/guia.webp");
 }
 .pelicula-lcd::before{
 background-image:url("../images/pelicula-lcd.webp");
+}
+/* CARD SEM FOTO (Posicionamento e Furação): gradiente escuro + ícone */
+.posicionamento{
+background:linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+}
+.posicionamento::before{
+display:none; /* sem foto, sem camada de imagem */
+}
+.panel-icon{
+position:absolute;
+top:38%;
+left:50%;
+transform:translate(-50%, -50%);
+font-size:80px;
+color:rgba(255,255,255,0.14);
+transition:.4s;
+z-index:1;
+}
+.panel:hover .panel-icon{
+transform:translate(-50%, -50%) scale(1.12);
+color:rgba(255,255,255,0.3);
 }
 /* TEXTO */
 .overlay{
@@ -189,7 +210,7 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
 
-<!-- ====== NAVBAR (mesmo padrão das guias: logo + toggle, mesmos tamanhos) ====== -->
+<!-- ====== NAVBAR (mesmo padrão das guias) ====== -->
 <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
     <a href="/" class="flex items-center">
@@ -204,23 +225,17 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
   </div>
 </nav>
 
-<!-- 
-     1. HERO / BANNER (mesmo padrão das guias: escuro com grid + brilhos nos dois modos)
--->
+<!-- HERO -->
 <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
-  <!-- Grid sutil -->
   <div class="hero-grid absolute inset-0 opacity-60"></div>
-  <!-- Glows decorativos (mesmos valores das guias) -->
   <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
   <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
   <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
-  <!-- Breadcrumb -->
   <nav class="relative z-10 mx-auto max-w-6xl px-6 pt-8 text-sm text-slate-400">
     <a href="/" class="transition hover:text-white">Início</a>
     <span class="mx-2 text-slate-600">/</span>
     <span class="text-slate-300">Guias</span>
   </nav>
-  <!-- Conteúdo -->
   <div class="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-10 md:pb-24 md:pt-14">
     <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100 backdrop-blur">
       <i class="fa-solid fa-book-open mr-1"></i>
@@ -239,9 +254,7 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
   </div>
 </header>
 
-<!-- 
-     2. CARDS DAS GUIAS (área clara no modo claro / escura no modo escuro)
--->
+<!-- CARDS DAS GUIAS -->
 <main class="mx-auto w-full max-w-6xl px-6 py-16 md:py-20">
   <div class="container">
     <!-- ACF -->
@@ -260,10 +273,19 @@ transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease,
         <div class="subtitle">Passo a passo completo para instalação da película protetora.</div>
       </div>
     </div>
+    <!-- POSICIONAMENTO E FURAÇÃO (novo) -->
+    <div class="panel posicionamento border border-slate-200 hover:border-cyan-500/50 dark:border-slate-700/60">
+      <a href="/guias/guia-posicionamento-furacao.html"></a>
+      <div class="panel-icon"><i class="fa-solid fa-cube"></i></div>
+      <div class="overlay">
+        <div class="title">Posicionamento e Furação</div>
+        <div class="subtitle">Otimize orientação, ilhas e furos de drenagem para impressões perfeitas</div>
+      </div>
+    </div>
   </div>
 </main>
 
-<!-- SCRIPT: DARK MODE TOGGLE (JS nativo e leve) -->
+<!-- SCRIPT: DARK MODE TOGGLE -->
 <script>
 (function () {
   var toggleBtn = document.getElementById('theme-toggle');
