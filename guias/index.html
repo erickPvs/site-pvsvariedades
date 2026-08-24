@@ -1,343 +1,436 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guias | PVS Variedades</title>
-<!-- Tailwind CSS (CDN) -->
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-tailwind.config = {
-  darkMode: 'class',
-  theme: {
-    extend: {
-      fontFamily: {
-        sans: ['Arial', 'Helvetica', 'sans-serif'],
-      },
-      colors: {
-        tech: {
-          50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe',
-          300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6',
-          600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guias | PVS Variedades</title>
+  <meta name="description" content="Central de guias da PVS Variedades: troca do filme ACF, proteção de LCD e posicionamento/furação. Aprenda passo a passo e resolva problemas da impressão 3D de resina." />
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            tech: {
+              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe',
+              300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6',
+              600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
+            },
+            industrial: {
+              400: '#fb923c', 500: '#f97316', 600: '#ea580c',
+            },
+            neon: {
+              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2',
+            },
+          },
+          boxShadow: {
+            soft: '0 4px 24px -6px rgba(15, 23, 42, 0.08)',
+            lift: '0 20px 50px -12px rgba(15, 23, 42, 0.18)',
+            'glow-tech': '0 0 0 4px rgba(59, 130, 246, 0.15)',
+            'glow-neon': '0 0 24px rgba(34, 211, 238, 0.25)',
+          },
+          backdropBlur: {
+            xs: '2px',
+          },
         },
-        industrial: {
-          400: '#fb923c', 500: '#f97316', 600: '#ea580c',
-        },
-        neon: {
-          400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2',
-        },
       },
-      boxShadow: {
-        soft: '0 4px 24px -6px rgba(15, 23, 42, 0.08)',
-        lift: '0 20px 50px -12px rgba(15, 23, 42, 0.18)',
-        'glow-tech': '0 0 0 4px rgba(59, 130, 246, 0.15)',
-        'glow-neon': '0 0 24px rgba(34, 211, 238, 0.25)',
-      },
-      backdropBlur: {
-        xs: '2px',
-      },
-    },
-  },
-};
-</script>
-<!-- Font Awesome (ícones do Dark Mode) -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-<style>
-html,body{
-margin:0;
-padding:0;
-font-family:Arial, Helvetica, sans-serif;
-overflow-x:clip;
-scrollbar-gutter:stable;
-}
-/* SCROLLBAR */
-::-webkit-scrollbar{width:10px;}
-::-webkit-scrollbar-track{background:transparent;}
-::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:8px;}
-::-webkit-scrollbar-thumb:hover{background:#94a3b8;}
-.dark ::-webkit-scrollbar-thumb{background:#334155;}
-.dark ::-webkit-scrollbar-thumb:hover{background:#475569;}
-/* GRID SUTIL */
-.hero-grid{
-background-image:
-linear-gradient(rgba(148,163,184,0.08) 1px, transparent 1px),
-linear-gradient(90deg, rgba(148,163,184,0.08) 1px, transparent 1px);
-background-size:44px 44px;
-}
-/* CONTAINER - grid responsivo */
-.container{
-display:grid;
-grid-template-columns:1fr;
-gap:16px;
-width:100%;
-}
-@media (min-width:900px){
-.container{
-grid-template-columns:1fr 1fr;
-}
-}
-/* PAINEL */
-.panel{
-position:relative;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-cursor:pointer;
-transition:transform .45s ease, box-shadow .45s ease, border-color .3s ease;
-border-radius:16px;
-min-height:340px;
-background-color:#0f172a; /* fundo opaco: impede o grid/brilhos de atravessarem */
-}
-@media (min-width:900px){
-.panel{
-min-height:420px;
-}
-}
-/* LINK - faz o link ocupar o card inteiro */
-.panel a{
-position:absolute;
-width:100%;
-height:100%;
-top:0;
-left:0;
-z-index:5;
-}
-/* IMAGEM (apenas cards com foto) */
-.panel::before{
-content:"";
-position:absolute;
-width:110%;
-height:110%;
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-filter:grayscale(100%) brightness(1.25) opacity(.45);
-transition:.4s;
-}
-/* GRADIENTE DE LEGIBILIDADE */
-.panel::after{
-content:"";
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(
-to bottom,
-rgba(0,0,0,0) 15%,
-rgba(0,0,0,.3) 50%,
-rgba(0,0,0,.65) 78%,
-rgba(0,0,0,.9) 100%
-);
-opacity:1;
-transition:.45s;
-}
-/* HOVER */
-.panel:hover::before{
-filter:grayscale(0%) brightness(1) opacity(1);
-transform:scale(1.05);
-}
-.panel:hover::after{
-opacity:.65;
-}
-.panel:hover{
-transform:scale(1.06);
-z-index:10;
-box-shadow:
-0 40px 80px rgba(0,0,0,.35),
-0 10px 30px rgba(0,0,0,.25);
-}
-.dark .panel:hover{
-box-shadow:
-0 40px 80px rgba(0,0,0,.5),
-0 10px 30px rgba(0,0,0,.3),
-0 0 24px rgba(34,211,238,.18);
-}
-/* IMAGENS */
-.acf::before{
-background-image:url("../images/guia.webp");
-}
-.pelicula-lcd::before{
-background-image:url("../images/pelicula-lcd.webp");
-}
-/* CARD SEM FOTO (Posicionamento e Furação): gradiente escuro + ícone */
-.posicionamento{
-background:linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-}
-.posicionamento::before{
-display:none; /* sem foto, sem camada de imagem */
-}
-.panel-icon{
-position:absolute;
-top:38%;
-left:50%;
-transform:translate(-50%, -50%);
-font-size:80px;
-color:rgba(255,255,255,0.14);
-transition:.4s;
-z-index:1;
-}
-.panel:hover .panel-icon{
-transform:translate(-50%, -50%) scale(1.12);
-color:rgba(255,255,255,0.3);
-}
-/* TEXTO */
-.overlay{
-position:absolute;
-bottom:28px;
-width:75%;
-text-align:center;
-color:white;
-z-index:3;
-}
-.title{
-font-size:30px;
-font-weight:bold;
-margin-bottom:10px;
-text-shadow:0 2px 10px rgba(0,0,0,.75), 0 4px 28px rgba(0,0,0,.45);
-}
-.subtitle{
-font-size:16px;
-margin-bottom:10px;
-text-shadow:0 1px 8px rgba(0,0,0,.7);
-}
-/* Transição suave de tema */
-html.theme-transition *,
-html.theme-transition *::before,
-html.theme-transition *::after {
-transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
-}
-</style>
+    };
+  </script>
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ====== Base ====== */
+    body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+    ::selection { background: #2563eb; color: #fff; }
+    /* Scrollbar custom */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+    .dark ::-webkit-scrollbar-thumb { background: #334155; }
+    .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
+    /* ====== Animações ====== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-up { animation: fadeUp 0.7s ease-out both; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    /* Grid pattern sutil no hero */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+      background-size: 44px 44px;
+    }
+    /* ====== Painéis (cards imersivos) ====== */
+    .panel {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform .45s ease, box-shadow .45s ease, border-color .3s ease;
+      border-radius: 20px;
+      min-height: 340px;
+      /* FUNDO OPACO: impede o grid/brilhos de atravessarem o card */
+      background-color: #0f172a;
+    }
+    .panel a {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 5;
+    }
+    /* Camada de imagem (apenas painéis com foto) */
+    .panel.panel-image::before {
+      content: "";
+      position: absolute;
+      width: 110%;
+      height: 110%;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(100%) brightness(1.25) opacity(.45);
+      transition: .4s;
+    }
+    .panel.panel-image:hover::before {
+      filter: grayscale(0%) brightness(1) opacity(1);
+      transform: scale(1.05);
+    }
+    /* Gradiente de legibilidade */
+    .panel::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 15%,
+        rgba(0,0,0,.3) 50%,
+        rgba(0,0,0,.65) 78%,
+        rgba(0,0,0,.9) 100%
+      );
+      opacity: 1;
+      transition: .45s;
+    }
+    .panel:hover::after { opacity: .65; }
+    .panel:hover {
+      transform: scale(1.03);
+      z-index: 10;
+      box-shadow: 0 40px 80px rgba(0,0,0,.35), 0 10px 30px rgba(0,0,0,.25);
+    }
+    .dark .panel:hover {
+      box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.3), 0 0 24px rgba(34,211,238,.18);
+    }
+    /* Ícone decorativo dos painéis sem foto */
+    .panel-icon {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 90px;
+      color: rgba(255, 255, 255, 0.16);
+      transition: .4s;
+      z-index: 1;
+    }
+    .panel:hover .panel-icon {
+      transform: translate(-50%, -50%) scale(1.12);
+      color: rgba(255, 255, 255, 0.32);
+    }
+    /* Texto */
+    .overlay {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 85%;
+      text-align: center;
+      color: #fff;
+      z-index: 3;
+    }
+    .panel-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-bottom: .6rem;
+      padding: .3rem .8rem;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(4px);
+    }
+    .title {
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1.1;
+      text-shadow: 0 2px 10px rgba(0,0,0,.75), 0 4px 28px rgba(0,0,0,.45);
+    }
+    .subtitle {
+      font-size: 15px;
+      margin-top: .5rem;
+      text-shadow: 0 1px 8px rgba(0,0,0,.7);
+    }
+    .cta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 1rem;
+      padding: .55rem 1.2rem;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #fff;
+      color: #0f172a;
+      transition: .25s;
+    }
+    .panel:hover .cta-chip {
+      background: #2563eb;
+      color: #fff;
+      box-shadow: 0 0 24px rgba(59,130,246,.45);
+    }
+    /* Fundos dos painéis */
+    .panel-acf::before { background-image: url("../images/guia.webp"); }
+    .panel-lcd::before { background-image: url("../images/pelicula-lcd.webp"); }
+    .panel-pos { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%); }
+    .panel-pos .panel-icon { font-size: 80px; }
+    /* Transição suave de tema */
+    html.theme-transition *,
+    html.theme-transition *::before,
+    html.theme-transition *::after {
+      transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
+    }
+    /* ====== Ícones de redes "Em breve" ====== */
+    .social-soon {
+      opacity: .45;
+      filter: grayscale(60%);
+      transition: all .3s ease;
+      cursor: not-allowed;
+    }
+    .social-soon:hover {
+      opacity: .8;
+      filter: grayscale(0%);
+      transform: translateY(-2px);
+    }
+  </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
 
-<!-- ====== NAVBAR (mesmo padrão das guias) ====== -->
-<nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-    <a href="/" class="flex items-center">
-      <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
-    </a>
-    <button id="theme-toggle"
-            aria-label="Alternar tema claro/escuro"
-            class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
-      <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
-      <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
-    </button>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
-  <div class="hero-grid absolute inset-0 opacity-60"></div>
-  <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
-  <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
-  <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
-  <nav class="relative z-10 mx-auto max-w-6xl px-6 pt-8 text-sm text-slate-400">
-    <a href="/" class="transition hover:text-white">Início</a>
-    <span class="mx-2 text-slate-600">/</span>
-    <span class="text-slate-300">Guias</span>
+  <!-- ====== NAVBAR (padrão das guias: logo + toggle) ====== -->
+  <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
+    <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <a href="/" class="flex items-center">
+        <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
+      </a>
+      <button id="theme-toggle"
+              aria-label="Alternar tema claro/escuro"
+              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
+        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
+        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
+      </button>
+    </div>
   </nav>
-  <div class="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-10 md:pb-24 md:pt-14">
-    <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100 backdrop-blur">
-      <i class="fa-solid fa-book-open mr-1"></i>
-      CENTRAL DE CONHECIMENTO
-    </div>
-    <h1 class="max-w-3xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-      GUIAS /
-      <span class="bg-gradient-to-r from-tech-400 via-neon-300 to-industrial-400 bg-clip-text text-transparent">
-        TUTORIAIS
-      </span>
-    </h1>
-    <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
-      Aprenda a resolver problemas e obter resultados profissionais com o
-      passo a passo completo da PVS Variedades.
-    </p>
-  </div>
-</header>
 
-<!-- CARDS DAS GUIAS -->
-<main class="mx-auto w-full max-w-6xl px-6 py-16 md:py-20">
-  <div class="container">
-    <!-- ACF -->
-    <div class="panel acf border border-slate-200 hover:border-cyan-500/50 dark:border-slate-700/60">
-      <a href="/guias/guia-acf.html"></a>
-      <div class="overlay">
-        <div class="title">Troca do Filme ACF</div>
-        <div class="subtitle">Evite falhas e mantenha qualidade constante</div>
+  <!-- ====== HERO ====== -->
+  <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
+    <div class="hero-grid absolute inset-0 opacity-60"></div>
+    <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
+    <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
+    <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
+    <nav class="relative z-10 mx-auto max-w-6xl px-6 pt-8 text-sm text-slate-400">
+      <a href="/" class="transition hover:text-white">Início</a>
+      <span class="mx-2 text-slate-600">/</span>
+      <span class="text-slate-300">Guias</span>
+    </nav>
+    <div class="relative z-10 mx-auto max-w-6xl px-6 pb-16 pt-10 md:pb-24 md:pt-14">
+      <div class="animate-fade-up mb-6 inline-flex items-center gap-2 rounded-full border border-tech-500/40 bg-tech-500/10 px-4 py-1.5 text-xs font-semibold tracking-wide text-tech-100 backdrop-blur">
+        <i class="fa-solid fa-book-open mr-1"></i>
+        CENTRAL DE CONHECIMENTO
+      </div>
+      <h1 class="animate-fade-up delay-100 max-w-3xl text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
+        GUIAS /
+        <span class="bg-gradient-to-r from-tech-400 via-neon-300 to-industrial-400 bg-clip-text text-transparent">
+          TUTORIAIS
+        </span>
+      </h1>
+      <p class="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
+        Aprenda a resolver problemas e obter resultados profissionais com o
+        passo a passo completo da PVS Variedades.
+      </p>
+    </div>
+  </header>
+
+  <!-- ====== CARDS DAS GUIAS ====== -->
+  <main class="mx-auto w-full max-w-6xl px-6 py-16 md:py-20">
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <!-- ACF -->
+      <div class="panel panel-image panel-acf border border-slate-200 dark:border-slate-700/60">
+        <a href="/guias/guia-acf.html"></a>
+        <div class="overlay">
+          <span class="panel-tag"><i class="fa-solid fa-film"></i> Manutenção preventiva</span>
+          <div class="title">Troca do Filme ACF</div>
+          <div class="subtitle">Evite falhas e mantenha qualidade constante</div>
+          <span class="cta-chip">Ler o guia <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <!-- PELÍCULA DE LCD -->
+      <div class="panel panel-image panel-lcd border border-slate-200 dark:border-slate-700/60">
+        <a href="/guias/guia-pelicula-lcd.html"></a>
+        <div class="overlay">
+          <span class="panel-tag"><i class="fa-solid fa-shield-halved"></i> Proteção do painel</span>
+          <div class="title">Película de Proteção de LCD</div>
+          <div class="subtitle">Passo a passo completo para instalação da película protetora</div>
+          <span class="cta-chip">Ler o guia <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </div>
+      <!-- POSICIONAMENTO E FURAÇÃO -->
+      <div class="panel panel-pos border border-slate-200 dark:border-slate-700/60">
+        <a href="/guias/guia-posicionamento-furacao.html"></a>
+        <div class="panel-icon"><i class="fa-solid fa-cube"></i></div>
+        <div class="overlay">
+          <span class="panel-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Otimização</span>
+          <div class="title">Posicionamento e Furação</div>
+          <div class="subtitle">Otimize orientação, ilhas e furos de drenagem para impressões perfeitas</div>
+          <span class="cta-chip">Ler o guia <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
       </div>
     </div>
-    <!-- PELICULA DE LCD -->
-    <div class="panel pelicula-lcd border border-slate-200 hover:border-cyan-500/50 dark:border-slate-700/60">
-      <a href="/guias/guia-pelicula-lcd.html"></a>
-      <div class="overlay">
-        <div class="title">Película de Proteção de LCD</div>
-        <div class="subtitle">Passo a passo completo para instalação da película protetora.</div>
+  </main>
+
+  <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
+  <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
+    <div class="mx-auto max-w-6xl px-6">
+      <!-- Contato: pílulas com ícone + texto -->
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <!-- WhatsApp (abre a conversa) -->
+        <a href="https://wa.me/5511947407823" target="_blank" rel="noopener" aria-label="WhatsApp"
+           class="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-emerald-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          WhatsApp
+        </a>
+        <!-- E-mail (copia ao clicar — não abre janela) -->
+        <button type="button" onclick="copyEmail()" aria-label="Copiar e-mail"
+                class="inline-flex items-center gap-3 rounded-full border border-tech-500/40 bg-tech-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-tech-500/30">
+          <i class="fa-solid fa-envelope text-xl"></i>
+          contato@pvsvariedades.com.br
+        </button>
+      </div>
+      <!-- Redes sociais "Em breve" (lembrete visual) -->
+      <div class="mt-6 flex items-center justify-center gap-3">
+        <span title="Em breve" aria-label="Instagram em breve"
+              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
+          <i class="fa-brands fa-instagram"></i>
+        </span>
+        <span title="Em breve" aria-label="Facebook em breve"
+              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
+          <i class="fa-brands fa-facebook-f"></i>
+        </span>
+        <span title="Em breve" aria-label="YouTube em breve"
+              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
+          <i class="fa-brands fa-youtube"></i>
+        </span>
+      </div>
+      <div class="mt-8 text-center">
+        <p class="text-sm font-medium text-white">PVS Variedades Ecommerce Ltda</p>
+        <p class="mt-1 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
       </div>
     </div>
-    <!-- POSICIONAMENTO E FURAÇÃO (novo) -->
-    <div class="panel posicionamento border border-slate-200 hover:border-cyan-500/50 dark:border-slate-700/60">
-      <a href="/guias/guia-posicionamento-furacao.html"></a>
-      <div class="panel-icon"><i class="fa-solid fa-cube"></i></div>
-      <div class="overlay">
-        <div class="title">Posicionamento e Furação</div>
-        <div class="subtitle">Otimize orientação, ilhas e furos de drenagem para impressões perfeitas</div>
-      </div>
+    <!-- Toast "E-mail copiado" -->
+    <div id="toast"
+         class="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 translate-y-24 rounded-full bg-slate-900/95 px-6 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl ring-1 ring-white/10 backdrop-blur transition-all duration-300">
+      <i class="fa-solid fa-check mr-1 text-emerald-400"></i>
+      E-mail copiado! Cole no seu app de e-mail.
     </div>
-  </div>
-</main>
+  </footer>
 
-<!-- SCRIPT: DARK MODE TOGGLE -->
-<script>
-(function () {
-  var toggleBtn = document.getElementById('theme-toggle');
-  var iconMoon = document.getElementById('icon-moon');
-  var iconSun = document.getElementById('icon-sun');
-  var STORAGE_KEY = 'pvs-theme';
-
-  function applyTheme(theme) {
-    var root = document.documentElement;
-    root.classList.add('theme-transition');
-    setTimeout(function () {
-      root.classList.remove('theme-transition');
-    }, 450);
-
-    if (theme === 'dark') {
-      root.classList.add('dark');
-      iconMoon.classList.add('hidden');
-      iconSun.classList.remove('hidden');
-    } else {
-      root.classList.remove('dark');
-      iconMoon.classList.remove('hidden');
-      iconSun.classList.add('hidden');
+  <!-- ====== SCRIPT: DARK MODE TOGGLE + COPIAR E-MAIL ====== -->
+  <script>
+    function copyEmail() {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('contato@pvsvariedades.com.br').then(function () {
+          var toast = document.getElementById('toast');
+          toast.classList.remove('translate-y-24', 'opacity-0');
+          setTimeout(function () {
+            toast.classList.add('translate-y-24', 'opacity-0');
+          }, 2500);
+        });
+      } else {
+        var temp = document.createElement('input');
+        temp.value = 'contato@pvsvariedades.com.br';
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        var toast = document.getElementById('toast');
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        setTimeout(function () {
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 2500);
+      }
     }
-  }
-
-  function getInitialTheme() {
-    var saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === 'dark' || saved === 'light') return saved;
-    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-
-  var initialTheme = getInitialTheme();
-  if (initialTheme === 'dark') {
-    document.documentElement.classList.add('dark');
-    iconMoon && iconMoon.classList.add('hidden');
-    iconSun && iconSun.classList.remove('hidden');
-  }
-
-  toggleBtn.addEventListener('click', function () {
-    var isDark = document.documentElement.classList.contains('dark');
-    var nextTheme = isDark ? 'light' : 'dark';
-    localStorage.setItem(STORAGE_KEY, nextTheme);
-    applyTheme(nextTheme);
-  });
-
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-    if (!localStorage.getItem(STORAGE_KEY)) {
-      applyTheme(e.matches ? 'dark' : 'light');
-    }
-  });
-})();
-</script>
-
+    (function () {
+      var toggleBtn = document.getElementById('theme-toggle');
+      var iconMoon = document.getElementById('icon-moon');
+      var iconSun = document.getElementById('icon-sun');
+      var STORAGE_KEY = 'pvs-theme';
+      function applyTheme(theme) {
+        var root = document.documentElement;
+        root.classList.add('theme-transition');
+        setTimeout(function () {
+          root.classList.remove('theme-transition');
+        }, 450);
+        if (theme === 'dark') {
+          root.classList.add('dark');
+          iconMoon.classList.add('hidden');
+          iconSun.classList.remove('hidden');
+        } else {
+          root.classList.remove('dark');
+          iconMoon.classList.remove('hidden');
+          iconSun.classList.add('hidden');
+        }
+      }
+      function getInitialTheme() {
+        var saved = localStorage.getItem(STORAGE_KEY);
+        if (saved === 'dark' || saved === 'light') return saved;
+        return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      var initialTheme = getInitialTheme();
+      if (initialTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+        iconMoon && iconMoon.classList.add('hidden');
+        iconSun && iconSun.classList.remove('hidden');
+      }
+      toggleBtn.addEventListener('click', function () {
+        var isDark = document.documentElement.classList.contains('dark');
+        var nextTheme = isDark ? 'light' : 'dark';
+        localStorage.setItem(STORAGE_KEY, nextTheme);
+        applyTheme(nextTheme);
+      });
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+          applyTheme(e.matches ? 'dark' : 'light');
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
