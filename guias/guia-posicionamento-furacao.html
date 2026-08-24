@@ -141,6 +141,132 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
+    /* ====== Ícones de redes "Em breve" ====== */
+    .social-soon {
+      opacity: .45;
+      filter: grayscale(60%);
+      transition: all .3s ease;
+      cursor: not-allowed;
+    }
+    .social-soon:hover {
+      opacity: .8;
+      filter: grayscale(0%);
+      transform: translateY(-2px);
+    }
+    /* ====== Botões "Ver detalhes" (popups) ====== */
+    .chip-open {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      margin-top: 1rem;
+      padding: .5rem 1rem;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      border: 1px solid rgba(59, 130, 246, .4);
+      background: rgba(59, 130, 246, .08);
+      color: #1d4ed8;
+      cursor: pointer;
+      transition: all .3s ease;
+    }
+    .dark .chip-open {
+      color: #22d3ee;
+      border-color: rgba(34, 211, 238, .4);
+      background: rgba(34, 211, 238, .08);
+    }
+    .chip-open:hover { background: #2563eb; color: #fff; }
+    .dark .chip-open:hover { background: #22d3ee; color: #0f172a; }
+    /* ====== Modais (popups) ====== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(15, 23, 42, .65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal-card {
+      width: 100%;
+      max-width: 560px;
+      max-height: 85vh;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, .35);
+      border: 1px solid rgba(148, 163, 184, .25);
+      animation: fadeUp .3s ease-out both;
+    }
+    .dark .modal-card {
+      background: #0f172a;
+      border-color: rgba(255, 255, 255, .12);
+    }
+    .badge-em-edicao {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .3rem .7rem;
+      border-radius: 9999px;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .dark .badge-em-edicao { background: rgba(245, 158, 11, .15); color: #fbbf24; }
+    .badge-dica {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .3rem .7rem;
+      border-radius: 9999px;
+      background: #d1fae5;
+      color: #047857;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+    .dark .badge-dica { background: rgba(16, 185, 129, .15); color: #34d399; }
+    .btn-modal-close {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .6rem 1.25rem;
+      border-radius: 9999px;
+      background: #0f172a;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all .25s ease;
+      border: 0;
+    }
+    .dark .btn-modal-close { background: #22d3ee; color: #0f172a; }
+    .btn-modal-close:hover { background: #2563eb; }
+    .dark .btn-modal-close:hover { background: #0e7490; color: #fff; }
+    .modal-x {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 9999px;
+      background: rgba(148, 163, 184, .15);
+      color: #475569;
+      font-size: .9rem;
+      cursor: pointer;
+      transition: all .25s ease;
+      border: 0;
+    }
+    .dark .modal-x { color: #cbd5e1; }
+    .modal-x:hover { background: #2563eb; color: #fff; }
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
@@ -239,11 +365,14 @@
           </div>
           <h3 class="text-lg font-bold text-slate-900 dark:text-white">Força de descolagem e sucção</h3>
           <p class="mt-3 max-w-xl leading-relaxed text-slate-500 dark:text-slate-400">
-            A cada camada, a plataforma "puxa" a peça do fundo do tanque. Isso
-            gera a <strong>força de descolagem (peel force)</strong> e o
-            <strong>efeito de sucção</strong>. Se o modelo estiver mal orientado,
-            a peça solta dos suportes, deforma — ou até danifica o filme FEP/ACF
-            e a tela LCD.
+            A cada camada, a plataforma "puxa" a peça do fundo do tanque — isso
+            gera a <strong>força de descolagem (peel force)</strong>, presente em
+            toda impressão. O <strong>efeito de sucção</strong> é uma força
+            extra: ele surge quando o modelo está mal posicionado ou com o furo
+            de passagem de fluxo de ar no lugar errado, e as duas forças se
+            somam. Se o modelo estiver mal orientado, a peça solta dos suportes,
+            deforma — ou até danifica o filme FEP/ACF e, <strong>se vazar
+            resina</strong>, a tela LCD.
           </p>
         </div>
       </div>
@@ -256,8 +385,9 @@
           <h3 class="text-lg font-bold text-slate-900 dark:text-white">Onde a falha começa</h3>
           <p class="mt-3 leading-relaxed text-slate-500 dark:text-slate-400">
             Três causas respondem pela maioria das falhas: orientação errada,
-            <strong>ilhas estruturais</strong> e modelos ocos <strong>sem furos
-            de drenagem</strong>. Este guia ataca as três.
+            <strong>ilhas estruturais</strong> e <strong>furação incorreta</strong>
+            — modelos ocos sem furos de drenagem, ou com furos no lugar errado.
+            Este guia ataca as três.
           </p>
         </div>
       </div>
@@ -270,7 +400,8 @@
           <h3 class="text-lg font-bold text-slate-900 dark:text-white">Menos resina, mesma qualidade</h3>
           <p class="mt-3 leading-relaxed text-slate-500 dark:text-slate-400">
             Modelos ocos com paredes de 1,8 mm economizam até 70% de resina,
-            mas exigem furação correta — senão o efeito ventosa estraga tudo.
+            mas exigem furação correta — senão o <strong>efeito de sucção</strong>
+            estraga tudo.
           </p>
         </div>
       </div>
@@ -291,6 +422,7 @@
         </p>
       </div>
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <!-- ÂNGULO IDEAL (item 5: popup "Em edição") -->
         <div class="card-hover rounded-2xl border-2 border-emerald-500 bg-white p-7 shadow-soft dark:border-emerald-500 dark:bg-emerald-950/30 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
             <i class="fa-solid fa-check"></i> Ângulo ideal
@@ -300,17 +432,23 @@
             plataforma. Isso reduz a área de seção transversal de cada camada,
             diminuindo drasticamente a força de descolagem.
           </p>
+          <button type="button" onclick="openModal('modal-angulo-ideal')" class="chip-open">
+            <i class="fa-solid fa-circle-info"></i> Ver detalhes
+          </button>
         </div>
+        <!-- EVITE 0° (item 6: texto corrigido) -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Evite 0°
           </div>
           <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             Superfícies planas <strong>paralelas à plataforma</strong> geram
-            sucção máxima e são extremamente difíceis de descolar — falhas
-            catastróficas ou bases empenadas.
+            sucção máxima e são extremamente difíceis de descolar do filme. O
+            resultado são falhas catastróficas ou a <strong>base da própria
+            peça deformada (empenada)</strong>.
           </p>
         </div>
+        <!-- EVITE 90° (item 7: popup "Em edição") -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-600 dark:bg-amber-500/15 dark:text-amber-400">
             <i class="fa-solid fa-xmark"></i> Evite 90°
@@ -318,8 +456,13 @@
           <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             O posicionamento <strong>perfeitamente vertical</strong> é
             problemático para a estabilidade estrutural de peças altas e finas.
+            <em>Imprimir em pé é possível, mas demanda observações.</em>
           </p>
+          <button type="button" onclick="openModal('modal-evite-90')" class="chip-open">
+            <i class="fa-solid fa-circle-info"></i> Ver observações
+          </button>
         </div>
+        <!-- UNIFORMIDADE -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-wave-square"></i> Uniformidade
@@ -330,6 +473,7 @@
             <strong>delaminação</strong>.
           </p>
         </div>
+        <!-- ACABAMENTO -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-gem"></i> Acabamento
@@ -339,6 +483,7 @@
             lado que fica para baixo recebe os suportes e terá marcas para lixar.
           </p>
         </div>
+        <!-- GRANDES SUPERFÍCIES (item 8: aponta para o popup Ângulo ideal) -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-layer-group"></i> Grandes superfícies
@@ -346,8 +491,12 @@
           <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             Para modelos com faces planas extensas, uma inclinação de
             <strong>10° a 20°</strong> já basta para aumentar a taxa de sucesso
-            (referência técnica da Formlabs).
+            (referência técnica da Formlabs). A inclinação a escolher pode ser
+            baseada no assunto do popup <strong>"Ângulo ideal"</strong>.
           </p>
+          <button type="button" onclick="openModal('modal-angulo-ideal')" class="chip-open">
+            <i class="fa-solid fa-circle-info"></i> Ver detalhes
+          </button>
         </div>
       </div>
     </div>
@@ -367,6 +516,7 @@
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
+      <!-- CONSEQUÊNCIAS (item 9: atalho VAT Cleaner) -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-red-500/10 blur-2xl transition-all duration-500 group-hover:bg-red-500/20"></div>
         <div class="relative">
@@ -379,8 +529,12 @@
             — causando buracos na peça ou, em casos graves, a falha total por
             acúmulo de detritos.
           </p>
+          <button type="button" onclick="openModal('modal-vat-cleaner')" class="chip-open">
+            <i class="fa-solid fa-soap"></i> Como limpar o ACF (VAT Cleaner)
+          </button>
         </div>
       </div>
+      <!-- COMO SURGEM -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-amber-500/10 blur-2xl transition-all duration-500 group-hover:bg-amber-500/20"></div>
         <div class="relative">
@@ -394,6 +548,7 @@
           </p>
         </div>
       </div>
+      <!-- DETECÇÃO -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
@@ -423,6 +578,7 @@
             detecta até micro-ilhas. Nem toda micro-ilha precisa de suporte.
           </p>
         </div>
+        <!-- CHITUBOX (item 10: complemento sobre suporte automático) -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 flex items-center gap-2">
             <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-tech-50 text-tech-600 dark:bg-tech-500/15 dark:text-neon-400"><i class="fa-solid fa-cube"></i></span>
@@ -430,7 +586,11 @@
           </div>
           <p class="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
             <strong>Risk Detection</strong>, com <strong>Cavity Detection</strong>
-            (bolsões de ar) e <strong>Suspension Detection</strong> (áreas flutuantes).
+            (bolsões de ar) e <strong>Suspension Detection</strong> (áreas
+            flutuantes). <strong>Bônus:</strong> o suporte automático do
+            Chitubox é muito inteligente e otimizado — ele sustenta ilhas
+            estruturais perfeitamente, <strong>mesmo dentro de peças ocas</strong>.
+            Use o auto-suporte antes de complementar manualmente.
           </p>
         </div>
         <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
@@ -445,10 +605,30 @@
           </p>
         </div>
       </div>
+      <!-- BANNER VERDE (item 11: pixels soltos / purga / suporte automático) -->
+      <div class="mt-10 flex flex-col gap-5 rounded-2xl border-2 border-emerald-500/60 bg-emerald-50 p-7 md:flex-row md:items-start dark:border-emerald-500/60 dark:bg-emerald-950/20 dark:shadow-none">
+        <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-xl text-white shadow-lg shadow-emerald-500/30">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div>
+          <h4 class="text-lg font-extrabold text-emerald-900 dark:text-emerald-300">
+            Boa notícia: nem toda "ilha" é uma ilha de verdade
+          </h4>
+          <p class="mt-2 text-sm leading-relaxed text-emerald-900/80 dark:text-emerald-200/90">
+            Durante a modelagem, muitos <strong>pixels soltos</strong> ficam para
+            trás — nem sempre o modelador faz a <strong>"purga"</strong> (limpeza
+            da malha). Alguns fatiadores (o <strong>Chitubox</strong>, com
+            certeza) reconhecem esses pixels como ilhas: por isso a verificação
+            acusa dezenas, centenas ou até milhares de "ilhas" que são apenas
+            pixels soltos. É exatamente aí que entra a importância do
+            <strong>suporte automático</strong>, que resolve isso sem esforço.
+          </p>
+        </div>
+      </div>
     </div>
   </section>
   <!-- 
-       5. FURAÇÃO E DRENAGEM
+       5. FURAÇÃO E DRENAGEM (você continuará daqui)
    -->
   <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
@@ -961,8 +1141,97 @@
       </div>
     </div>
   </section>
-  <!-- 
-         <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
+
+  <!-- ====== MODAIS (POPUPS) ====== -->
+  <!-- Popup 1: Ângulo ideal (item 5 — lembrete "Em edição") -->
+  <div id="modal-angulo-ideal" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-angulo-ideal')" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Ângulo ideal">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="badge-em-edicao"><i class="fa-solid fa-pen-to-square"></i> Em edição</span>
+          <h3 class="mt-2 text-xl font-extrabold text-slate-900 dark:text-white">Ângulo ideal: escolha da inclinação</h3>
+        </div>
+        <button type="button" class="modal-x" onclick="closeModal('modal-angulo-ideal')" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        <p>
+          Este popup foi criado como <strong>lembrete</strong>: você vai trabalhar
+          o assunto da escolha do ângulo ideal (e usá-lo como base para as grandes
+          superfícies). Assim que o conteúdo estiver pronto, é só substituir este
+          texto.
+        </p>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button type="button" class="btn-modal-close" onclick="closeModal('modal-angulo-ideal')">
+          <i class="fa-solid fa-arrow-left"></i> Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup 2: Evite 90° (item 7 — lembrete "Em edição" com rascunho) -->
+  <div id="modal-evite-90" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-evite-90')" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Imprimir em pé (90 graus)">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="badge-em-edicao"><i class="fa-solid fa-pen-to-square"></i> Em edição</span>
+          <h3 class="mt-2 text-xl font-extrabold text-slate-900 dark:text-white">Imprimir em pé (90°): observações</h3>
+        </div>
+        <button type="button" class="modal-x" onclick="closeModal('modal-evite-90')" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+        <p><strong>Rascunho — revise quando puder:</strong></p>
+        <ul class="mt-3 list-disc space-y-1.5 pl-5">
+          <li>É possível imprimir em pé, desde que a <strong>base de contato</strong> tenha suportes bem dimensionados.</li>
+          <li>A <strong>seção transversal</strong> deve ser pequena e constante ao longo da altura.</li>
+          <li>Peças altas e finas exigem atenção à <strong>flexão durante o descolamento</strong>.</li>
+        </ul>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button type="button" class="btn-modal-close" onclick="closeModal('modal-evite-90')">
+          <i class="fa-solid fa-arrow-left"></i> Fechar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup 3: Como limpar o ACF com o VAT Cleaner (item 9) -->
+  <div id="modal-vat-cleaner" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-vat-cleaner')" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Como limpar o ACF com o VAT Cleaner">
+      <div class="flex items-start justify-between gap-4">
+        <div>
+          <span class="badge-dica"><i class="fa-solid fa-soap"></i> Dica prática</span>
+          <h3 class="mt-2 text-xl font-extrabold text-slate-900 dark:text-white">Como limpar o ACF com o VAT Cleaner</h3>
+        </div>
+        <button type="button" class="modal-x" onclick="closeModal('modal-vat-cleaner')" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mt-4">
+        <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          A função <strong>VAT Clean</strong> (ou "Tank Clean") remove detritos e
+          partículas presas no filme sem risco de furos. Veja como fazer:
+        </p>
+        <ol class="mt-4 list-decimal space-y-2 pl-5 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          <li>Com a cuba na impressora, certifique-se de que a <strong>resina cubra o fundo</strong> do tanque.</li>
+          <li>Ative o <strong>VAT Clean</strong> por poucos segundos (10–30 s) — ele cura uma camada fina de resina no fundo.</li>
+          <li>A folha curada "gruda" nos <strong>detritos e partículas</strong> que estavam sobre o filme.</li>
+          <li>Solte uma das bordas com a <strong>espátula plástica</strong> e puxe a folha inteira de uma vez, pelo canto.</li>
+          <li>Descarte a folha curada — o filme ACF fica limpo, sem resíduos.</li>
+        </ol>
+        <div class="mt-4 rounded-xl bg-amber-50 p-4 text-sm text-amber-800 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-1 dark:ring-amber-500/20">
+          <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+          <strong>Nunca</strong> use objetos metálicos ou pontiagudos sobre o
+          filme. Se sobrar resina curada, repita o processo.
+        </div>
+      </div>
+      <div class="mt-6 flex justify-end">
+        <button type="button" class="btn-modal-close" onclick="closeModal('modal-vat-cleaner')">
+          <i class="fa-solid fa-arrow-left"></i> Voltar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
       <!-- Contato: pílulas com ícone + texto -->
@@ -1007,7 +1276,8 @@
       E-mail copiado! Cole no seu app de e-mail.
     </div>
   </footer>
-  <!-- SCRIPT: copiar e-mail -->
+
+  <!-- ====== SCRIPT: DARK MODE + COPIAR E-MAIL + MODAIS ====== -->
   <script>
     function copyEmail() {
       if (navigator.clipboard) {
@@ -1032,9 +1302,24 @@
         }, 2500);
       }
     }
-  </script>
-  <!-- ====== SCRIPT: DARK MODE TOGGLE (JS nativo e leve) ====== -->
-  <script>
+    /* Modais */
+    function openModal(id) {
+      var m = document.getElementById(id);
+      if (m) { m.classList.add('open'); m.setAttribute('aria-hidden', 'false'); }
+    }
+    function closeModal(id) {
+      var m = document.getElementById(id);
+      if (m) { m.classList.remove('open'); m.setAttribute('aria-hidden', 'true'); }
+    }
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(function (m) {
+          m.classList.remove('open');
+          m.setAttribute('aria-hidden', 'true');
+        });
+      }
+    });
+    /* Dark mode */
     (function () {
       var toggleBtn = document.getElementById('theme-toggle');
       var iconMoon = document.getElementById('icon-moon');
