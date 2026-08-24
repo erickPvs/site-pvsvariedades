@@ -416,42 +416,77 @@
     </div>
   </section>
 
-  <!-- ====== FOOTER (WhatsApp + E-mail funcionais + redes "Em breve") ====== -->
+    <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
-      <div class="mb-8 flex items-center justify-center gap-4">
-        <!-- WHATSAPP (funcional) -->
+      <!-- Contato: pílulas com ícone + texto -->
+      <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+        <!-- WhatsApp (abre a conversa) -->
         <a href="https://wa.me/5511947407823" target="_blank" rel="noopener" aria-label="WhatsApp"
-           class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white transition-all duration-300 hover:bg-emerald-500 hover:text-white hover:-translate-y-0.5">
-          <i class="fa-brands fa-whatsapp"></i>
+           class="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-emerald-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+          WhatsApp
         </a>
-        <!-- E-MAIL (funcional) -->
-        <a href="mailto:contato@pvsvariedades.com.br?subject=Contato%20pelo%20site" aria-label="E-mail"
-           class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white transition-all duration-300 hover:bg-tech-500 hover:text-white hover:-translate-y-0.5">
-          <i class="fa-solid fa-envelope"></i>
-        </a>
-        <!-- INSTAGRAM (EM BREVE — troque o href pelo perfil quando criar) -->
+        <!-- E-mail (copia ao clicar — não abre janela) -->
+        <button type="button" onclick="copyEmail()" aria-label="Copiar e-mail"
+                class="inline-flex items-center gap-3 rounded-full border border-tech-500/40 bg-tech-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-tech-500/30">
+          <i class="fa-solid fa-envelope text-xl"></i>
+          contato@pvsvariedades.com.br
+        </button>
+      </div>
+      <!-- Redes sociais "Em breve" (lembrete visual) -->
+      <div class="mt-6 flex items-center justify-center gap-3">
         <span title="Em breve" aria-label="Instagram em breve"
-              class="social-soon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white">
+              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
           <i class="fa-brands fa-instagram"></i>
         </span>
-        <!-- FACEBOOK (EM BREVE — troque o href pelo perfil quando criar) -->
         <span title="Em breve" aria-label="Facebook em breve"
-              class="social-soon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white">
+              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
           <i class="fa-brands fa-facebook-f"></i>
         </span>
-        <!-- YOUTUBE (EM BREVE — troque o href pelo canal quando criar) -->
         <span title="Em breve" aria-label="YouTube em breve"
-              class="social-soon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white">
+              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
           <i class="fa-brands fa-youtube"></i>
         </span>
       </div>
-      <div class="text-center">
+      <div class="mt-8 text-center">
         <p class="text-sm font-medium text-white">PVS Variedades Ecommerce Ltda</p>
-        <p class="mt-2 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
+        <p class="mt-1 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
       </div>
     </div>
+    <!-- Toast "E-mail copiado" -->
+    <div id="toast"
+         class="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 translate-y-24 rounded-full bg-slate-900/95 px-6 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl ring-1 ring-white/10 backdrop-blur transition-all duration-300">
+      <i class="fa-solid fa-check mr-1 text-emerald-400"></i>
+      E-mail copiado! Cole no seu app de e-mail.
+    </div>
   </footer>
+  <!-- SCRIPT: copiar e-mail -->
+  <script>
+    function copyEmail() {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('contato@pvsvariedades.com.br').then(function () {
+          var toast = document.getElementById('toast');
+          toast.classList.remove('translate-y-24', 'opacity-0');
+          setTimeout(function () {
+            toast.classList.add('translate-y-24', 'opacity-0');
+          }, 2500);
+        });
+      } else {
+        var temp = document.createElement('input');
+        temp.value = 'contato@pvsvariedades.com.br';
+        document.body.appendChild(temp);
+        temp.select();
+        document.execCommand('copy');
+        document.body.removeChild(temp);
+        var toast = document.getElementById('toast');
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        setTimeout(function () {
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 2500);
+      }
+    }
+  </script>
 
   <!-- ====== SCRIPT: DARK MODE TOGGLE (JS nativo e leve) ====== -->
   <script>
