@@ -74,7 +74,7 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    /* ====== Grid sutil (APENAS nas seções de fundo, NÃO no body/cards) ====== */
+    /* ====== Grid sutil (APENAS nas seções de fundo, NÃO nos cards) ====== */
     .hero-grid {
       background-image:
         linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
@@ -227,6 +227,18 @@
     .panel-guias::before { background-image: url("images/guia.webp"); }
     .panel-minime { background: linear-gradient(135deg, #0f172a 0%, #4c1d95 100%); }
     .panel-custom { background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%); }
+    /* Ícones de redes "Em breve" (placeholders) */
+    .social-soon {
+      opacity: .45;
+      filter: grayscale(60%);
+      transition: all .3s ease;
+      cursor: not-allowed;
+    }
+    .social-soon:hover {
+      opacity: .8;
+      filter: grayscale(0%);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
@@ -246,9 +258,9 @@
     </div>
   </nav>
 
-  <!-- ====== SEÇÃO PRINCIPAL: ESCOLHA SEU CAMINHO (com grid + brilhos no fundo, igual às guias) ====== -->
+  <!-- ====== SEÇÃO PRINCIPAL: ESCOLHA SEU CAMINHO (com grid + brilhos no fundo) ====== -->
   <main class="relative overflow-hidden">
-    <!-- Grid sutil no fundo da seção (fica ATRÁS dos cards, que agora são opacos) -->
+    <!-- Grid sutil no fundo da seção (fica ATRÁS dos cards, que são opacos) -->
     <div class="hero-grid absolute inset-0 opacity-60"></div>
     <!-- Glows decorativos (mesmos valores das guias) -->
     <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
@@ -404,30 +416,35 @@
     </div>
   </section>
 
-  <!-- ====== FOOTER ====== -->
+  <!-- ====== FOOTER (WhatsApp + E-mail funcionais + redes "Em breve") ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
       <div class="mb-8 flex items-center justify-center gap-4">
-        <!-- WHATSAPP: troque o href pelo seu link (https://wa.me/SEUNUMERO) -->
-        <a href="#whatsapp" aria-label="WhatsApp"
+        <!-- WHATSAPP (funcional) -->
+        <a href="https://wa.me/5511947407823" target="_blank" rel="noopener" aria-label="WhatsApp"
            class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white transition-all duration-300 hover:bg-emerald-500 hover:text-white hover:-translate-y-0.5">
           <i class="fa-brands fa-whatsapp"></i>
         </a>
-        <!-- INSTAGRAM: troque o href pelo seu perfil -->
-        <a href="#instagram" aria-label="Instagram"
-           class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white transition-all duration-300 hover:bg-pink-500 hover:text-white hover:-translate-y-0.5">
+        <!-- E-MAIL (funcional) -->
+        <a href="mailto:contato@pvsvariedades.com.br?subject=Contato%20pelo%20site" aria-label="E-mail"
+           class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white transition-all duration-300 hover:bg-tech-500 hover:text-white hover:-translate-y-0.5">
+          <i class="fa-solid fa-envelope"></i>
+        </a>
+        <!-- INSTAGRAM (EM BREVE — troque o href pelo perfil quando criar) -->
+        <span title="Em breve" aria-label="Instagram em breve"
+              class="social-soon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white">
           <i class="fa-brands fa-instagram"></i>
-        </a>
-        <!-- FACEBOOK: troque o href pelo seu perfil (ou remova se não tiver) -->
-        <a href="#facebook" aria-label="Facebook"
-           class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white transition-all duration-300 hover:bg-blue-600 hover:text-white hover:-translate-y-0.5">
+        </span>
+        <!-- FACEBOOK (EM BREVE — troque o href pelo perfil quando criar) -->
+        <span title="Em breve" aria-label="Facebook em breve"
+              class="social-soon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white">
           <i class="fa-brands fa-facebook-f"></i>
-        </a>
-        <!-- YOUTUBE: troque o href pelo seu canal (ou remova se não tiver) -->
-        <a href="#youtube" aria-label="YouTube"
-           class="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white transition-all duration-300 hover:bg-red-600 hover:text-white hover:-translate-y-0.5">
+        </span>
+        <!-- YOUTUBE (EM BREVE — troque o href pelo canal quando criar) -->
+        <span title="Em breve" aria-label="YouTube em breve"
+              class="social-soon inline-flex h-11 w-11 items-center justify-center rounded-xl bg-white/5 text-xl text-white">
           <i class="fa-brands fa-youtube"></i>
-        </a>
+        </span>
       </div>
       <div class="text-center">
         <p class="text-sm font-medium text-white">PVS Variedades Ecommerce Ltda</p>
