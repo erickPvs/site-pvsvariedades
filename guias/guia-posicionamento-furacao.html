@@ -202,6 +202,7 @@
       background: #0f172a;
       border-color: rgba(255, 255, 255, .12);
     }
+    .modal-card-wide { max-width: 680px; }
     .badge-em-edicao {
       display: inline-flex;
       align-items: center;
@@ -263,6 +264,124 @@
     }
     .dark .modal-x { color: #cbd5e1; }
     .modal-x:hover { background: #2563eb; color: #fff; }
+    /* ====== Calculadora de inclinação ideal ====== */
+    .calc-field { display: flex; flex-direction: column; gap: .4rem; }
+    .calc-label {
+      font-size: .75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #64748b;
+    }
+    .dark .calc-label { color: #94a3b8; }
+    .calc-select, .calc-input {
+      width: 100%;
+      padding: .65rem .9rem;
+      border-radius: .75rem;
+      border: 1px solid rgba(148, 163, 184, .35);
+      background: #f8fafc;
+      color: #0f172a;
+      font-size: .9rem;
+      font-weight: 600;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .dark .calc-select, .dark .calc-input {
+      background: rgba(255, 255, 255, .06);
+      color: #e2e8f0;
+      border-color: rgba(255, 255, 255, .15);
+    }
+    .calc-select:focus, .calc-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, .15);
+    }
+    .dark .calc-select:focus, .dark .calc-input:focus {
+      border-color: #22d3ee;
+      box-shadow: 0 0 0 3px rgba(34, 211, 238, .15);
+    }
+    .calc-chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .calc-chip {
+      padding: .3rem .7rem;
+      border-radius: 9999px;
+      font-size: .75rem;
+      font-weight: 700;
+      border: 1px solid rgba(148, 163, 184, .35);
+      background: #f1f5f9;
+      color: #475569;
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .dark .calc-chip {
+      background: rgba(255, 255, 255, .06);
+      color: #cbd5e1;
+      border-color: rgba(255, 255, 255, .15);
+    }
+    .calc-chip:hover { border-color: #3b82f6; color: #2563eb; }
+    .dark .calc-chip:hover { border-color: #22d3ee; color: #22d3ee; }
+    .calc-chip.active { background: #2563eb; color: #fff; border-color: #2563eb; }
+    .dark .calc-chip.active { background: #22d3ee; color: #0f172a; border-color: #22d3ee; }
+    .calc-result {
+      margin-top: 1rem;
+      border-radius: 1rem;
+      border: 2px solid rgba(34, 197, 94, .5);
+      background: rgba(34, 197, 94, .07);
+      padding: 1rem 1.1rem;
+      font-size: .95rem;
+      line-height: 1.6;
+      color: #14532d;
+    }
+    .dark .calc-result {
+      color: #86efac;
+      border-color: rgba(34, 197, 94, .45);
+      background: rgba(34, 197, 94, .08);
+    }
+    .calc-result strong { font-weight: 800; }
+    .calc-warn {
+      margin-top: .75rem;
+      border-radius: .9rem;
+      border: 1px solid rgba(245, 158, 11, .5);
+      background: rgba(245, 158, 11, .08);
+      padding: .8rem 1rem;
+      font-size: .85rem;
+      line-height: 1.55;
+      color: #92400e;
+      display: none;
+    }
+    .dark .calc-warn { color: #fcd34d; background: rgba(245, 158, 11, .1); }
+    .calc-warn.show { display: block; }
+    .calc-ascii {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .72rem;
+      line-height: 1.25;
+      white-space: pre;
+      overflow-x: auto;
+      color: #64748b;
+      background: rgba(148, 163, 184, .08);
+      border-radius: .75rem;
+      padding: .9rem 1rem;
+      margin-top: 1rem;
+    }
+    .dark .calc-ascii { color: #94a3b8; background: rgba(255, 255, 255, .05); }
+    .calc-note {
+      margin-top: 1rem;
+      border-radius: .9rem;
+      background: rgba(59, 130, 246, .07);
+      border: 1px solid rgba(59, 130, 246, .25);
+      padding: .8rem 1rem;
+      font-size: .85rem;
+      line-height: 1.55;
+      color: #1e3a8a;
+    }
+    .dark .calc-note { color: #bfdbfe; background: rgba(59, 130, 246, .08); border-color: rgba(59, 130, 246, .3); }
+    .calc-section-title {
+      font-size: .8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #2563eb;
+      margin-top: 1.25rem;
+    }
+    .dark .calc-section-title { color: #22d3ee; }
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
@@ -425,7 +544,7 @@
             diminuindo drasticamente a força de descolagem.
           </p>
           <button type="button" onclick="openModal('modal-angulo-ideal')" class="chip-open">
-            <i class="fa-solid fa-circle-info"></i> Ver detalhes
+            <i class="fa-solid fa-calculator"></i> Calculadora de inclinação
           </button>
         </div>
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
@@ -482,7 +601,7 @@
             baseada no assunto do popup <strong>"Ângulo ideal"</strong>.
           </p>
           <button type="button" onclick="openModal('modal-angulo-ideal')" class="chip-open">
-            <i class="fa-solid fa-circle-info"></i> Ver detalhes
+            <i class="fa-solid fa-calculator"></i> Calculadora de inclinação
           </button>
         </div>
       </div>
@@ -1133,24 +1252,94 @@
   </section>
 
   <!-- ====== MODAIS (POPUPS) ====== -->
-  <!-- Popup 1: Ângulo ideal (lembrete "Em edição") -->
+  <!-- Popup 1: Ângulo ideal — Calculadora de inclinação -->
   <div id="modal-angulo-ideal" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-angulo-ideal')" aria-hidden="true">
-    <div class="modal-card" role="dialog" aria-modal="true" aria-label="Ângulo ideal">
+    <div class="modal-card modal-card-wide" role="dialog" aria-modal="true" aria-label="Ângulo ideal: calculadora de inclinação">
       <div class="flex items-start justify-between gap-4">
         <div>
-          <span class="badge-em-edicao"><i class="fa-solid fa-pen-to-square"></i> Em edição</span>
-          <h3 class="mt-2 text-xl font-extrabold text-slate-900 dark:text-white">Ângulo ideal: escolha da inclinação</h3>
+          <span class="badge-dica"><i class="fa-solid fa-calculator"></i> Calculadora interativa</span>
+          <h3 class="mt-2 text-xl font-extrabold text-slate-900 dark:text-white">Ângulo ideal: calculadora de inclinação</h3>
         </div>
         <button type="button" class="modal-x" onclick="closeModal('modal-angulo-ideal')" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
       </div>
-      <div class="mt-4 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-        <p>
-          Este popup foi criado como <strong>lembrete</strong>: você vai trabalhar
-          o assunto da escolha do ângulo ideal (e usá-lo como base para as grandes
-          superfícies). Assim que o conteúdo estiver pronto, é só substituir este
-          texto.
+
+      <!-- Regra de ouro -->
+      <div class="mt-4 rounded-xl bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-900 dark:bg-emerald-500/10 dark:text-emerald-200 dark:ring-1 dark:ring-emerald-500/20">
+        <p><strong>Regra de ouro:</strong> o lado da peça que você quer com o melhor acabamento fica para <strong>CIMA</strong>, longe da plataforma. O lado que fica encostado no plate recebe os suportes e fica com marcas — deixe para baixo o lado que menos importa.</p>
+      </div>
+
+      <!-- Desenho ASCII -->
+      <div class="calc-ascii">              melhores faces (para CIMA)
+                    /\
+                   /  \
+                  / θ  \
+                 /______\
+                / suportes \
+               /____________\
+    ────────────────────────────   ← PLACA (horizontal)
+       ângulo θ medido da placa
+       0° = deitado  |  90° = em pé</div>
+
+      <!-- Aviso: calculadora é um norte -->
+      <p class="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
+        <i class="fa-solid fa-compass mr-1 text-tech-600 dark:text-neon-400"></i>
+        Esta calculadora é um <strong>norte matemático</strong>: o objetivo é deixar uma das faces da peça com o menor número de linhas de impressão possível. O valor exato nem sempre é o mais prático — use como ponto de partida.
+      </p>
+
+      <!-- Calculadora -->
+      <div class="mt-4 space-y-4">
+        <div class="calc-field">
+          <label class="calc-label" for="calc-impressora"><i class="fa-solid fa-print mr-1"></i> Impressora</label>
+          <select id="calc-impressora" class="calc-select" onchange="calcInclinacao()">
+            <option value="saturn3u12k">Elegoo Saturn 3 Ultra (12K)</option>
+            <option value="saturn4u12k">Elegoo Saturn 4 Ultra (12K)</option>
+            <option value="saturn4u16k">Elegoo Saturn 4 Ultra (16K)</option>
+            <option value="m5s">Anycubic Photon Mono M5s</option>
+            <option value="m5spro">Anycubic Photon M5s Pro / M7 / M7 Pro</option>
+            <option value="mini8k">Phrozen Sonic Mini 8K</option>
+            <option value="mighty8k">Phrozen Sonic Mighty 8K</option>
+            <option value="mega8k">Phrozen Sonic Mega 8K</option>
+            <option value="halot8k">Creality Halot Mage 8K</option>
+          </select>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label" for="calc-camada"><i class="fa-solid fa-ruler mr-1"></i> Altura de camada (mm)</label>
+          <input id="calc-camada" class="calc-input" type="number" step="0.01" min="0.01" max="0.2" value="0.05" inputmode="decimal" oninput="calcInclinacao()" />
+          <div class="calc-chips">
+            <button type="button" class="calc-chip" onclick="setCamada('0.02', this)">0,02</button>
+            <button type="button" class="calc-chip" onclick="setCamada('0.03', this)">0,03</button>
+            <button type="button" class="calc-chip active" onclick="setCamada('0.05', this)">0,05</button>
+            <button type="button" class="calc-chip" onclick="setCamada('0.1', this)">0,1</button>
+          </div>
+        </div>
+
+        <div id="calc-resultado" class="calc-result">
+          Inclinação ideal no eixo <strong>X</strong>: <strong>69,2°</strong> &nbsp;|&nbsp; no eixo <strong>Y</strong>: <strong>64,4°</strong> <em>(medido da placa)</em>
+        </div>
+        <div id="calc-aviso" class="calc-warn show">
+          <i class="fa-solid fa-triangle-exclamation mr-1"></i>
+          <strong>Valor alto demais na prática</strong> — use <strong>45°</strong> como compromisso (peça quase em pé exige muitos suportes).
+        </div>
+      </div>
+
+      <!-- Explicação da referência (logo abaixo da calculadora) -->
+      <div class="mt-5">
+        <p class="calc-section-title"><i class="fa-solid fa-circle-info mr-1"></i> Sobre a referência do ângulo</p>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          O ângulo é medido a partir da <strong>placa (horizontal)</strong> — o
+          mesmo valor que você digita no slicer ao rotacionar a peça.
+          <strong>0° = deitado</strong>, <strong>90° = em pé</strong>. No slicer,
+          o ângulo de <strong>45° do horizontal</strong> é o compromisso mais usado.
+        </p>
+        <p class="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+          <strong>Peças orgânicas/curvas:</strong> o ângulo exato importa pouco.
+          <strong>Peças planas:</strong> inclinar alinhado ao pixel deixa as
+          linhas (serrilhado) quase imperceptíveis e ajuda na
+          <strong>estabilidade</strong>.
         </p>
       </div>
+
       <div class="mt-6 flex justify-end">
         <button type="button" class="btn-modal-close" onclick="closeModal('modal-angulo-ideal')">
           <i class="fa-solid fa-arrow-left"></i> Fechar
@@ -1281,7 +1470,7 @@
     </div>
   </footer>
 
-  <!-- ====== SCRIPT: DARK MODE + COPIAR E-MAIL + MODAIS ====== -->
+  <!-- ====== SCRIPT: DARK MODE + COPIAR E-MAIL + MODAIS + CALCULADORA ====== -->
   <script>
     function copyEmail() {
       if (navigator.clipboard) {
@@ -1322,6 +1511,49 @@
         });
       }
     });
+    /* ====== Calculadora de inclinação ideal ====== */
+    var CALC_PITCH = {
+      'saturn3u12k': { x: 19, y: 24 },
+      'saturn4u12k': { x: 19, y: 24 },
+      'saturn4u16k': { x: 14, y: 19 },
+      'm5s':         { x: 19, y: 24 },
+      'm5spro':      { x: 16.8, y: 24.8 },
+      'mini8k':      { x: 22, y: 22 },
+      'mighty8k':    { x: 28, y: 28 },
+      'mega8k':      { x: 43, y: 43 },
+      'halot8k':     { x: 29.7, y: 29.7 }
+    };
+    function calcInclinacao() {
+      var sel = document.getElementById('calc-impressora');
+      var camada = parseFloat(document.getElementById('calc-camada').value);
+      var p = CALC_PITCH[sel.value];
+      var res = document.getElementById('calc-resultado');
+      var warn = document.getElementById('calc-aviso');
+      if (!p || isNaN(camada) || camada <= 0) {
+        res.innerHTML = '<em>Informe uma altura de camada válida.</em>';
+        warn.classList.remove('show');
+        return;
+      }
+      var angX = Math.atan((camada * 1000) / p.x) * 180 / Math.PI;
+      var angY = Math.atan((camada * 1000) / p.y) * 180 / Math.PI;
+      var fmt = function (v) { return v.toFixed(1).replace('.', ','); };
+      res.innerHTML = 'Inclinação ideal no eixo <strong>X</strong>: <strong>' + fmt(angX) + '°</strong> &nbsp;|&nbsp; no eixo <strong>Y</strong>: <strong>' + fmt(angY) + '°</strong> <em>(medido da placa)</em>';
+      if (angX > 55 || angY > 55) {
+        warn.classList.add('show');
+      } else {
+        warn.classList.remove('show');
+      }
+    }
+    function setCamada(v, el) {
+      document.getElementById('calc-camada').value = v;
+      document.querySelectorAll('.calc-chip').forEach(function (c) { c.classList.remove('active'); });
+      if (el) el.classList.add('active');
+      calcInclinacao();
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      calcInclinacao();
+    });
+    /* ====== Dark mode ====== */
     (function () {
       var toggleBtn = document.getElementById('theme-toggle');
       var iconMoon = document.getElementById('icon-moon');
