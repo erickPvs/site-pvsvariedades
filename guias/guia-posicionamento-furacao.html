@@ -51,7 +51,6 @@
     /* ====== Base ====== */
     body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
     ::selection { background: #2563eb; color: #fff; }
-    /* Scrollbar custom */
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
@@ -125,16 +124,13 @@
       color: #0f172a;
       box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.2), 0 0 28px rgba(34, 211, 238, 0.4);
     }
-    /* Cards com hover */
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); }
-    /* Transição suave de tema */
     html.theme-transition *,
     html.theme-transition *::before,
     html.theme-transition *::after {
       transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
     }
-    /* ====== Glassmorphism (dark) ====== */
     .glass-card {
       background: rgba(255, 255, 255, 0.06);
       backdrop-filter: blur(16px);
@@ -270,7 +266,7 @@
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
-  <!-- ====== NAVBAR (padrão das guias: logo + toggle) ====== -->
+  <!-- ====== NAVBAR ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
       <a href="/" class="flex items-center">
@@ -284,9 +280,8 @@
       </button>
     </div>
   </nav>
-  <!-- 
-       1. HEADER / HERO SECTION
-   -->
+
+  <!-- ====== HERO ====== -->
   <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
     <div class="hero-grid absolute inset-0 opacity-60"></div>
     <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
@@ -342,9 +337,8 @@
       </div>
     </div>
   </header>
-  <!-- 
-       2. POR QUE ISSO IMPORTA (Bento Grid)
-   -->
+
+  <!-- ====== 2. POR QUE ISSO IMPORTA ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mx-auto mb-14 max-w-2xl text-center">
       <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Por que isso importa</p>
@@ -407,9 +401,8 @@
       </div>
     </div>
   </section>
-  <!-- 
-       3. REGRAS DE OURO DE INCLINAÇÃO
-   -->
+
+  <!-- ====== 3. REGRAS DE OURO DE INCLINAÇÃO ====== -->
   <section id="regras-de-ouro" class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
       <div class="mb-14 max-w-2xl">
@@ -422,7 +415,6 @@
         </p>
       </div>
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <!-- ÂNGULO IDEAL (item 5: popup "Em edição") -->
         <div class="card-hover rounded-2xl border-2 border-emerald-500 bg-white p-7 shadow-soft dark:border-emerald-500 dark:bg-emerald-950/30 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
             <i class="fa-solid fa-check"></i> Ângulo ideal
@@ -436,7 +428,6 @@
             <i class="fa-solid fa-circle-info"></i> Ver detalhes
           </button>
         </div>
-        <!-- EVITE 0° (item 6: texto corrigido) -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Evite 0°
@@ -448,7 +439,6 @@
             peça deformada (empenada)</strong>.
           </p>
         </div>
-        <!-- EVITE 90° (item 7: popup "Em edição") -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-600 dark:bg-amber-500/15 dark:text-amber-400">
             <i class="fa-solid fa-xmark"></i> Evite 90°
@@ -462,7 +452,6 @@
             <i class="fa-solid fa-circle-info"></i> Ver observações
           </button>
         </div>
-        <!-- UNIFORMIDADE -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-wave-square"></i> Uniformidade
@@ -473,7 +462,6 @@
             <strong>delaminação</strong>.
           </p>
         </div>
-        <!-- ACABAMENTO -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-gem"></i> Acabamento
@@ -483,7 +471,6 @@
             lado que fica para baixo recebe os suportes e terá marcas para lixar.
           </p>
         </div>
-        <!-- GRANDES SUPERFÍCIES (item 8: aponta para o popup Ângulo ideal) -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-layer-group"></i> Grandes superfícies
@@ -501,9 +488,8 @@
       </div>
     </div>
   </section>
-  <!-- 
-       4. ILHAS ESTRUTURAIS
-   -->
+
+  <!-- ====== 4. ILHAS ESTRUTURAIS ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mb-14 max-w-2xl">
       <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Ilhas estruturais</p>
@@ -516,7 +502,6 @@
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
-      <!-- CONSEQUÊNCIAS (item 9: atalho VAT Cleaner) -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-red-500/10 blur-2xl transition-all duration-500 group-hover:bg-red-500/20"></div>
         <div class="relative">
@@ -534,7 +519,6 @@
           </button>
         </div>
       </div>
-      <!-- COMO SURGEM -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-amber-500/10 blur-2xl transition-all duration-500 group-hover:bg-amber-500/20"></div>
         <div class="relative">
@@ -548,7 +532,6 @@
           </p>
         </div>
       </div>
-      <!-- DETECÇÃO -->
       <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
@@ -578,7 +561,6 @@
             detecta até micro-ilhas. Nem toda micro-ilha precisa de suporte.
           </p>
         </div>
-        <!-- CHITUBOX (item 10: complemento sobre suporte automático) -->
         <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 flex items-center gap-2">
             <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-tech-50 text-tech-600 dark:bg-tech-500/15 dark:text-neon-400"><i class="fa-solid fa-cube"></i></span>
@@ -605,7 +587,7 @@
           </p>
         </div>
       </div>
-      <!-- BANNER VERDE (item 11: pixels soltos / purga / suporte automático) -->
+      <!-- BANNER VERDE (pixels soltos / purga) -->
       <div class="mt-10 flex flex-col gap-5 rounded-2xl border-2 border-emerald-500/60 bg-emerald-50 p-7 md:flex-row md:items-start dark:border-emerald-500/60 dark:bg-emerald-950/20 dark:shadow-none">
         <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-emerald-500 text-xl text-white shadow-lg shadow-emerald-500/30">
           <i class="fa-solid fa-circle-check"></i>
@@ -627,9 +609,8 @@
       </div>
     </div>
   </section>
-  <!-- 
-       5. FURAÇÃO E DRENAGEM (você continuará daqui)
-   -->
+
+  <!-- ====== 5. FURAÇÃO E DRENAGEM ====== -->
   <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
       <div class="mb-14 max-w-2xl">
@@ -654,7 +635,7 @@
         </div>
         <div class="card-hover rounded-2xl border-2 border-red-500/60 bg-white p-7 shadow-soft dark:border-red-500/60 dark:bg-red-950/20 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
-            <i class="fa-solid fa-triangle-exclamation"></i> Efeito ventosa
+            <i class="fa-solid fa-triangle-exclamation"></i> Efeito de sucção
           </div>
           <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
             Sem furos, a pressão interna pode <strong>explodir as paredes</strong>
@@ -666,8 +647,11 @@
             <i class="fa-solid fa-droplet"></i> Furos de drenagem
           </div>
           <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            Mínimo de <strong>2 furos</strong>: um perto da plataforma (quebra o
-            vácuo no início) e outro na extremidade oposta (entrada de ar na
+            Mínimo de <strong>2 furos</strong>. O <strong>1º furo</strong> tem a
+            função de <strong>fluxo de ar</strong> e deve ser <strong>uma das
+            primeiras coisas impressas</strong> — assim a impressão já inicia com
+            o fluxo de ar funcionando, quebrando o vácuo desde o começo. O
+            <strong>2º furo</strong> fica na extremidade oposta (entrada de ar na
             lavagem e escoamento total).
           </p>
         </div>
@@ -676,8 +660,12 @@
             <i class="fa-solid fa-circle-info"></i> Diâmetro
           </div>
           <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            Furos <strong>acima de 2 mm</strong> (ideal: 3 mm). Furos menores que
-            1 mm podem ser selados pela tensão superficial da resina durante a cura.
+            O furo de fluxo de ar pode ser de <strong>2 mm ou acima</strong> (em
+            condições extremas, pode ser menor). Já o <strong>furo secundário</strong>
+            tem escopo de <strong>limpeza</strong>: coloque-o em local estratégico
+            e escondido (pinos de encaixe, juntas), e <strong>quanto maior,
+            melhor</strong> para lavar a peça por dentro. Veja a importância da
+            lavagem no banner abaixo.
           </p>
         </div>
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft md:col-span-2 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
@@ -685,19 +673,19 @@
             <i class="fa-solid fa-lightbulb"></i> Dica de especialista
           </div>
           <p class="text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            O furo deve ser <strong>uma das primeiras coisas impressas</strong>.
-            Desça a barra de observação de camadas no slicer e posicione o furo
-            onde a impressão inicia, o mais próximo possível das paredes/do
-            plate. Ele não precisa estar no topo da peça — sua função é eliminar
-            a sucção.
+            O furo de fluxo de ar deve ser <strong>uma das primeiras coisas
+            impressas</strong>. Desça a barra de observação de camadas no slicer
+            e posicione o furo onde a impressão inicia, o mais próximo possível
+            das paredes/do plate. Ele não precisa estar no topo da peça — sua
+            função é eliminar a sucção. E lembre-se: <strong>lavar o interior é
+            obrigatório</strong> (veja o banner vermelho abaixo).
           </p>
         </div>
       </div>
     </div>
   </section>
-  <!-- 
-       6. ALERTA CRÍTICO (REGRA DE OURO: LAVAGEM INTERNA)
-   -->
+
+  <!-- ====== 6. ALERTA CRÍTICO (LAVAGEM INTERNA) ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="relative overflow-hidden rounded-3xl border-4 border-red-500 bg-gradient-to-br from-red-50 to-amber-50 p-8 shadow-lift md:p-12 dark:border-red-500 dark:from-red-950/40 dark:to-amber-950/30 dark:shadow-none dark:ring-1 dark:ring-red-500/30">
       <div class="absolute -right-6 -top-6 text-[10rem] text-red-500/10 dark:text-red-500/15">
@@ -743,9 +731,8 @@
       </div>
     </div>
   </section>
-  <!-- 
-       7. PASSO A PASSO NO SLICER (TIMELINE)
-   -->
+
+  <!-- ====== 7. PASSO A PASSO NO SLICER (TIMELINE) ====== -->
   <section id="passo-a-passo" class="bg-white py-20 md:py-24 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-4xl px-6">
       <div class="mb-16 text-center">
@@ -822,7 +809,7 @@
             </div>
           </div>
         </div>
-        <!-- PASSO 4 -->
+        <!-- PASSO 4 (furação corrigida) -->
         <div class="timeline-item">
           <div class="timeline-node">4</div>
           <div class="card-hover rounded-2xl border-2 border-red-500/60 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:border-red-500/60 dark:bg-white/5 dark:shadow-none">
@@ -830,21 +817,25 @@
               <span class="rounded-full bg-red-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-red-600 dark:bg-red-500/15 dark:text-red-400">
                 <i class="fa-solid fa-droplet mr-1"></i> Crítico
               </span>
-              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Adicione 2 furos de 3 mm</h3>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Adicione os furos de drenagem</h3>
             </div>
             <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
-              Um <strong>na base, perto da plataforma</strong> (quebra o vácuo
-              desde o início) e outro <strong>na extremidade oposta</strong>
-              (entrada de ar e escoamento). O furo deve ser uma das primeiras
-              coisas impressas.
+              Adicione <strong>2 furos</strong>. O <strong>1º furo</strong> (fluxo
+              de ar) fica <strong>na base, perto da plataforma</strong>, com
+              <strong>2 mm ou mais</strong> — ele deve ser uma das primeiras
+              coisas impressas para quebrar o vácuo desde o início. O
+              <strong>2º furo</strong> (limpeza) fica em <strong>local estratégico
+              e escondido</strong> (pinos de encaixe, juntas) e, <strong>quanto
+              maior, melhor</strong> para lavar a peça por dentro. Em condições
+              extremas, o furo de fluxo pode ser menor que 2 mm.
             </p>
             <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
               <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
-              <p><strong>Validação:</strong> furos acima de 2 mm, com o furo inferior no início da impressão.</p>
+              <p><strong>Validação:</strong> furo de fluxo no início da impressão; furo de limpeza maior e em local escondido.</p>
             </div>
           </div>
         </div>
-        <!-- PASSO 5 -->
+        <!-- PASSO 5 (suportes automáticos) -->
         <div class="timeline-item">
           <div class="timeline-node">5</div>
           <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
@@ -852,20 +843,21 @@
               <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-anchor mr-1"></i> Suportes
               </span>
-              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Gere suportes e detecte ilhas</h3>
+              <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Gere suportes automáticos e revise as ilhas</h3>
             </div>
             <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
-              Gere os suportes e execute o <strong>detector de ilhas</strong> do
-              seu slicer. Adicione <strong>suportes manuais</strong> em qualquer
-              ponto sinalizado como crítico.
+              Gere os <strong>suportes automáticos</strong> — isso minimiza os
+              erros de esquecer de suportar ilhas estruturais. Depois, execute o
+              <strong>detector de ilhas</strong> e use <strong>suportes manuais
+              apenas como reforço</strong>, onde você encontrar pontos críticos.
             </p>
             <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
               <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
-              <p><strong>Validação:</strong> nenhuma ilha crítica sem suporte no relatório do detector.</p>
+              <p><strong>Validação:</strong> auto-suporte aplicado; reforços manuais apenas nos pontos críticos.</p>
             </div>
           </div>
         </div>
-        <!-- PASSO 6 -->
+        <!-- PASSO 6 (posicionar primeiro, depois o furo) -->
         <div class="timeline-item">
           <div class="timeline-node">6</div>
           <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
@@ -876,13 +868,15 @@
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Revise camada por camada</h3>
             </div>
             <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
-              Utilize o <strong>slider lateral</strong> para conferir o
-              fatiamento camada por camada. Confirme que o furo inferior aparece
-              logo no início e que não há áreas flutuantes.
+              <strong>Posicione a peça primeiro.</strong> Depois de encontrar a
+              melhor posição, faça o furo na parte mais próxima do plate. Utilize
+              o <strong>slider lateral</strong> para conferir o fatiamento camada
+              por camada e confirmar que o furo de fluxo aparece logo no início,
+              sem áreas flutuantes.
             </p>
             <div class="mt-5 flex items-start gap-3 rounded-xl bg-emerald-50 p-4 text-sm text-emerald-800 dark:bg-emerald-500/10 dark:text-emerald-300 dark:ring-1 dark:ring-emerald-500/20">
               <i class="fa-solid fa-circle-check mt-0.5 text-emerald-600 dark:text-emerald-400"></i>
-              <p><strong>Validação:</strong> fatiamento limpo do início ao fim, sem surpresas.</p>
+              <p><strong>Validação:</strong> fatiamento limpo do início ao fim, furo de fluxo no início da impressão.</p>
             </div>
           </div>
         </div>
@@ -910,9 +904,8 @@
       </div>
     </div>
   </section>
-  <!-- 
-       8. METODOLOGIA DO AUTOR (CHITUBOX - EXPERIMENTO DOS 3 CUBOS)
-   -->
+
+  <!-- ====== 8. METODOLOGIA DO AUTOR (3 CUBOS) ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mb-14 max-w-2xl">
       <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Anexo · Metodologia prática</p>
@@ -1002,9 +995,8 @@
       </div>
     </div>
   </section>
-  <!-- 
-       9. ERROS COMUNS
-   -->
+
+  <!-- ====== 9. ERROS COMUNS ====== -->
   <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
       <div class="mb-14 max-w-2xl">
@@ -1037,7 +1029,7 @@
             <i class="fa-solid fa-xmark"></i> Modelo oco sem furos
           </div>
           <p class="text-sm text-slate-500 dark:text-slate-400">Explosão da peça ou descolamento.</p>
-          <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Mínimo de 2 furos (alto e baixo)</p>
+          <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Mínimo de 2 furos (fluxo de ar + limpeza)</p>
         </div>
         <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
@@ -1063,9 +1055,8 @@
       </div>
     </div>
   </section>
-  <!-- 
-       10. FAQ
-   -->
+
+  <!-- ====== 10. FAQ ====== -->
   <section class="mx-auto max-w-4xl px-6 py-20 md:py-24">
     <div class="mb-14 text-center">
       <p class="text-xs font-bold uppercase tracking-[0.2em] text-tech-600 dark:text-neon-400">Dúvidas frequentes</p>
@@ -1119,9 +1110,8 @@
       </details>
     </div>
   </section>
-  <!-- 
-       11. CTA FINAL
-   -->
+
+  <!-- ====== 11. CTA FINAL ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="rounded-3xl bg-gradient-to-br from-tech-600 to-neon-600 p-10 text-center shadow-lift md:p-14 dark:from-tech-700 dark:to-neon-700 dark:shadow-none dark:ring-1 dark:ring-white/10">
       <h2 class="text-2xl font-extrabold text-white md:text-3xl">Pronto. Suas impressões vão melhorar daqui para frente.</h2>
@@ -1143,7 +1133,7 @@
   </section>
 
   <!-- ====== MODAIS (POPUPS) ====== -->
-  <!-- Popup 1: Ângulo ideal (item 5 — lembrete "Em edição") -->
+  <!-- Popup 1: Ângulo ideal (lembrete "Em edição") -->
   <div id="modal-angulo-ideal" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-angulo-ideal')" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Ângulo ideal">
       <div class="flex items-start justify-between gap-4">
@@ -1169,7 +1159,7 @@
     </div>
   </div>
 
-  <!-- Popup 2: Evite 90° (item 7 — lembrete "Em edição" com rascunho) -->
+  <!-- Popup 2: Evite 90° (lembrete "Em edição" com rascunho) -->
   <div id="modal-evite-90" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-evite-90')" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Imprimir em pé (90 graus)">
       <div class="flex items-start justify-between gap-4">
@@ -1195,7 +1185,7 @@
     </div>
   </div>
 
-  <!-- Popup 3: Como limpar o ACF com o VAT Cleaner (item 9) -->
+  <!-- Popup 3: Como limpar o ACF com o VAT Cleaner (técnica corrigida) -->
   <div id="modal-vat-cleaner" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-vat-cleaner')" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Como limpar o ACF com o VAT Cleaner">
       <div class="flex items-start justify-between gap-4">
@@ -1214,13 +1204,32 @@
           <li>Com a cuba na impressora, certifique-se de que a <strong>resina cubra o fundo</strong> do tanque.</li>
           <li>Ative o <strong>VAT Clean</strong> por poucos segundos (10–30 s) — ele cura uma camada fina de resina no fundo.</li>
           <li>A folha curada "gruda" nos <strong>detritos e partículas</strong> que estavam sobre o filme.</li>
-          <li>Solte uma das bordas com a <strong>espátula plástica</strong> e puxe a folha inteira de uma vez, pelo canto.</li>
+          <li>Com a <strong>espátula plástica, com muito cuidado</strong>, levante apenas uma borda/canto da folha para conferir se ela está solta.</li>
           <li>Descarte a folha curada — o filme ACF fica limpo, sem resíduos.</li>
         </ol>
-        <div class="mt-4 rounded-xl bg-amber-50 p-4 text-sm text-amber-800 dark:bg-amber-500/10 dark:text-amber-300 dark:ring-1 dark:ring-amber-500/20">
-          <i class="fa-solid fa-triangle-exclamation mr-1"></i>
-          <strong>Nunca</strong> use objetos metálicos ou pontiagudos sobre o
-          filme. Se sobrar resina curada, repita o processo.
+        <!-- AVISO CRÍTICO -->
+        <div class="mt-4 rounded-xl border-2 border-red-500/60 bg-red-50 p-4 text-sm text-red-800 dark:border-red-500/60 dark:bg-red-950/30 dark:text-red-200">
+          <p class="flex items-start gap-2">
+            <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
+            <span>
+              <strong>NUNCA puxe ou arranque a folha de resina de uma vez.</strong>
+              Use a espátula com muito carinho e solte a folha aos poucos — se em
+              alguma parte ela estiver muito grudada e você puxar, pode
+              <strong>rasgar o ACF</strong>.
+            </span>
+          </p>
+        </div>
+        <!-- MÉTODO DO AUTOR -->
+        <div class="mt-4 rounded-xl bg-tech-50 p-4 text-sm text-slate-700 dark:bg-tech-500/10 dark:text-slate-300 dark:ring-1 dark:ring-tech-500/20">
+          <p class="flex items-start gap-2">
+            <i class="fa-solid fa-lightbulb mt-0.5 text-tech-600 dark:text-neon-400"></i>
+            <span>
+              <strong>Dica do autor:</strong> se a folha de resina não soltar
+              sozinha do ACF, <strong>não force</strong>. Escoe a resina de volta
+              para a garrafa, coloque <strong>álcool isopropílico</strong> no tanque
+              e espere ela soltar sozinha. Jamais puxe.
+            </span>
+          </p>
         </div>
       </div>
       <div class="mt-6 flex justify-end">
@@ -1231,25 +1240,21 @@
     </div>
   </div>
 
-  <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
+  <!-- ====== FOOTER ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
-      <!-- Contato: pílulas com ícone + texto -->
       <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <!-- WhatsApp (abre a conversa) -->
         <a href="https://wa.me/5511947407823" target="_blank" rel="noopener" aria-label="WhatsApp"
            class="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-emerald-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
           <i class="fa-brands fa-whatsapp text-xl"></i>
           WhatsApp
         </a>
-        <!-- E-mail (copia ao clicar — não abre janela) -->
         <button type="button" onclick="copyEmail()" aria-label="Copiar e-mail"
                 class="inline-flex items-center gap-3 rounded-full border border-tech-500/40 bg-tech-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-tech-500/30">
           <i class="fa-solid fa-envelope text-xl"></i>
           contato@pvsvariedades.com.br
         </button>
       </div>
-      <!-- Redes sociais "Em breve" (lembrete visual) -->
       <div class="mt-6 flex items-center justify-center gap-3">
         <span title="Em breve" aria-label="Instagram em breve"
               class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
@@ -1269,7 +1274,6 @@
         <p class="mt-1 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
       </div>
     </div>
-    <!-- Toast "E-mail copiado" -->
     <div id="toast"
          class="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 translate-y-24 rounded-full bg-slate-900/95 px-6 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl ring-1 ring-white/10 backdrop-blur transition-all duration-300">
       <i class="fa-solid fa-check mr-1 text-emerald-400"></i>
@@ -1302,7 +1306,6 @@
         }, 2500);
       }
     }
-    /* Modais */
     function openModal(id) {
       var m = document.getElementById(id);
       if (m) { m.classList.add('open'); m.setAttribute('aria-hidden', 'false'); }
@@ -1319,7 +1322,6 @@
         });
       }
     });
-    /* Dark mode */
     (function () {
       var toggleBtn = document.getElementById('theme-toggle');
       var iconMoon = document.getElementById('icon-moon');
