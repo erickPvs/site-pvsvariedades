@@ -86,7 +86,11 @@
       transition: transform .45s ease, box-shadow .45s ease, border-color .3s ease;
       border-radius: 20px;
       min-height: 340px;
+      /* FUNDO OPACO: impede o grid/brilhos de atravessarem o card */
       background-color: #0f172a;
+      /* BORDA NEON: linha fina ciano + anel interno (SEM brilho externo p/ não alterar as sombras) */
+      border: 1px solid rgba(34, 211, 238, 0.6);
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32);
     }
     .panel a {
       position: absolute;
@@ -96,6 +100,7 @@
       left: 0;
       z-index: 5;
     }
+    /* Camada de imagem (apenas painéis com foto) */
     .panel.panel-image::before {
       content: "";
       position: absolute;
@@ -111,6 +116,7 @@
       filter: grayscale(0%) brightness(1) opacity(1);
       transform: scale(1.05);
     }
+    /* Gradiente de legibilidade */
     .panel::after {
       content: "";
       position: absolute;
@@ -130,11 +136,18 @@
     .panel:hover {
       transform: scale(1.03);
       z-index: 10;
-      box-shadow: 0 40px 80px rgba(0,0,0,.35), 0 10px 30px rgba(0,0,0,.25);
+      /* SOMBRA ORIGINAL + anel interno preservado */
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32),
+                  0 40px 80px rgba(0,0,0,.35),
+                  0 10px 30px rgba(0,0,0,.25);
     }
     .dark .panel:hover {
-      box-shadow: 0 40px 80px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.3), 0 0 24px rgba(34,211,238,.18);
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32),
+                  0 40px 80px rgba(0,0,0,.5),
+                  0 10px 30px rgba(0,0,0,.3),
+                  0 0 24px rgba(34,211,238,.18);
     }
+    /* Ícone decorativo dos painéis sem foto */
     .panel-icon {
       position: absolute;
       top: 38%;
@@ -149,6 +162,7 @@
       transform: translate(-50%, -50%) scale(1.12);
       color: rgba(255, 255, 255, 0.32);
     }
+    /* Texto */
     .overlay {
       position: absolute;
       bottom: 28px;
@@ -228,7 +242,6 @@
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
-
   <!-- ====== NAVBAR (padrão das guias: logo + toggle) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
@@ -243,7 +256,6 @@
       </button>
     </div>
   </nav>
-
   <!-- ====== HERO ====== -->
   <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
     <div class="hero-grid absolute inset-0 opacity-60"></div>
@@ -272,12 +284,11 @@
       </p>
     </div>
   </header>
-
   <!-- ====== CARDS DAS GUIAS ====== -->
   <main class="mx-auto w-full max-w-6xl px-6 py-16 md:py-20">
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
       <!-- ACF -->
-      <div class="panel panel-image panel-acf border border-slate-200 dark:border-slate-700/60">
+      <div class="panel panel-image panel-acf">
         <a href="/guias/guia-acf.html"></a>
         <div class="overlay">
           <span class="panel-tag"><i class="fa-solid fa-film"></i> Manutenção preventiva</span>
@@ -287,7 +298,7 @@
         </div>
       </div>
       <!-- PELÍCULA DE LCD -->
-      <div class="panel panel-image panel-lcd border border-slate-200 dark:border-slate-700/60">
+      <div class="panel panel-image panel-lcd">
         <a href="/guias/guia-pelicula-lcd.html"></a>
         <div class="overlay">
           <span class="panel-tag"><i class="fa-solid fa-shield-halved"></i> Proteção do painel</span>
@@ -297,7 +308,7 @@
         </div>
       </div>
       <!-- POSICIONAMENTO E FURAÇÃO (com imagem) -->
-      <div class="panel panel-image panel-pos border border-slate-200 dark:border-slate-700/60">
+      <div class="panel panel-image panel-pos">
         <a href="/guias/guia-posicionamento-furacao.html"></a>
         <div class="overlay">
           <span class="panel-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> Otimização</span>
@@ -308,7 +319,6 @@
       </div>
     </div>
   </main>
-
   <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
@@ -349,7 +359,6 @@
       E-mail copiado! Cole no seu app de e-mail.
     </div>
   </footer>
-
   <!-- ====== SCRIPT: DARK MODE + COPIAR E-MAIL ====== -->
   <script>
     function copyEmail() {
