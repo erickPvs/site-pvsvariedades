@@ -315,8 +315,7 @@
       <div class="grid gap-6 md:grid-cols-4">
         <!-- LOJA (card principal, QUADRADO: 2 colunas de largura × 2 linhas de altura) - usa a fachada como imagem -->
         <div class="panel panel-image panel-loja md:col-span-2 md:row-span-2">
-          <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
-          <a href="#loja"></a>
+          <a href="/loja.html"></a>
           <div class="overlay">
             <span class="panel-tag"><i class="fa-solid fa-bag-shopping"></i> E-commerce · Variedades</span>
             <div class="title">Loja</div>
@@ -336,9 +335,7 @@
         </div>
         <!-- MINI-ME (embaixo, 1 coluna) -->
         <div class="panel panel-minime" style="min-height:250px;">
-          <!-- LINK DO MINI-ME: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
           <a href="#mini-me"></a>
-          <!-- IMAGEM DO MINI-ME: troque pelo arquivo do boneco caricato (ex.: images/mini-me.webp) se quiser usar a imagem em vez do ícone -->
           <div class="panel-icon"><i class="fa-solid fa-face-smile"></i></div>
           <div class="overlay">
             <span class="panel-tag"><i class="fa-solid fa-star"></i> Sob encomenda</span>
@@ -349,9 +346,7 @@
         </div>
         <!-- CUSTOMIZAÇÃO DE MINIATURAS (embaixo, 1 coluna) -->
         <div class="panel panel-custom" style="min-height:250px;">
-          <!-- LINK DA CUSTOMIZAÇÃO: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
           <a href="#custom"></a>
-          <!-- IMAGEM DE FUNDO: se quiser, troque o gradiente por uma imagem de fundo (ex.: images/miniaturas.webp) -->
           <div class="panel-icon"><i class="fa-solid fa-car"></i></div>
           <div class="overlay">
             <span class="panel-tag"><i class="fa-solid fa-palette"></i> Sob encomenda</span>
@@ -428,8 +423,7 @@
           Produtos variados, guias gratuitos ou um trabalho personalizado — comece agora.
         </p>
         <div class="mt-8 flex flex-wrap justify-center gap-4">
-          <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
-          <a href="#loja" class="inline-flex items-center gap-2 rounded-xl bg-tech-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-tech-600/30 transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5">
+          <a href="/loja.html" class="inline-flex items-center gap-2 rounded-xl bg-tech-600 px-7 py-3.5 text-sm font-bold text-white shadow-lg shadow-tech-600/30 transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5">
             <i class="fa-solid fa-store"></i>
             Ver a loja
           </a>
@@ -441,25 +435,21 @@
       </div>
     </div>
   </section>
-    <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
+  <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
-      <!-- Contato: pílulas com ícone + texto -->
       <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <!-- WhatsApp (abre a conversa) -->
         <a href="https://wa.me/5511947407823" target="_blank" rel="noopener" aria-label="WhatsApp"
            class="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-emerald-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
           <i class="fa-brands fa-whatsapp text-xl"></i>
           WhatsApp
         </a>
-        <!-- E-mail (copia ao clicar — não abre janela) -->
         <button type="button" onclick="copyEmail()" aria-label="Copiar e-mail"
                 class="inline-flex items-center gap-3 rounded-full border border-tech-500/40 bg-tech-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-tech-500/30">
           <i class="fa-solid fa-envelope text-xl"></i>
           contato@pvsvariedades.com.br
         </button>
       </div>
-      <!-- Redes sociais "Em breve" (lembrete visual) -->
       <div class="mt-6 flex items-center justify-center gap-3">
         <span title="Em breve" aria-label="Instagram em breve"
               class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
@@ -479,7 +469,6 @@
         <p class="mt-1 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
       </div>
     </div>
-    <!-- Toast "E-mail copiado" -->
     <div id="toast"
          class="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 translate-y-24 rounded-full bg-slate-900/95 px-6 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl ring-1 ring-white/10 backdrop-blur transition-all duration-300">
       <i class="fa-solid fa-check mr-1 text-emerald-400"></i>
