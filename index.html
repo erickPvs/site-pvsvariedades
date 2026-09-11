@@ -93,6 +93,9 @@
       border-radius: 20px;
       /* FUNDO OPACO: impede o grid/brilhos de atravessarem o card */
       background-color: #0f172a;
+      /* BORDA NEON: linha fina laranja + anel interno ciano + brilho suave */
+      border: 1px solid rgba(249, 115, 22, 0.55);
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.4), 0 0 14px rgba(249, 115, 22, 0.18);
     }
     .panel a {
       position: absolute;
@@ -117,6 +120,10 @@
     .panel.panel-image:hover::before {
       filter: grayscale(0%) brightness(1) opacity(1);
       transform: scale(1.05);
+    }
+    /* LOJA: card destaque fica SEMPRE colorido (não apaga antes do hover) */
+    .panel-loja.panel-image::before {
+      filter: grayscale(0%) brightness(1) opacity(1);
     }
     /* Gradiente de legibilidade */
     .panel::after {
@@ -223,6 +230,16 @@
     .panel-loja {
       background: linear-gradient(135deg, #0f172a 0%, #7c2d12 100%);
       aspect-ratio: 1 / 1; /* card Loja QUADRADO */
+      /* LUZ PRÓPRIA: só a loja projeta brilho (laranja + ciano) */
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.4),
+                  0 0 30px rgba(249, 115, 22, 0.38),
+                  0 0 60px rgba(34, 211, 238, 0.25);
+    }
+    .panel-loja:hover {
+      transform: scale(1.1); /* cresce ~10% a mais que os outros */
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.55),
+                  0 0 45px rgba(249, 115, 22, 0.55),
+                  0 0 90px rgba(34, 211, 238, 0.38);
     }
     /* Fachada da loja como imagem de fundo do card Loja */
     .panel-loja::before { background-image: url("images/loja.webp"); }
@@ -280,7 +297,7 @@
       <!-- Grid de 4 colunas: Loja quadrada (2x2) à esquerda + Tutoriais (2 col) no topo direito + Mini-Me e Customização (1 col cada) embaixo -->
       <div class="grid gap-6 md:grid-cols-4">
         <!-- LOJA (card principal, QUADRADO: 2 colunas de largura × 2 linhas de altura) - usa a fachada como imagem -->
-        <div class="panel panel-image panel-loja border border-slate-200 dark:border-slate-700/60 md:col-span-2 md:row-span-2">
+        <div class="panel panel-image panel-loja md:col-span-2 md:row-span-2">
           <!-- LINK DA LOJA: troque o href abaixo pelo endereço da sua loja no Mercado Livre -->
           <a href="#loja"></a>
           <div class="overlay">
@@ -291,7 +308,7 @@
           </div>
         </div>
         <!-- TUTORIAIS DE MANUTENÇÃO (topo direito, 2 colunas) -->
-        <div class="panel panel-image panel-guias border border-slate-200 dark:border-slate-700/60 md:col-span-2" style="min-height:250px;">
+        <div class="panel panel-image panel-guias md:col-span-2" style="min-height:250px;">
           <a href="/guias/"></a>
           <div class="overlay">
             <span class="panel-tag"><i class="fa-solid fa-book-open"></i> Aprenda com o passo a passo</span>
@@ -301,7 +318,7 @@
           </div>
         </div>
         <!-- MINI-ME (embaixo, 1 coluna) -->
-        <div class="panel panel-minime border border-slate-200 dark:border-slate-700/60" style="min-height:250px;">
+        <div class="panel panel-minime" style="min-height:250px;">
           <!-- LINK DO MINI-ME: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
           <a href="#mini-me"></a>
           <!-- IMAGEM DO MINI-ME: troque pelo arquivo do boneco caricato (ex.: images/mini-me.webp) se quiser usar a imagem em vez do ícone -->
@@ -314,7 +331,7 @@
           </div>
         </div>
         <!-- CUSTOMIZAÇÃO DE MINIATURAS (embaixo, 1 coluna) -->
-        <div class="panel panel-custom border border-slate-200 dark:border-slate-700/60" style="min-height:250px;">
+        <div class="panel panel-custom" style="min-height:250px;">
           <!-- LINK DA CUSTOMIZAÇÃO: troque o href abaixo pelo seu WhatsApp (formato https://wa.me/SEUNUMERO) -->
           <a href="#custom"></a>
           <!-- IMAGEM DE FUNDO: se quiser, troque o gradiente por uma imagem de fundo (ex.: images/miniaturas.webp) -->
