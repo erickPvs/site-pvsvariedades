@@ -12,21 +12,11 @@
       darkMode: 'class',
       theme: {
         extend: {
-          fontFamily: {
-            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-          },
+          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
           colors: {
-            tech: {
-              50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe',
-              300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6',
-              600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a',
-            },
-            industrial: {
-              400: '#fb923c', 500: '#f97316', 600: '#ea580c',
-            },
-            neon: {
-              400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2',
-            },
+            tech: { 50: '#eff6ff', 100: '#dbeafe', 200: '#bfdbfe', 300: '#93c5fd', 400: '#60a5fa', 500: '#3b82f6', 600: '#2563eb', 700: '#1d4ed8', 800: '#1e40af', 900: '#1e3a8a' },
+            industrial: { 400: '#fb923c', 500: '#f97316', 600: '#ea580c' },
+            neon: { 400: '#22d3ee', 500: '#06b6d4', 600: '#0891b2' },
           },
           boxShadow: {
             soft: '0 4px 24px -6px rgba(15, 23, 42, 0.08)',
@@ -34,261 +24,136 @@
             'glow-tech': '0 0 0 4px rgba(59, 130, 246, 0.15)',
             'glow-neon': '0 0 24px rgba(34, 211, 238, 0.25)',
           },
-          backdropBlur: {
-            xs: '2px',
-          },
+          backdropBlur: { xs: '2px' },
         },
       },
     };
   </script>
-  <!-- Font Awesome (ícones) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    /* ====== Base ====== */
     body { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
     ::selection { background: #2563eb; color: #fff; }
-    /* Scrollbar custom */
     ::-webkit-scrollbar { width: 10px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
     ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     .dark ::-webkit-scrollbar-thumb { background: #334155; }
     .dark ::-webkit-scrollbar-thumb:hover { background: #475569; }
-    /* Transição suave de tema */
-    html.theme-transition *,
-    html.theme-transition *::before,
-    html.theme-transition *::after {
+    html.theme-transition *, html.theme-transition *::before, html.theme-transition *::after {
       transition: background-color 0.4s ease, border-color 0.4s ease, color 0.3s ease, box-shadow 0.4s ease !important;
     }
-    /* ====== Grid sutil (fundo) ====== */
-    .hero-grid {
-      background-image:
-        linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
-      background-size: 44px 44px;
-    }
-    /* ====== Animações ====== */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .animate-fade-up { animation: fadeUp 0.7s ease-out both; }
     .delay-100 { animation-delay: 0.1s; }
     .delay-200 { animation-delay: 0.2s; }
     .delay-300 { animation-delay: 0.3s; }
     /* ====== Card de produto ====== */
     .product-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border-radius: 20px;
-      background-color: #fff;
+      position: relative; display: flex; flex-direction: column; overflow: hidden;
+      border-radius: 20px; background-color: #fff;
       transition: transform .45s ease, box-shadow .45s ease, border-color .3s ease;
-      /* BORDA NEON: linha fina ciano + anel interno (padrão aprovado) */
       border: 1px solid rgba(34, 211, 238, 0.6);
       box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32);
     }
-    .dark .product-card {
-      background-color: #0f172a;
-    }
+    .dark .product-card { background-color: #0f172a; }
     .product-card:hover {
-      transform: translateY(-6px);
-      z-index: 10;
-      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32),
-                  0 40px 80px rgba(0,0,0,.35),
-                  0 10px 30px rgba(0,0,0,.25);
+      transform: translateY(-6px); z-index: 10;
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32), 0 40px 80px rgba(0,0,0,.35), 0 10px 30px rgba(0,0,0,.25);
     }
     .dark .product-card:hover {
-      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32),
-                  0 40px 80px rgba(0,0,0,.5),
-                  0 10px 30px rgba(0,0,0,.3),
-                  0 0 24px rgba(34,211,238,.18);
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32), 0 40px 80px rgba(0,0,0,.5), 0 10px 30px rgba(0,0,0,.3), 0 0 24px rgba(34,211,238,.18);
     }
-    /* Imagem do produto */
-    .product-media {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      background: #f1f5f9;
-    }
+    .product-media { position: relative; aspect-ratio: 1 / 1; overflow: hidden; background: #f1f5f9; }
     .dark .product-media { background: #1e293b; }
-    .product-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform .5s ease;
-    }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
     .product-card:hover .product-media img { transform: scale(1.06); }
-    /* Etiqueta de categoria */
     .product-tag {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: .35rem;
-      padding: .3rem .7rem;
-      border-radius: 9999px;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-      background: rgba(15, 23, 42, 0.75);
-      color: #fff;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(255,255,255,.18);
+      position: absolute; top: 12px; left: 12px; z-index: 2;
+      display: inline-flex; align-items: center; gap: .35rem; padding: .3rem .7rem;
+      border-radius: 9999px; font-size: 10px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+      background: rgba(15, 23, 42, 0.75); color: #fff; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,.18);
     }
-    /* Corpo do card */
-    .product-body {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      padding: 1rem 1.1rem 1.1rem;
-    }
-    .product-name {
-      font-size: 15px;
-      font-weight: 700;
-      line-height: 1.25;
-      color: #0f172a;
-    }
+    .product-body { display: flex; flex-direction: column; flex: 1; padding: 1rem 1.1rem 1.1rem; }
+    .product-name { font-size: 15px; font-weight: 700; line-height: 1.25; color: #0f172a; }
     .dark .product-name { color: #fff; }
-    .product-desc {
-      margin-top: .35rem;
-      font-size: 13px;
-      line-height: 1.4;
-      color: #64748b;
-    }
+    .product-desc { margin-top: .35rem; font-size: 13px; line-height: 1.4; color: #64748b; }
     .dark .product-desc { color: #94a3b8; }
-    /* CTA "Ver no Mercado Livre" */
     .product-cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: .5rem;
-      margin-top: .9rem;
-      padding: .6rem 1rem;
-      border-radius: 12px;
-      font-size: 13px;
-      font-weight: 700;
-      background: #2563eb;
-      color: #fff;
-      transition: .25s;
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      margin-top: .9rem; padding: .6rem 1rem; border-radius: 12px; font-size: 13px; font-weight: 700;
+      background: #2563eb; color: #fff; transition: .25s;
     }
-    .product-cta:hover {
-      background: #1d4ed8;
-      box-shadow: 0 0 20px rgba(59,130,246,.4);
-    }
-    .product-note {
-      margin-top: .55rem;
-      font-size: 11px;
-      text-align: center;
-      color: #94a3b8;
-    }
+    .product-cta:hover { background: #1d4ed8; box-shadow: 0 0 20px rgba(59,130,246,.4); }
+    .product-note { margin-top: .55rem; font-size: 11px; text-align: center; color: #94a3b8; }
     .dark .product-note { color: #64748b; }
-    /* ====== Chips de categoria ====== */
     .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: .45rem;
-      padding: .55rem 1.1rem;
-      border-radius: 9999px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #475569;
-      background: #fff;
-      border: 1px solid rgba(34, 211, 238, 0.5);
-      transition: .25s;
-      white-space: nowrap;
+      display: inline-flex; align-items: center; gap: .45rem; padding: .55rem 1.1rem;
+      border-radius: 9999px; font-size: 13px; font-weight: 600; color: #475569;
+      background: #fff; border: 1px solid rgba(34, 211, 238, 0.5); transition: .25s; white-space: nowrap;
     }
     .dark .chip { color: #cbd5e1; background: #0f172a; }
-    .chip:hover {
-      background: #2563eb;
-      color: #fff;
-      border-color: #2563eb;
-      box-shadow: 0 0 18px rgba(59,130,246,.35);
-    }
-    /* ====== Ícones de redes "Em breve" ====== */
-    .social-soon {
-      opacity: .45;
-      filter: grayscale(60%);
-      transition: all .3s ease;
-      cursor: not-allowed;
-    }
-    .social-soon:hover {
-      opacity: .8;
-      filter: grayscale(0%);
-      transform: translateY(-2px);
-    }
+    .chip:hover { background: #2563eb; color: #fff; border-color: #2563eb; box-shadow: 0 0 18px rgba(59,130,246,.35); }
+    .social-soon { opacity: .45; filter: grayscale(60%); transition: all .3s ease; cursor: not-allowed; }
+    .social-soon:hover { opacity: .8; filter: grayscale(0%); transform: translateY(-2px); }
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
-  <!-- ====== NAVBAR (padrão: logo + toggle) ====== -->
+  <!-- ====== NAVBAR (logo + links + toggle) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
       <a href="/" class="flex items-center">
         <img src="images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
       </a>
-      <button id="theme-toggle"
-              aria-label="Alternar tema claro/escuro"
-              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
-        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
-        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
-      </button>
+      <div class="flex items-center gap-1 sm:gap-2">
+        <a href="/" class="hidden rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 sm:inline-flex dark:text-slate-300 dark:hover:text-neon-400">Início</a>
+        <a href="/loja.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-tech-600 transition hover:text-tech-500 dark:text-neon-400 dark:hover:text-neon-300">Loja</a>
+        <a href="/guias/" class="hidden rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 sm:inline-flex dark:text-slate-300 dark:hover:text-neon-400">Guias</a>
+        <button id="theme-toggle" aria-label="Alternar tema claro/escuro"
+                class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
+          <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
+          <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
+        </button>
+      </div>
     </div>
   </nav>
 
-  <!-- ====== BANNER DE CREDIBILIDADE ======
-       A imagem preenche a LARGURA total do banner e a ALTURA é fixa.
-       Com object-cover, a imagem é cortada (croppada) em cima e embaixo.
+  <!-- ====== BANNER: FAIXA DE FORA A FORA ======
+       A imagem É a faixa (largura total, sem caixa, sem canto arredondado, sem borda).
        AJUSTE A ALTURA AQUI: h-72 (celular) e md:h-96 (desktop) — aumente/diminua
-       esses valores até o mascote não ser cortado. -->
-  <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
-    <div class="hero-grid absolute inset-0 opacity-60"></div>
-    <div class="absolute -top-32 -right-32 h-96 w-96 rounded-full bg-tech-600/30 blur-3xl"></div>
-    <div class="absolute -bottom-40 -left-24 h-80 w-80 rounded-full bg-industrial-500/20 blur-3xl"></div>
-    <div class="absolute top-1/3 right-1/4 h-64 w-64 rounded-full bg-neon-500/10 blur-3xl"></div>
-    <nav class="relative z-10 mx-auto max-w-6xl px-6 pt-8 text-sm text-slate-400">
-      <a href="/" class="transition hover:text-white">Início</a>
-      <span class="mx-2 text-slate-600">/</span>
-      <span class="text-slate-300">Loja</span>
-    </nav>
-    <div class="relative z-10 mx-auto max-w-6xl px-6 pb-14 pt-8 md:pb-20 md:pt-10">
-      <!-- Imagem do banner: largura total + altura fixa (croppa em cima/embaixo) -->
-      <div class="animate-fade-up overflow-hidden rounded-3xl border border-white/10 shadow-lift">
-        <img src="images/banner-mercado-livre.webp" alt="PVS Variedades no Mercado Livre — compra protegida" class="h-72 w-full object-cover md:h-96" />
+       até o mascote não ser cortado. -->
+  <header class="relative w-full overflow-hidden">
+    <img src="images/banner-mercado-livre.webp" alt="PVS Variedades no Mercado Livre — compra protegida" class="h-72 w-full object-cover md:h-96" />
+  </header>
+
+  <!-- ====== TEXTOS DE CONFIANÇA (abaixo da faixa) ====== -->
+  <div class="mx-auto max-w-6xl px-6 py-8">
+    <div class="grid gap-4 md:grid-cols-3">
+      <div class="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <i class="fa-solid fa-shield-halved mt-0.5 text-xl text-neon-500"></i>
+        <div>
+          <p class="text-sm font-bold text-slate-900 dark:text-white">Compra protegida</p>
+          <p class="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">Você está comprando de uma loja dentro do Mercado Livre.</p>
+        </div>
       </div>
-      <!-- Textos de confiança (abaixo da imagem) -->
-      <div class="animate-fade-up delay-100 mt-8 grid gap-4 md:grid-cols-3">
-        <div class="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-          <i class="fa-solid fa-shield-halved mt-0.5 text-xl text-neon-400"></i>
-          <div>
-            <p class="text-sm font-bold text-white">Compra protegida</p>
-            <p class="mt-1 text-xs leading-relaxed text-slate-300">Você está comprando de uma loja dentro do Mercado Livre.</p>
-          </div>
+      <div class="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <i class="fa-solid fa-credit-card mt-0.5 text-xl text-neon-500"></i>
+        <div>
+          <p class="text-sm font-bold text-slate-900 dark:text-white">Pagamento seguro</p>
+          <p class="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">Pagamento processado pelo Mercado Pago, com a proteção da plataforma.</p>
         </div>
-        <div class="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-          <i class="fa-solid fa-credit-card mt-0.5 text-xl text-neon-400"></i>
-          <div>
-            <p class="text-sm font-bold text-white">Pagamento seguro</p>
-            <p class="mt-1 text-xs leading-relaxed text-slate-300">Pagamento processado pelo Mercado Pago, com a proteção da plataforma.</p>
-          </div>
-        </div>
-        <div class="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-          <i class="fa-solid fa-truck-fast mt-0.5 text-xl text-neon-400"></i>
-          <div>
-            <p class="text-sm font-bold text-white">Envio e recebimento</p>
-            <p class="mt-1 text-xs leading-relaxed text-slate-300">Frete, prazo e condições informados no anúncio do Mercado Livre.</p>
-          </div>
+      </div>
+      <div class="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-soft dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <i class="fa-solid fa-truck-fast mt-0.5 text-xl text-neon-500"></i>
+        <div>
+          <p class="text-sm font-bold text-slate-900 dark:text-white">Envio e recebimento</p>
+          <p class="mt-1 text-xs leading-relaxed text-slate-500 dark:text-slate-400">Frete, prazo e condições informados no anúncio do Mercado Livre.</p>
         </div>
       </div>
     </div>
-  </header>
+  </div>
 
   <!-- ====== CHIPS DE CATEGORIA ====== -->
   <div class="sticky top-[73px] z-40 border-b border-slate-200/70 bg-white/85 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/85">
@@ -310,12 +175,8 @@
         <p class="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">Tudo para quem imprime em resina: do consumível ao acessório de manutenção.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- P001 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-droplet"></i> Resina</span>
-            <img src="images/produtos/p001.webp" alt="Resina Fotopolimerizável SUNLU" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-droplet"></i> Resina</span><img src="images/produtos/p001.webp" alt="Resina Fotopolimerizável SUNLU" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Resina Fotopolimerizável SUNLU</h3>
             <p class="product-desc">Resina para impressão 3D de resina.</p>
@@ -323,12 +184,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P002 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-droplet"></i> Insumos</span>
-            <img src="images/produtos/p002.webp" alt="Espátulas de Silicone Laranja" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-droplet"></i> Insumos</span><img src="images/produtos/p002.webp" alt="Espátulas de Silicone Laranja" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Espátulas de Silicone Laranja</h3>
             <p class="product-desc">Espátula para misturar e remover resina.</p>
@@ -336,12 +193,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P003 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-film"></i> Manutenção</span>
-            <img src="images/produtos/p003.webp" alt="Filme ACF" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-film"></i> Manutenção</span><img src="images/produtos/p003.webp" alt="Filme ACF" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Filme ACF</h3>
             <p class="product-desc">Filme de liberação para o fundo do tanque (troca do ACF).</p>
@@ -349,12 +202,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P004 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-shield-halved"></i> Proteção</span>
-            <img src="images/produtos/p004.webp" alt="Película de Proteção de LCD" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-shield-halved"></i> Proteção</span><img src="images/produtos/p004.webp" alt="Película de Proteção de LCD" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Película de Proteção de LCD</h3>
             <p class="product-desc">Proteção para o painel LCD da impressora.</p>
@@ -373,12 +222,8 @@
         <p class="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">Carrinhos de plástico colecionáveis em escala 1/20.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- P005 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span>
-            <img src="images/produtos/p005.webp" alt="Carrinho 1/20 Cupê Laranja" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span><img src="images/produtos/p005.webp" alt="Carrinho 1/20 Cupê Laranja" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Carrinho 1/20 Cupê Laranja</h3>
             <p class="product-desc">Carrinho de plástico colecionável.</p>
@@ -386,12 +231,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P006 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span>
-            <img src="images/produtos/p006.webp" alt="Carrinho 1/20 Perua Prata" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span><img src="images/produtos/p006.webp" alt="Carrinho 1/20 Perua Prata" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Carrinho 1/20 Perua Prata</h3>
             <p class="product-desc">Carrinho de plástico colecionável.</p>
@@ -399,12 +240,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P007 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span>
-            <img src="images/produtos/p007.webp" alt="Carrinho 1/20 Fusca Verde" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span><img src="images/produtos/p007.webp" alt="Carrinho 1/20 Fusca Verde" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Carrinho 1/20 Fusca Verde</h3>
             <p class="product-desc">Carrinho de plástico colecionável.</p>
@@ -412,12 +249,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P008 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span>
-            <img src="images/produtos/p008.webp" alt="Carrinho 1/20 Van Azul" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car"></i> 1/20</span><img src="images/produtos/p008.webp" alt="Carrinho 1/20 Van Azul" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Carrinho 1/20 Van Azul</h3>
             <p class="product-desc">Carrinho de plástico colecionável.</p>
@@ -436,12 +269,8 @@
         <p class="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">Miniaturas diecast colecionáveis em escala 1/64.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- P009 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span>
-            <img src="images/produtos/p009.webp" alt="Diecast 1/64 Chevette Preto" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span><img src="images/produtos/p009.webp" alt="Diecast 1/64 Chevette Preto" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Diecast 1/64 Chevette Preto</h3>
             <p class="product-desc">Miniatura diecast colecionável.</p>
@@ -449,12 +278,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P010 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span>
-            <img src="images/produtos/p010.webp" alt="Diecast 1/64 Veraneio Azul" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span><img src="images/produtos/p010.webp" alt="Diecast 1/64 Veraneio Azul" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Diecast 1/64 Veraneio Azul</h3>
             <p class="product-desc">Miniatura diecast colecionável.</p>
@@ -462,12 +287,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P011 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span>
-            <img src="images/produtos/p011.webp" alt="Diecast 1/64 Opala SS Preto" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span><img src="images/produtos/p011.webp" alt="Diecast 1/64 Opala SS Preto" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Diecast 1/64 Opala SS Preto</h3>
             <p class="product-desc">Miniatura diecast colecionável.</p>
@@ -475,12 +296,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P012 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span>
-            <img src="images/produtos/p012.webp" alt="Diecast 1/64 Celta Azul" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span><img src="images/produtos/p012.webp" alt="Diecast 1/64 Celta Azul" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Diecast 1/64 Celta Azul</h3>
             <p class="product-desc">Miniatura diecast colecionável.</p>
@@ -488,12 +305,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P013 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span>
-            <img src="images/produtos/p013.webp" alt="Diecast 1/64 Monza Bege" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-car-side"></i> 1/64</span><img src="images/produtos/p013.webp" alt="Diecast 1/64 Monza Bege" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Diecast 1/64 Monza Bege</h3>
             <p class="product-desc">Miniatura diecast colecionável.</p>
@@ -512,12 +325,8 @@
         <p class="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">Bonés com bandeira do Brasil, para todos os estilos.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- P014 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-hat-cowboy"></i> Boné</span>
-            <img src="images/produtos/p014.webp" alt="Boné Bandeira do Brasil Camuflado" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-hat-cowboy"></i> Boné</span><img src="images/produtos/p014.webp" alt="Boné Bandeira do Brasil Camuflado" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Boné Bandeira do Brasil Camuflado</h3>
             <p class="product-desc">Boné com bandeira do Brasil.</p>
@@ -525,12 +334,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P015 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-hat-cowboy"></i> Boné</span>
-            <img src="images/produtos/p015.webp" alt="Boné Bandeira do Brasil Preto" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-hat-cowboy"></i> Boné</span><img src="images/produtos/p015.webp" alt="Boné Bandeira do Brasil Preto" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Boné Bandeira do Brasil Preto</h3>
             <p class="product-desc">Boné com bandeira do Brasil.</p>
@@ -538,12 +343,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P016 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-hat-cowboy"></i> Boné</span>
-            <img src="images/produtos/p016.webp" alt="Boné Bandeira do Brasil Verde-oliva" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-hat-cowboy"></i> Boné</span><img src="images/produtos/p016.webp" alt="Boné Bandeira do Brasil Verde-oliva" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Boné Bandeira do Brasil Verde-oliva</h3>
             <p class="product-desc">Boné com bandeira do Brasil.</p>
@@ -562,12 +363,8 @@
         <p class="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">Utilidades práticas para o dia a dia.</p>
       </div>
       <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        <!-- P017 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Utilidade</span>
-            <img src="images/produtos/p017.webp" alt="Apito com Chaveiro" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Utilidade</span><img src="images/produtos/p017.webp" alt="Apito com Chaveiro" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Apito com Chaveiro</h3>
             <p class="product-desc">Apito metálico com chaveiro.</p>
@@ -575,12 +372,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P018 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Utilidade</span>
-            <img src="images/produtos/p018.webp" alt="Panos de Microfibra AOKAISON" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Utilidade</span><img src="images/produtos/p018.webp" alt="Panos de Microfibra AOKAISON" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Panos de Microfibra AOKAISON</h3>
             <p class="product-desc">Panos de microfibra multicoloridos.</p>
@@ -588,12 +381,8 @@
             <p class="product-note">Preço, estoque e frete atualizados no anúncio</p>
           </div>
         </div>
-        <!-- P019 -->
         <div class="product-card">
-          <div class="product-media">
-            <span class="product-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Utilidade</span>
-            <img src="images/produtos/p019.webp" alt="Parafuso com Adaptador Magnético" loading="lazy" />
-          </div>
+          <div class="product-media"><span class="product-tag"><i class="fa-solid fa-screwdriver-wrench"></i> Utilidade</span><img src="images/produtos/p019.webp" alt="Parafuso com Adaptador Magnético" loading="lazy" /></div>
           <div class="product-body">
             <h3 class="product-name">Parafuso com Adaptador Magnético</h3>
             <p class="product-desc">Parafuso com ponta magnética e limitador de profundidade.</p>
@@ -611,64 +400,43 @@
       <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
         <a href="https://wa.me/5511947407823" target="_blank" rel="noopener" aria-label="WhatsApp"
            class="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-emerald-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
-          <i class="fa-brands fa-whatsapp text-xl"></i>
-          WhatsApp
+          <i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp
         </a>
         <button type="button" onclick="copyEmail()" aria-label="Copiar e-mail"
                 class="inline-flex items-center gap-3 rounded-full border border-tech-500/40 bg-tech-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-tech-500/30">
-          <i class="fa-solid fa-envelope text-xl"></i>
-          contato@pvsvariedades.com.br
+          <i class="fa-solid fa-envelope text-xl"></i> contato@pvsvariedades.com.br
         </button>
       </div>
       <div class="mt-6 flex items-center justify-center gap-3">
-        <span title="Em breve" aria-label="Instagram em breve"
-              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
-          <i class="fa-brands fa-instagram"></i>
-        </span>
-        <span title="Em breve" aria-label="Facebook em breve"
-              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
-          <i class="fa-brands fa-facebook-f"></i>
-        </span>
-        <span title="Em breve" aria-label="YouTube em breve"
-              class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
-          <i class="fa-brands fa-youtube"></i>
-        </span>
+        <span title="Em breve" aria-label="Instagram em breve" class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white"><i class="fa-brands fa-instagram"></i></span>
+        <span title="Em breve" aria-label="Facebook em breve" class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white"><i class="fa-brands fa-facebook-f"></i></span>
+        <span title="Em breve" aria-label="YouTube em breve" class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white"><i class="fa-brands fa-youtube"></i></span>
       </div>
       <div class="mt-8 text-center">
         <p class="text-sm font-medium text-white">PVS Variedades Ecommerce Ltda</p>
         <p class="mt-1 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
       </div>
     </div>
-    <div id="toast"
-         class="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 translate-y-24 rounded-full bg-slate-900/95 px-6 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl ring-1 ring-white/10 backdrop-blur transition-all duration-300">
-      <i class="fa-solid fa-check mr-1 text-emerald-400"></i>
-      E-mail copiado! Cole no seu app de e-mail.
+    <div id="toast" class="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 translate-y-24 rounded-full bg-slate-900/95 px-6 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl ring-1 ring-white/10 backdrop-blur transition-all duration-300">
+      <i class="fa-solid fa-check mr-1 text-emerald-400"></i> E-mail copiado! Cole no seu app de e-mail.
     </div>
   </footer>
 
-  <!-- ====== SCRIPT: DARK MODE + COPIAR E-MAIL ====== -->
   <script>
     function copyEmail() {
       if (navigator.clipboard) {
         navigator.clipboard.writeText('contato@pvsvariedades.com.br').then(function () {
           var toast = document.getElementById('toast');
           toast.classList.remove('translate-y-24', 'opacity-0');
-          setTimeout(function () {
-            toast.classList.add('translate-y-24', 'opacity-0');
-          }, 2500);
+          setTimeout(function () { toast.classList.add('translate-y-24', 'opacity-0'); }, 2500);
         });
       } else {
         var temp = document.createElement('input');
         temp.value = 'contato@pvsvariedades.com.br';
-        document.body.appendChild(temp);
-        temp.select();
-        document.execCommand('copy');
-        document.body.removeChild(temp);
+        document.body.appendChild(temp); temp.select(); document.execCommand('copy'); document.body.removeChild(temp);
         var toast = document.getElementById('toast');
         toast.classList.remove('translate-y-24', 'opacity-0');
-        setTimeout(function () {
-          toast.classList.add('translate-y-24', 'opacity-0');
-        }, 2500);
+        setTimeout(function () { toast.classList.add('translate-y-24', 'opacity-0'); }, 2500);
       }
     }
     (function () {
@@ -679,18 +447,9 @@
       function applyTheme(theme) {
         var root = document.documentElement;
         root.classList.add('theme-transition');
-        setTimeout(function () {
-          root.classList.remove('theme-transition');
-        }, 450);
-        if (theme === 'dark') {
-          root.classList.add('dark');
-          iconMoon.classList.add('hidden');
-          iconSun.classList.remove('hidden');
-        } else {
-          root.classList.remove('dark');
-          iconMoon.classList.remove('hidden');
-          iconSun.classList.add('hidden');
-        }
+        setTimeout(function () { root.classList.remove('theme-transition'); }, 450);
+        if (theme === 'dark') { root.classList.add('dark'); iconMoon.classList.add('hidden'); iconSun.classList.remove('hidden'); }
+        else { root.classList.remove('dark'); iconMoon.classList.remove('hidden'); iconSun.classList.add('hidden'); }
       }
       function getInitialTheme() {
         var saved = localStorage.getItem(STORAGE_KEY);
@@ -698,21 +457,14 @@
         return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
       var initialTheme = getInitialTheme();
-      if (initialTheme === 'dark') {
-        document.documentElement.classList.add('dark');
-        iconMoon && iconMoon.classList.add('hidden');
-        iconSun && iconSun.classList.remove('hidden');
-      }
+      if (initialTheme === 'dark') { document.documentElement.classList.add('dark'); iconMoon && iconMoon.classList.add('hidden'); iconSun && iconSun.classList.remove('hidden'); }
       toggleBtn.addEventListener('click', function () {
         var isDark = document.documentElement.classList.contains('dark');
         var nextTheme = isDark ? 'light' : 'dark';
-        localStorage.setItem(STORAGE_KEY, nextTheme);
-        applyTheme(nextTheme);
+        localStorage.setItem(STORAGE_KEY, nextTheme); applyTheme(nextTheme);
       });
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-          applyTheme(e.matches ? 'dark' : 'light');
-        }
+        if (!localStorage.getItem(STORAGE_KEY)) applyTheme(e.matches ? 'dark' : 'light');
       });
     })();
   </script>
