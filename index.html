@@ -93,9 +93,9 @@
       border-radius: 20px;
       /* FUNDO OPACO: impede o grid/brilhos de atravessarem o card */
       background-color: #0f172a;
-      /* BORDA NEON: linha fina laranja + anel interno ciano + brilho suave */
-      border: 1px solid rgba(249, 115, 22, 0.55);
-      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.4), 0 0 14px rgba(249, 115, 22, 0.18);
+      /* BORDA NEON: linha fina ciano + anel interno ciano + halo suave */
+      border: 1px solid rgba(34, 211, 238, 0.6);
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.32), 0 0 14px rgba(34, 211, 238, 0.2);
     }
     .panel a {
       position: absolute;
@@ -226,24 +226,35 @@
       color: #fff;
       box-shadow: 0 0 24px rgba(59,130,246,.45);
     }
-    /* Fundos dos painéis */
-    .panel-loja {
+    /* ====== LOJA: card destaque ======
+       - sempre aceso (imagem colorida)
+       - cresce mais devagar (0.9s = dobro do tempo)
+       - projeta luz CIANO (identidade visual), com a mesma intensidade de antes
+       As regras abaixo vêm depois das genéricas para vencerem .panel:hover e .dark .panel:hover */
+    .panel.panel-loja {
       background: linear-gradient(135deg, #0f172a 0%, #7c2d12 100%);
       aspect-ratio: 1 / 1; /* card Loja QUADRADO */
-      /* LUZ PRÓPRIA: só a loja projeta brilho (laranja + ciano) */
-      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.4),
-                  0 0 30px rgba(249, 115, 22, 0.38),
+      transition: transform .9s ease, box-shadow .6s ease, border-color .3s ease;
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.45),
+                  0 0 30px rgba(34, 211, 238, 0.38),
                   0 0 60px rgba(34, 211, 238, 0.25);
     }
-    .panel-loja:hover {
+    .dark .panel.panel-loja {
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.45),
+                  0 0 30px rgba(34, 211, 238, 0.42),
+                  0 0 60px rgba(34, 211, 238, 0.3);
+    }
+    .panel.panel-loja:hover,
+    .dark .panel.panel-loja:hover {
       transform: scale(1.1); /* cresce ~10% a mais que os outros */
-      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.55),
-                  0 0 45px rgba(249, 115, 22, 0.55),
+      box-shadow: inset 0 0 0 1px rgba(34, 211, 238, 0.6),
+                  0 0 45px rgba(34, 211, 238, 0.55),
                   0 0 90px rgba(34, 211, 238, 0.38);
     }
-    /* Fachada da loja como imagem de fundo do card Loja */
+    /* Imagens de fundo dos painéis com foto */
     .panel-loja::before { background-image: url("images/loja.webp"); }
     .panel-guias::before { background-image: url("images/guia.webp"); }
+    /* Fundos dos painéis sem foto */
     .panel-minime { background: linear-gradient(135deg, #0f172a 0%, #4c1d95 100%); }
     .panel-custom { background: linear-gradient(135deg, #0f172a 0%, #0f766e 100%); }
     /* Ícones de redes "Em breve" (placeholders) */
