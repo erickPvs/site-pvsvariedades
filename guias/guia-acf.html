@@ -156,22 +156,25 @@
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
-
-  <!-- ====== NAVBAR (padrão das guias: logo + toggle) ====== -->
+  <!-- ====== NAVBAR (logo + links + toggle) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
       <a href="/" class="flex items-center">
         <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
       </a>
-      <button id="theme-toggle"
-              aria-label="Alternar tema claro/escuro"
-              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
-        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
-        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
-      </button>
+      <div class="flex items-center gap-1 sm:gap-2">
+        <a href="/" class="hidden rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 sm:inline-flex dark:text-slate-300 dark:hover:text-neon-400">Início</a>
+        <a href="/loja.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 dark:text-slate-300 dark:hover:text-neon-400">Loja</a>
+        <a href="/guias/" class="rounded-lg px-3 py-2 text-sm font-semibold text-tech-600 transition hover:text-tech-500 dark:text-neon-400 dark:hover:text-neon-300">Guias</a>
+        <button id="theme-toggle"
+                aria-label="Alternar tema claro/escuro"
+                class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
+          <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
+          <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
+        </button>
+      </div>
     </div>
   </nav>
-
   <!-- ====== HEADER / HERO ====== -->
   <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
     <div class="hero-grid absolute inset-0 opacity-60"></div>
@@ -228,7 +231,6 @@
       </div>
     </div>
   </header>
-
   <!-- ====== POR QUE ISSO IMPORTA ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mx-auto mb-14 max-w-2xl text-center">
@@ -289,7 +291,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== QUANDO TROCAR ====== -->
   <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
@@ -329,7 +330,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== FERRAMENTAS NECESSÁRIAS ====== -->
   <section id="ferramentas" class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mb-14 max-w-2xl">
@@ -383,7 +383,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== PASSO A PASSO (TIMELINE) ====== -->
   <section id="passo-a-passo" class="bg-white py-20 md:py-24 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-4xl px-6">
@@ -532,7 +531,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== CTA FINAL ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="rounded-3xl bg-gradient-to-br from-tech-600 to-neon-600 p-10 text-center shadow-lift md:p-14 dark:from-tech-700 dark:to-neon-700 dark:shadow-none dark:ring-1 dark:ring-white/10">
@@ -553,7 +551,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
@@ -599,7 +596,6 @@
       E-mail copiado! Cole no seu app de e-mail.
     </div>
   </footer>
-
   <!-- ====== SCRIPT: DARK MODE TOGGLE + COPIAR E-MAIL ====== -->
   <script>
     function copyEmail() {
