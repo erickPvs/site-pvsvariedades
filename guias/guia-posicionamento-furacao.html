@@ -67,12 +67,36 @@
     .delay-200 { animation-delay: 0.2s; }
     .delay-300 { animation-delay: 0.3s; }
     .delay-400 { animation-delay: 0.4s; }
-    /* Grid pattern sutil no hero */
     .hero-grid {
       background-image:
         linear-gradient(rgba(148, 163, 184, 0.08) 1px, transparent 1px),
         linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
       background-size: 44px 44px;
+    }
+    /* ====== BORDA NEON CIANO (padrão dos cards) ====== */
+    body .card-neon {
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 4px 24px -6px rgba(15, 23, 42, 0.08);
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+    body .card-neon:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.55);
+      box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.18), 0 0 0 3px rgba(59, 130, 246, 0.10);
+    }
+    html.dark body .card-neon {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(34, 211, 238, 0.30);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.08), 0 0 20px -8px rgba(34, 211, 238, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    html.dark body .card-neon:hover {
+      border-color: rgba(34, 211, 238, 0.70);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 30px -4px rgba(34, 211, 238, 0.60);
+    }
+    html.dark body .card-neon .pill-neon {
+      border-color: rgba(34, 211, 238, 0.35);
     }
     /* ====== Timeline ====== */
     .timeline-item { position: relative; padding-left: 4rem; }
@@ -124,6 +148,7 @@
       color: #0f172a;
       box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.2), 0 0 28px rgba(34, 211, 238, 0.4);
     }
+    /* Cards com hover (legado — mantido por compatibilidade) */
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); }
     html.theme-transition *,
@@ -385,21 +410,25 @@
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
-  <!-- ====== NAVBAR ====== -->
+  <!-- ====== NAVBAR (logo + links + toggle) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
       <a href="/" class="flex items-center">
         <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
       </a>
-      <button id="theme-toggle"
-              aria-label="Alternar tema claro/escuro"
-              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
-        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
-        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
-      </button>
+      <div class="flex items-center gap-1 sm:gap-2">
+        <a href="/" class="hidden rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 sm:inline-flex dark:text-slate-300 dark:hover:text-neon-400">Início</a>
+        <a href="/loja.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 dark:text-slate-300 dark:hover:text-neon-400">Loja</a>
+        <a href="/guias/" class="rounded-lg px-3 py-2 text-sm font-semibold text-tech-600 transition hover:text-tech-500 dark:text-neon-400 dark:hover:text-neon-300">Guias</a>
+        <button id="theme-toggle"
+                aria-label="Alternar tema claro/escuro"
+                class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
+          <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
+          <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
+        </button>
+      </div>
     </div>
   </nav>
-
   <!-- ====== HERO ====== -->
   <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
     <div class="hero-grid absolute inset-0 opacity-60"></div>
@@ -456,7 +485,6 @@
       </div>
     </div>
   </header>
-
   <!-- ====== 2. POR QUE ISSO IMPORTA ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mx-auto mb-14 max-w-2xl text-center">
@@ -470,7 +498,7 @@
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft md:col-span-2 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8 md:col-span-2">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
@@ -489,7 +517,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-industrial-500/10 blur-2xl transition-all duration-500 group-hover:bg-industrial-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-industrial-500/10 text-2xl text-industrial-600 dark:bg-industrial-500/15 dark:text-industrial-400">
@@ -504,7 +532,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-500 group-hover:bg-emerald-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
@@ -520,7 +548,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 3. REGRAS DE OURO DE INCLINAÇÃO ====== -->
   <section id="regras-de-ouro" class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
@@ -547,7 +574,7 @@
             <i class="fa-solid fa-calculator"></i> Calculadora de inclinação
           </button>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Evite 0°
           </div>
@@ -558,7 +585,7 @@
             peça deformada (empenada)</strong>.
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-600 dark:bg-amber-500/15 dark:text-amber-400">
             <i class="fa-solid fa-xmark"></i> Evite 90°
           </div>
@@ -571,7 +598,7 @@
             <i class="fa-solid fa-circle-info"></i> Ver observações
           </button>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-wave-square"></i> Uniformidade
           </div>
@@ -581,7 +608,7 @@
             <strong>delaminação</strong>.
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-gem"></i> Acabamento
           </div>
@@ -590,7 +617,7 @@
             lado que fica para baixo recebe os suportes e terá marcas para lixar.
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-layer-group"></i> Grandes superfícies
           </div>
@@ -607,7 +634,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 4. ILHAS ESTRUTURAIS ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mb-14 max-w-2xl">
@@ -621,7 +647,7 @@
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-red-500/10 blur-2xl transition-all duration-500 group-hover:bg-red-500/20"></div>
         <div class="relative">
           <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-red-50 text-2xl text-red-500 dark:bg-red-500/15 dark:text-red-400">
@@ -638,7 +664,7 @@
           </button>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-amber-500/10 blur-2xl transition-all duration-500 group-hover:bg-amber-500/20"></div>
         <div class="relative">
           <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-amber-50 text-2xl text-amber-500 dark:bg-amber-500/15 dark:text-amber-400">
@@ -651,7 +677,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
           <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
@@ -669,7 +695,7 @@
     <div class="mt-12">
       <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Ferramentas de detecção nos slicers</h3>
       <div class="mt-6 grid gap-6 md:grid-cols-3">
-        <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-slate-50 p-7">
           <div class="mb-3 flex items-center gap-2">
             <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-tech-50 text-tech-600 dark:bg-tech-500/15 dark:text-neon-400"><i class="fa-solid fa-leaf"></i></span>
             <h4 class="font-bold text-slate-900 dark:text-white">Lychee Slicer</h4>
@@ -680,7 +706,7 @@
             detecta até micro-ilhas. Nem toda micro-ilha precisa de suporte.
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-slate-50 p-7">
           <div class="mb-3 flex items-center gap-2">
             <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-tech-50 text-tech-600 dark:bg-tech-500/15 dark:text-neon-400"><i class="fa-solid fa-cube"></i></span>
             <h4 class="font-bold text-slate-900 dark:text-white">Chitubox</h4>
@@ -694,7 +720,7 @@
             Use o auto-suporte antes de complementar manualmente.
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-slate-50 p-7">
           <div class="mb-3 flex items-center gap-2">
             <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-tech-50 text-tech-600 dark:bg-tech-500/15 dark:text-neon-400"><i class="fa-solid fa-wrench"></i></span>
             <h4 class="font-bold text-slate-900 dark:text-white">UVTools</h4>
@@ -728,7 +754,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 5. FURAÇÃO E DRENAGEM ====== -->
   <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
@@ -743,7 +768,7 @@
         </p>
       </div>
       <div class="grid gap-6 md:grid-cols-3">
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-ruler"></i> Espessura de parede
           </div>
@@ -761,7 +786,7 @@
             da peça ou arrancá-la da plataforma.
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
             <i class="fa-solid fa-droplet"></i> Furos de drenagem
           </div>
@@ -774,7 +799,7 @@
             lavagem e escoamento total).
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-amber-50 px-3 py-1 text-xs font-bold text-amber-600 dark:bg-amber-500/15 dark:text-amber-400">
             <i class="fa-solid fa-circle-info"></i> Diâmetro
           </div>
@@ -787,7 +812,7 @@
             lavagem no banner abaixo.
           </p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft md:col-span-2 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7 md:col-span-2">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-lightbulb"></i> Dica de especialista
           </div>
@@ -803,7 +828,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 6. ALERTA CRÍTICO (LAVAGEM INTERNA) ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="relative overflow-hidden rounded-3xl border-4 border-red-500 bg-gradient-to-br from-red-50 to-amber-50 p-8 shadow-lift md:p-12 dark:border-red-500 dark:from-red-950/40 dark:to-amber-950/30 dark:shadow-none dark:ring-1 dark:ring-red-500/30">
@@ -850,7 +874,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 7. PASSO A PASSO NO SLICER (TIMELINE) ====== -->
   <section id="passo-a-passo" class="bg-white py-20 md:py-24 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-4xl px-6">
@@ -868,9 +891,9 @@
         <!-- PASSO 1 -->
         <div class="timeline-item">
           <div class="timeline-node">1</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-file-import mr-1"></i> Importação
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Importe o STL e verifique a malha</h3>
@@ -889,9 +912,9 @@
         <!-- PASSO 2 -->
         <div class="timeline-item">
           <div class="timeline-node">2</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-compass mr-1"></i> Orientação
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Incline a peça entre 30° e 45°</h3>
@@ -910,9 +933,9 @@
         <!-- PASSO 3 -->
         <div class="timeline-item">
           <div class="timeline-node">3</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-cube mr-1"></i> Hollowing
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Oque a peça com parede de 1,8 mm</h3>
@@ -957,9 +980,9 @@
         <!-- PASSO 5 (suportes automáticos) -->
         <div class="timeline-item">
           <div class="timeline-node">5</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-anchor mr-1"></i> Suportes
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Gere suportes automáticos e revise as ilhas</h3>
@@ -979,9 +1002,9 @@
         <!-- PASSO 6 (posicionar primeiro, depois o furo) -->
         <div class="timeline-item">
           <div class="timeline-node">6</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-magnifying-glass mr-1"></i> Revisão
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Revise camada por camada</h3>
@@ -1002,9 +1025,9 @@
         <!-- PASSO 7 -->
         <div class="timeline-item">
           <div class="timeline-node">7</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-file-export mr-1"></i> Exportação
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Exporte no formato da impressora</h3>
@@ -1023,7 +1046,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 8. METODOLOGIA DO AUTOR (3 CUBOS) ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mb-14 max-w-2xl">
@@ -1037,7 +1059,7 @@
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
-      <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon rounded-2xl bg-slate-50 p-7">
         <div class="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-red-50 text-lg font-extrabold text-red-500 dark:bg-red-500/15 dark:text-red-400">01</div>
         <h3 class="font-bold text-slate-900 dark:text-white">Cubo 01 — 0° em todos os eixos</h3>
         <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
@@ -1047,7 +1069,7 @@
           linha de impressão visível.
         </p>
       </div>
-      <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon rounded-2xl bg-slate-50 p-7">
         <div class="mb-3 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50 text-lg font-extrabold text-amber-500 dark:bg-amber-500/15 dark:text-amber-400">02</div>
         <h3 class="font-bold text-slate-900 dark:text-white">Cubo 02 — 45° no eixo Y</h3>
         <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">
@@ -1068,7 +1090,7 @@
       </div>
     </div>
     <div class="mt-10 grid gap-6 md:grid-cols-3">
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
           <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
@@ -1083,10 +1105,10 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-neon-500/10 blur-2xl transition-all duration-500 group-hover:bg-neon-500/20"></div>
         <div class="relative">
-          <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-neon-50 text-2xl text-neon-600 dark:bg-neon-500/15 dark:text-neon-400">
+          <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-neon-500/10 text-2xl text-neon-600 dark:bg-neon-500/15 dark:text-neon-400">
             <i class="fa-solid fa-sun"></i>
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white">Cura interna</h3>
@@ -1097,7 +1119,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-36 w-36 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-500 group-hover:bg-emerald-500/20"></div>
         <div class="relative">
           <div class="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
@@ -1114,7 +1136,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 9. ERROS COMUNS ====== -->
   <section class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
@@ -1129,42 +1150,42 @@
         </p>
       </div>
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-6">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Superfície a 0° (paralela)
           </div>
           <p class="text-sm text-slate-500 dark:text-slate-400">Falha por sucção e empenamento.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Inclinar entre 30° e 45°</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-6">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Ignorar detecção de ilhas
           </div>
           <p class="text-sm text-slate-500 dark:text-slate-400">Buracos na peça e detritos no tanque.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Usar Island Detector e revisar camadas</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-6">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Modelo oco sem furos
           </div>
           <p class="text-sm text-slate-500 dark:text-slate-400">Explosão da peça ou descolamento.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Mínimo de 2 furos (fluxo de ar + limpeza)</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-6">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Furos menores que 1 mm
           </div>
           <p class="text-sm text-slate-500 dark:text-slate-400">O furo fecha durante a impressão.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Manter furos acima de 2 mm</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-6">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Parede oca muito fina
           </div>
           <p class="text-sm text-slate-500 dark:text-slate-400">Peça quebradiça e instável.</p>
           <p class="mt-2 text-sm font-semibold text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1"></i> Usar espessura de 1,8 mm a 2,0 mm</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-6">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-red-50 px-3 py-1 text-xs font-bold text-red-600 dark:bg-red-500/15 dark:text-red-400">
             <i class="fa-solid fa-xmark"></i> Remover suportes após a cura
           </div>
@@ -1174,7 +1195,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== 10. FAQ ====== -->
   <section class="mx-auto max-w-4xl px-6 py-20 md:py-24">
     <div class="mb-14 text-center">
@@ -1182,7 +1202,7 @@
       <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl dark:text-white">FAQ</h2>
     </div>
     <div class="space-y-4">
-      <details class="faq group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-colors duration-300 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <details class="card-neon faq group rounded-2xl bg-white p-6">
         <summary class="flex items-center justify-between gap-4">
           <span class="font-bold text-slate-900 dark:text-white">Qual a melhor inclinação para posicionar a peça?</span>
           <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 group-open:rotate-180"></i>
@@ -1193,7 +1213,7 @@
           já ajudam.
         </p>
       </details>
-      <details class="faq group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-colors duration-300 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <details class="card-neon faq group rounded-2xl bg-white p-6">
         <summary class="flex items-center justify-between gap-4">
           <span class="font-bold text-slate-900 dark:text-white">Toda ilha detectada precisa de suporte?</span>
           <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 group-open:rotate-180"></i>
@@ -1204,7 +1224,7 @@
           estrutura principal na camada imediatamente seguinte.
         </p>
       </details>
-      <details class="faq group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-colors duration-300 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <details class="card-neon faq group rounded-2xl bg-white p-6">
         <summary class="flex items-center justify-between gap-4">
           <span class="font-bold text-slate-900 dark:text-white">Posso furar a peça manualmente após a impressão?</span>
           <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 group-open:rotate-180"></i>
@@ -1215,7 +1235,7 @@
           antes da impressão, para evitar falhas durante o processo.
         </p>
       </details>
-      <details class="faq group rounded-2xl border border-slate-200 bg-white p-6 shadow-soft transition-colors duration-300 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <details class="card-neon faq group rounded-2xl bg-white p-6">
         <summary class="flex items-center justify-between gap-4">
           <span class="font-bold text-slate-900 dark:text-white">Preciso lavar o interior de peças ocas?</span>
           <i class="fa-solid fa-chevron-down text-slate-400 transition-transform duration-300 group-open:rotate-180"></i>
@@ -1229,7 +1249,6 @@
       </details>
     </div>
   </section>
-
   <!-- ====== 11. CTA FINAL ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="rounded-3xl bg-gradient-to-br from-tech-600 to-neon-600 p-10 text-center shadow-lift md:p-14 dark:from-tech-700 dark:to-neon-700 dark:shadow-none dark:ring-1 dark:ring-white/10">
@@ -1250,7 +1269,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== MODAIS (POPUPS) ====== -->
   <!-- Popup 1: Ângulo ideal — Calculadora de inclinação -->
   <div id="modal-angulo-ideal" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-angulo-ideal')" aria-hidden="true">
@@ -1262,12 +1280,10 @@
         </div>
         <button type="button" class="modal-x" onclick="closeModal('modal-angulo-ideal')" aria-label="Fechar"><i class="fa-solid fa-xmark"></i></button>
       </div>
-
       <!-- Regra de ouro -->
       <div class="mt-4 rounded-xl bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-900 dark:bg-emerald-500/10 dark:text-emerald-200 dark:ring-1 dark:ring-emerald-500/20">
         <p><strong>Regra de ouro:</strong> o lado da peça que você quer com o melhor acabamento fica para <strong>CIMA</strong>, longe da plataforma. O lado que fica encostado no plate recebe os suportes e fica com marcas — deixe para baixo o lado que menos importa.</p>
       </div>
-
       <!-- Diagrama (imagem) -->
       <div class="mt-4 overflow-hidden rounded-xl border border-slate-200 dark:border-white/10">
         <img
@@ -1277,13 +1293,11 @@
           loading="lazy"
         />
       </div>
-
       <!-- Aviso: calculadora é um norte -->
       <p class="mt-3 text-xs leading-relaxed text-slate-500 dark:text-slate-400">
         <i class="fa-solid fa-compass mr-1 text-tech-600 dark:text-neon-400"></i>
         Esta calculadora é um <strong>norte matemático</strong>: o objetivo é deixar uma das faces da peça com o menor número de linhas de impressão possível. O valor exato nem sempre é o mais prático — use como ponto de partida.
       </p>
-
       <!-- Calculadora -->
       <div class="mt-4 space-y-4">
         <div class="calc-field">
@@ -1300,7 +1314,6 @@
             <option value="halot8k">Creality Halot Mage 8K</option>
           </select>
         </div>
-
         <div class="calc-field">
           <label class="calc-label" for="calc-camada"><i class="fa-solid fa-ruler mr-1"></i> Altura de camada (mm)</label>
           <input id="calc-camada" class="calc-input" type="number" step="0.01" min="0.01" max="0.2" value="0.05" inputmode="decimal" oninput="calcInclinacao()" />
@@ -1311,7 +1324,6 @@
             <button type="button" class="calc-chip" onclick="setCamada('0.1', this)">0,1</button>
           </div>
         </div>
-
         <div id="calc-resultado" class="calc-result">
           Inclinação ideal no eixo <strong>X</strong>: <strong>69,2°</strong> &nbsp;|&nbsp; no eixo <strong>Y</strong>: <strong>64,4°</strong> <em>(medido da placa)</em>
         </div>
@@ -1320,7 +1332,6 @@
           <strong>Valor alto demais na prática</strong> — use <strong>45°</strong> como compromisso (peça quase em pé exige muitos suportes). <strong>Quer deixar a peça mais deitada?</strong> Reduza a altura de camada (ex.: 0,02 mm) e o ângulo cai automaticamente.
         </div>
       </div>
-
       <!-- Explicação da referência -->
       <div class="mt-5">
         <p class="calc-section-title"><i class="fa-solid fa-circle-info mr-1"></i> Sobre a referência do ângulo</p>
@@ -1337,7 +1348,6 @@
           <strong>estabilidade</strong>.
         </p>
       </div>
-
       <!-- Qual lado fica para cima -->
       <div class="mt-5">
         <p class="calc-section-title"><i class="fa-solid fa-arrow-up mr-1"></i> Qual lado fica para cima?</p>
@@ -1356,7 +1366,6 @@
           sai perfeito.
         </p>
       </div>
-
       <div class="mt-6 flex justify-end">
         <button type="button" class="btn-modal-close" onclick="closeModal('modal-angulo-ideal')">
           <i class="fa-solid fa-arrow-left"></i> Fechar
@@ -1364,7 +1373,6 @@
       </div>
     </div>
   </div>
-
   <!-- Popup 2: Evite 90° (lembrete "Em edição" com rascunho) -->
   <div id="modal-evite-90" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-evite-90')" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Imprimir em pé (90 graus)">
@@ -1390,8 +1398,7 @@
       </div>
     </div>
   </div>
-
-  <!-- Popup 3: Como limpar o ACF com o VAT Cleaner (técnica corrigida) -->
+  <!-- Popup 3: Como limpar o ACF com o VAT Cleaner -->
   <div id="modal-vat-cleaner" class="modal-overlay" onclick="if(event.target===this)closeModal('modal-vat-cleaner')" aria-hidden="true">
     <div class="modal-card" role="dialog" aria-modal="true" aria-label="Como limpar o ACF com o VAT Cleaner">
       <div class="flex items-start justify-between gap-4">
@@ -1413,7 +1420,6 @@
           <li>Com a <strong>espátula plástica, com muito cuidado</strong>, levante apenas uma borda/canto da folha para conferir se ela está solta.</li>
           <li>Descarte a folha curada — o filme ACF fica limpo, sem resíduos.</li>
         </ol>
-        <!-- AVISO CRÍTICO -->
         <div class="mt-4 rounded-xl border-2 border-red-500/60 bg-red-50 p-4 text-sm text-red-800 dark:border-red-500/60 dark:bg-red-950/30 dark:text-red-200">
           <p class="flex items-start gap-2">
             <i class="fa-solid fa-triangle-exclamation mt-0.5"></i>
@@ -1425,7 +1431,6 @@
             </span>
           </p>
         </div>
-        <!-- MÉTODO DO AUTOR -->
         <div class="mt-4 rounded-xl bg-tech-50 p-4 text-sm text-slate-700 dark:bg-tech-500/10 dark:text-slate-300 dark:ring-1 dark:ring-tech-500/20">
           <p class="flex items-start gap-2">
             <i class="fa-solid fa-lightbulb mt-0.5 text-tech-600 dark:text-neon-400"></i>
@@ -1445,7 +1450,6 @@
       </div>
     </div>
   </div>
-
   <!-- ====== FOOTER ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
@@ -1486,7 +1490,6 @@
       E-mail copiado! Cole no seu app de e-mail.
     </div>
   </footer>
-
   <!-- ====== SCRIPT: DARK MODE + COPIAR E-MAIL + MODAIS + CALCULADORA ====== -->
   <script>
     function copyEmail() {
