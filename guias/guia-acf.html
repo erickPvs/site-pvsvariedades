@@ -75,6 +75,32 @@
         linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
       background-size: 44px 44px;
     }
+    /* ====== BORDA NEON CIANO (padrão dos cards) ====== */
+    body .card-neon {
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 4px 24px -6px rgba(15, 23, 42, 0.08);
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+    body .card-neon:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.55);
+      box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.18), 0 0 0 3px rgba(59, 130, 246, 0.10);
+    }
+    html.dark body .card-neon {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(34, 211, 238, 0.30);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.08), 0 0 20px -8px rgba(34, 211, 238, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    html.dark body .card-neon:hover {
+      border-color: rgba(34, 211, 238, 0.70);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 30px -4px rgba(34, 211, 238, 0.60);
+    }
+    /* Borda neon nas pills/etiquetas dentro dos cards */
+    html.dark body .card-neon .pill-neon {
+      border-color: rgba(34, 211, 238, 0.35);
+    }
     /* ====== Timeline ====== */
     .timeline-item { position: relative; padding-left: 4rem; }
     .timeline-item::before {
@@ -125,7 +151,7 @@
       color: #0f172a;
       box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.2), 0 0 28px rgba(34, 211, 238, 0.4);
     }
-    /* Cards com hover */
+    /* Cards com hover (legado — mantido por compatibilidade) */
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); }
     /* Transição suave de tema */
@@ -244,7 +270,7 @@
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
@@ -261,7 +287,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-industrial-500/10 blur-2xl transition-all duration-500 group-hover:bg-industrial-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-industrial-500/10 text-2xl text-industrial-600 dark:bg-industrial-500/15 dark:text-industrial-400">
@@ -275,7 +301,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-500 group-hover:bg-emerald-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
@@ -342,35 +368,35 @@
       </p>
     </div>
     <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon rounded-2xl bg-white p-7">
         <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-bottle-droplet"></i> Limpeza
         </div>
         <h3 class="font-bold text-slate-900 dark:text-white">Álcool Isopropílico</h3>
         <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">99% de pureza — limpeza absoluta sem resíduos.</p>
       </div>
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon rounded-2xl bg-white p-7">
         <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-swatchbook"></i> Superfície
         </div>
         <h3 class="font-bold text-slate-900 dark:text-white">Pano de Microfibra</h3>
         <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Sem fiapos, sem arranhões, sem surpresas.</p>
       </div>
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon rounded-2xl bg-white p-7">
         <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-cut"></i> Corte
         </div>
         <h3 class="font-bold text-slate-900 dark:text-white">Estilete ou Tesoura Fina</h3>
         <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Para o corte final do filme com precisão.</p>
       </div>
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon rounded-2xl bg-white p-7">
         <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
           <i class="fa-solid fa-hand-sparkles"></i> Proteção
         </div>
         <h3 class="font-bold text-slate-900 dark:text-white">Luvas de Nitrilo</h3>
         <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Zero oleosidade no filme e proteção para você.</p>
       </div>
-      <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft md:col-span-2 dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon rounded-2xl bg-white p-7 md:col-span-2">
         <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
           <i class="fa-solid fa-mobile-screen-button"></i> Verificação
         </div>
@@ -400,9 +426,9 @@
         <!-- PASSO 1 -->
         <div class="timeline-item">
           <div class="timeline-node">1</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-droplet mr-1"></i> Preparação
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Remova o tanque e drene a resina</h3>
@@ -421,9 +447,9 @@
         <!-- PASSO 2 -->
         <div class="timeline-item">
           <div class="timeline-node">2</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-screwdriver-wrench mr-1"></i> Desmontagem
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Desmonte o quadro de fixação</h3>
@@ -441,9 +467,9 @@
         <!-- PASSO 3 -->
         <div class="timeline-item">
           <div class="timeline-node">3</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-trash-can mr-1"></i> Remoção
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Remova o filme antigo</h3>
@@ -488,9 +514,9 @@
         <!-- PASSO 5 -->
         <div class="timeline-item">
           <div class="timeline-node">5</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-gauge-high mr-1"></i> Tensão
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Fixe com tensão uniforme e teste o Hz</h3>
@@ -510,9 +536,9 @@
         <!-- PASSO 6 -->
         <div class="timeline-item">
           <div class="timeline-node">6</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-scissors mr-1"></i> Acabamento
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Corte final e revisão</h3>
