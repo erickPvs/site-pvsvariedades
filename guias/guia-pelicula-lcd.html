@@ -75,6 +75,32 @@
         linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
       background-size: 44px 44px;
     }
+    /* ====== BORDA NEON CIANO (padrão dos cards) ====== */
+    body .card-neon {
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow: 0 4px 24px -6px rgba(15, 23, 42, 0.08);
+      transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease, background .3s ease;
+    }
+    body .card-neon:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.55);
+      box-shadow: 0 20px 50px -12px rgba(15, 23, 42, 0.18), 0 0 0 3px rgba(59, 130, 246, 0.10);
+    }
+    html.dark body .card-neon {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(34, 211, 238, 0.30);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.08), 0 0 20px -8px rgba(34, 211, 238, 0.45);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    html.dark body .card-neon:hover {
+      border-color: rgba(34, 211, 238, 0.70);
+      box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.35), 0 0 30px -4px rgba(34, 211, 238, 0.60);
+    }
+    /* Borda neon nas pills/etiquetas dentro dos cards */
+    html.dark body .card-neon .pill-neon {
+      border-color: rgba(34, 211, 238, 0.35);
+    }
     /* ====== Timeline ====== */
     .timeline-item { position: relative; padding-left: 4rem; }
     .timeline-item::before {
@@ -125,7 +151,7 @@
       color: #0f172a;
       box-shadow: 0 0 0 6px rgba(34, 211, 238, 0.2), 0 0 28px rgba(34, 211, 238, 0.4);
     }
-    /* Cards com hover */
+    /* Cards com hover (legado — mantido por compatibilidade) */
     .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease; }
     .card-hover:hover { transform: translateY(-4px); }
     /* Transição suave de tema */
@@ -156,22 +182,25 @@
   </style>
 </head>
 <body class="bg-slate-50 font-sans text-slate-700 transition-colors duration-300 dark:bg-slate-950 dark:text-slate-300">
-
-  <!-- ====== NAVBAR (padrão das guias: logo + toggle) ====== -->
+  <!-- ====== NAVBAR (logo + links + toggle) ====== -->
   <nav class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/80 backdrop-blur-xl transition-colors duration-300 dark:border-white/10 dark:bg-slate-950/70">
     <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
       <a href="/" class="flex items-center">
         <img src="../images/logo_pvsvariedades.webp" alt="PVS Variedades" class="h-10 w-auto object-contain" />
       </a>
-      <button id="theme-toggle"
-              aria-label="Alternar tema claro/escuro"
-              class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
-        <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
-        <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
-      </button>
+      <div class="flex items-center gap-1 sm:gap-2">
+        <a href="/" class="hidden rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 sm:inline-flex dark:text-slate-300 dark:hover:text-neon-400">Início</a>
+        <a href="/loja.html" class="rounded-lg px-3 py-2 text-sm font-semibold text-slate-600 transition hover:text-tech-600 dark:text-slate-300 dark:hover:text-neon-400">Loja</a>
+        <a href="/guias/" class="rounded-lg px-3 py-2 text-sm font-semibold text-tech-600 transition hover:text-tech-500 dark:text-neon-400 dark:hover:text-neon-300">Guias</a>
+        <button id="theme-toggle"
+                aria-label="Alternar tema claro/escuro"
+                class="group relative inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 shadow-soft transition-all duration-300 hover:border-tech-400 hover:text-tech-600 hover:shadow-glow-tech dark:border-white/10 dark:bg-white/5 dark:text-slate-300 dark:hover:border-neon-400 dark:hover:text-neon-400 dark:hover:shadow-glow-neon">
+          <i id="icon-moon" class="fa-solid fa-moon text-lg transition-all duration-300 group-hover:scale-110"></i>
+          <i id="icon-sun" class="fa-solid fa-sun hidden text-lg transition-all duration-300 group-hover:scale-110"></i>
+        </button>
+      </div>
     </div>
   </nav>
-
   <!-- ====== HEADER / HERO ====== -->
   <header class="relative overflow-hidden bg-slate-900 text-white dark:bg-slate-950">
     <div class="hero-grid absolute inset-0 opacity-60"></div>
@@ -228,7 +257,6 @@
       </div>
     </div>
   </header>
-
   <!-- ====== POR QUE ISSO IMPORTA ====== -->
   <section class="mx-auto max-w-6xl px-6 py-20 md:py-24">
     <div class="mx-auto mb-14 max-w-2xl text-center">
@@ -242,7 +270,7 @@
       </p>
     </div>
     <div class="grid gap-6 md:grid-cols-3">
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-tech-500/10 blur-2xl transition-all duration-500 group-hover:bg-tech-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-tech-50 text-2xl text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
@@ -256,7 +284,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-red-500/10 blur-2xl transition-all duration-500 group-hover:bg-red-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-red-50 text-2xl text-red-500 dark:bg-red-500/15 dark:text-red-400">
@@ -270,7 +298,7 @@
           </p>
         </div>
       </div>
-      <div class="card-hover group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-8 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+      <div class="card-neon group relative overflow-hidden rounded-2xl bg-white p-8">
         <div class="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-emerald-500/10 blur-2xl transition-all duration-500 group-hover:bg-emerald-500/20"></div>
         <div class="relative">
           <div class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-xl bg-emerald-50 text-2xl text-emerald-600 dark:bg-emerald-500/15 dark:text-emerald-400">
@@ -286,7 +314,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== FERRAMENTAS NECESSÁRIAS ====== -->
   <section id="ferramentas" class="bg-slate-100 py-20 md:py-24 transition-colors duration-300 dark:bg-slate-900">
     <div class="mx-auto max-w-6xl px-6">
@@ -301,35 +328,35 @@
         </p>
       </div>
       <div class="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-bottle-droplet"></i> Limpeza
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white">Álcool Isopropílico</h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">99% de pureza — limpeza absoluta sem resíduos.</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-swatchbook"></i> Superfície
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white">Pano de Microfibra</h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Sem fiapos, sem arranhões, sem surpresas.</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-tape"></i> Vedação
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white">Fita de Acetato</h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Mara Tape — vedação hermética das bordas.</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-arrows-up-down-left-right"></i> Aplicação
           </div>
           <h3 class="font-bold text-slate-900 dark:text-white">Espátula Plástica</h3>
           <p class="mt-2 text-sm leading-relaxed text-slate-500 dark:text-slate-400">Para expulsar bolhas sem riscar a superfície.</p>
         </div>
-        <div class="card-hover rounded-2xl border border-slate-200 bg-white p-7 shadow-soft dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+        <div class="card-neon rounded-2xl bg-white p-7">
           <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-tech-50 px-3 py-1 text-xs font-bold text-tech-600 dark:bg-tech-500/15 dark:text-neon-400">
             <i class="fa-solid fa-hand-sparkles"></i> Proteção
           </div>
@@ -339,7 +366,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== ALERTA CRÍTICO: NUNCA REMOVA O POLARIZADOR ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="relative overflow-hidden rounded-3xl border-4 border-red-500 bg-gradient-to-br from-red-50 to-amber-50 p-8 shadow-lift md:p-12 dark:border-red-500 dark:from-red-950/40 dark:to-amber-950/30 dark:shadow-none dark:ring-1 dark:ring-red-500/30">
@@ -369,7 +395,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== PASSO A PASSO (TIMELINE) ====== -->
   <section id="passo-a-passo" class="bg-white py-20 md:py-24 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-4xl px-6">
@@ -387,9 +412,9 @@
         <!-- PASSO 1 -->
         <div class="timeline-item">
           <div class="timeline-node">1</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-broom mr-1"></i> Limpeza
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Limpeza absoluta da tela antiga e das bordas</h3>
@@ -410,9 +435,9 @@
         <!-- PASSO 2 -->
         <div class="timeline-item">
           <div class="timeline-node">2</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-arrows-up-down-left-right mr-1"></i> Alinhamento
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Alinhamento preciso da nova película</h3>
@@ -432,9 +457,9 @@
         <!-- PASSO 3 -->
         <div class="timeline-item">
           <div class="timeline-node">3</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-hand-pointer mr-1"></i> Aplicação
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Aplique a película sem bolhas</h3>
@@ -477,9 +502,9 @@
         <!-- PASSO 5 -->
         <div class="timeline-item">
           <div class="timeline-node">5</div>
-          <div class="card-hover rounded-2xl border border-slate-200 bg-slate-50 p-8 shadow-soft hover:-translate-y-1 hover:shadow-lift dark:glass-card dark:border-white/10 dark:bg-white/5 dark:shadow-none">
+          <div class="card-neon rounded-2xl bg-slate-50 p-8">
             <div class="flex flex-wrap items-center gap-3">
-              <span class="rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
+              <span class="pill-neon rounded-full bg-tech-50 px-3 py-1 text-xs font-bold uppercase tracking-wide text-tech-700 dark:bg-tech-500/15 dark:text-neon-400">
                 <i class="fa-solid fa-level-down-alt mr-1"></i> Nivelamento
               </span>
               <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Nivelamento e teste final</h3>
@@ -498,7 +523,6 @@
       </div>
     </div>
   </section>
-
   <!-- ====== CTA FINAL ====== -->
   <section class="mx-auto max-w-6xl px-6 py-16 md:py-20">
     <div class="rounded-3xl bg-gradient-to-br from-tech-600 to-neon-600 p-10 text-center shadow-lift md:p-14 dark:from-tech-700 dark:to-neon-700 dark:shadow-none dark:ring-1 dark:ring-white/10">
@@ -519,26 +543,21 @@
       </div>
     </div>
   </section>
-
   <!-- ====== FOOTER (WhatsApp + E-mail copiável + redes "Em breve") ====== -->
   <footer class="bg-slate-900 py-12 transition-colors duration-300 dark:bg-slate-950">
     <div class="mx-auto max-w-6xl px-6">
-      <!-- Contato: pílulas com ícone + texto -->
       <div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <!-- WhatsApp (abre a conversa) -->
         <a href="https://wa.me/5511947407823" target="_blank" rel="noopener" aria-label="WhatsApp"
            class="inline-flex items-center gap-3 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-emerald-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-emerald-500/30">
           <i class="fa-brands fa-whatsapp text-xl"></i>
           WhatsApp
         </a>
-        <!-- E-mail (copia ao clicar — não abre janela) -->
         <button type="button" onclick="copyEmail()" aria-label="Copiar e-mail"
                 class="inline-flex items-center gap-3 rounded-full border border-tech-500/40 bg-tech-500/10 px-6 py-3 text-sm font-bold text-white transition-all duration-300 hover:bg-tech-500 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-tech-500/30">
           <i class="fa-solid fa-envelope text-xl"></i>
           contato@pvsvariedades.com.br
         </button>
       </div>
-      <!-- Redes sociais "Em breve" (lembrete visual) -->
       <div class="mt-6 flex items-center justify-center gap-3">
         <span title="Em breve" aria-label="Instagram em breve"
               class="social-soon inline-flex h-10 w-10 items-center justify-center rounded-xl bg-white/5 text-lg text-white">
@@ -558,14 +577,12 @@
         <p class="mt-1 text-xs text-slate-400">© 2026 — Produtos, guias e personalizados.</p>
       </div>
     </div>
-    <!-- Toast "E-mail copiado" -->
     <div id="toast"
          class="pointer-events-none fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 translate-y-24 rounded-full bg-slate-900/95 px-6 py-3 text-sm font-semibold text-white opacity-0 shadow-2xl ring-1 ring-white/10 backdrop-blur transition-all duration-300">
       <i class="fa-solid fa-check mr-1 text-emerald-400"></i>
       E-mail copiado! Cole no seu app de e-mail.
     </div>
   </footer>
-
   <!-- ====== SCRIPT: DARK MODE TOGGLE + COPIAR E-MAIL ====== -->
   <script>
     function copyEmail() {
